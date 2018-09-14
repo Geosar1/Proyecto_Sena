@@ -156,6 +156,7 @@ $(document).on('click', '#tedi', function () {
     $('#form_editar').show();
     $('#tabla_rutas').hide();
     editarBarrios(id);
+});
 
 $(document).on('click', '#crearPedido', function () {
     $('#contenido').html("");
@@ -174,9 +175,7 @@ $(document).on('click', '#consultaPedido', function () {
 });
 
 //prueba click en olvido contraseña
-
 $(document).on('click', '#recu', function () {
     $('#contenido').html("");
     $('#contenido').load(uri + 'login/recover');
-
 });
