@@ -24,4 +24,12 @@ class Login extends Model {
         $stm->execute();
         return $stm->fetch();
     }
+    
+    public function recuperar_usuario(){
+        $stm = $this->db->prepare("CALL Recuperar_procedure(?,?)");
+        $stm->bindParam(1, $this->usuario);
+        $stm->bindParam(2, $this->clave);
+        $stm->execute();
+        return $stm->fetch();
+    }
 }
