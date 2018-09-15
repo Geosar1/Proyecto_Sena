@@ -774,7 +774,7 @@ function ConsultarDetalle(id) {
 
               <td>
               <a class="btn btn-primary" onclick="ConsultarDetalle('${
-                e.id_cliente_pedido
+                e.id_cliente
               }')">Ver Detalle</a>
            
               </td>

@@ -29,7 +29,7 @@
         } 
         public function ConsultarDetalleP($id){
             $pedido = new mdlConsultaPedido();
-            $pedidos->__SET("id_pedido",$id);         
+            $pedido->__SET("id_pedido",$id);         
             $detallepedido = $pedidos->ConsultarPorId();
             echo json_encode($detallepedido);
         }
