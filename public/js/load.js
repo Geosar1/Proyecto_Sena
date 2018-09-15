@@ -12,12 +12,10 @@ function menus() {
     } else if ($('#user_log').val() == "VENTAS") {
         $('#compras').hide();
         $('#usuarios').hide();
-        $('#rutas').hide();
-        $('#carteras').hide();
         $('#proveedores').hide();
         $('#productos').hide();
         $('#movimientos').hide();
-        $('.children').hide();
+        $('.children-c').hide();
     }
 }
 

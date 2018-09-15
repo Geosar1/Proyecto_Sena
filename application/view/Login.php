@@ -89,6 +89,7 @@
     <script type="text/javascript" src="<?= URL?>/public/js/alertas.js"></script>
     <script type="text/javascript" src="<?= URL?>/public/js/jquery.js"></script>
     <script type="text/javascript" src="<?= URL?>/public/js/bootstrap.js"></script>
+    <script type="text/javascript" src="<?= URL?>/public/js/bootstrap2.js"></script>
 
 </body>
 
