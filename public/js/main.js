@@ -558,15 +558,18 @@ $(document).on('click', '#enviar', function () {
 //buscar rutas
 $(document).ready(function () {
     $('#rruta').DataTable();
-<<<<<<< HEAD
 } );
 //rutas
 $(document).on('change','#ddlMuni',function(){
-=======
+
 });
 
 $(document).on('change', '#ddlMuni', function () {
->>>>>>> añadida funcion de recuperar session
+
+});
+
+$(document).on('change', '#ddlMuni', function () {
+
     //var valor = $('#ddlMuni'.val());
     var mun = $('#ddlMuni').val();
     buscarBarrios($(this).val());
@@ -632,4 +635,3 @@ function direccion(elemento){
       });
 
     
-   
