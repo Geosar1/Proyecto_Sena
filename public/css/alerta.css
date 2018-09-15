@@ -1,3 +1,8 @@
+#recuperar,
+#mensaje_recuperacion{
+    display: none;
+}
+
 .popupunder{
     width: 300px;
 	position:fixed;

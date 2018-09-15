@@ -105,7 +105,7 @@ $(document).on('keyup', '#nombres_c', function () {
     var valor2 = $('#select_r').val();
 
     if (valor != "" || valor2 != "") {
-        buscar_cliente(valor,valor2);
+        buscar_cliente(valor, valor2);
     } else {
         buscar_cliente();
     }
@@ -116,7 +116,7 @@ $(document).on('change', '#select_r', function () {
     var valor2 = $('#select_r').val();
 
     if (valor != "" || valor2 != "") {
-        buscar_cliente(valor,valor2);
+        buscar_cliente(valor, valor2);
     } else {
         buscar_cliente();
     }
@@ -500,6 +500,40 @@ $(document).on('click', '#quitar', function () {
     return false;
 });
 
+$(document).on('change', '#recordar', function () {
+    if (this.checked) {
+        $('#user').attr("placeholder", "Ingrese cedula");
+        $('#mensaje_recuperacion').show();
+        $('#key').get(0).type = 'date';
+        $('#entrar').hide();
+        $('#recuperar').show();
+        mensaje = "Ingresa tus datos de seguridad";
+        ver_success();
+    } else {
+        $('#user').attr("placeholder", "Usuario");
+        $('#key').attr("placeholder", "Contraseña");
+        $('#key').get(0).type = 'password';
+        $('#mensaje_recuperacion').hide();
+        $('#entrar').show();
+        $('#recuperar').hide();
+        $('#user').val("");
+        $('#key').val("");
+    }
+})
+
+$(document).on('click', '#recuperar', function () {
+    var dato = $('#user').val();
+    var dato2 = $('#key').val();
+
+    if (dato != "" && dato2 != "") {
+        recuperar_usuario(dato, dato2);
+    } else {
+        mensaje = "debe ingresar todos los datos";
+        ver_fail();
+    }
+    return false;
+});
+
 //Index
 $(document).on('click', '#crear_p', function () {
     $('#crear_producto').slideDown();
@@ -522,11 +556,20 @@ $(document).on('click', '#enviar', function () {
 });
 
 //buscar rutas
-$(document).ready( function () {
+$(document).ready(function () {
     $('#rruta').DataTable();
 } );
 //rutas
 $(document).on('change','#ddlMuni',function(){
+
+});
+
+$(document).on('change', '#ddlMuni', function () {
+
+});
+
+$(document).on('change', '#ddlMuni', function () {
+
     //var valor = $('#ddlMuni'.val());
     var mun = $('#ddlMuni').val();
     buscarBarrios($(this).val());
@@ -592,4 +635,3 @@ function direccion(elemento){
       });
 
     
-   

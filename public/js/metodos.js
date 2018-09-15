@@ -458,6 +458,29 @@ function consultar_usuario(consulta, consulta2) {
         });
 }
 
+function recuperar_usuario(consulta, consulta2) {
+    $.ajax({
+            url: uri + '/Login/recuperar',
+            type: 'POST',
+            dataType: 'html',
+            data: {
+                usuario: consulta,
+                clave: consulta2,
+            },
+        })
+        .done(function (respuesta) {
+            if (respuesta == "usuario incorrecto") {
+                mensaje = "Los datos ingresados no existen";
+                ver_fail();
+            } else {
+                window.location = uri + '/Login/menu';
+            }
+        })
+        .fail(function () {
+            console.log("error");
+        });
+}
+
 function cerrar() {
     $.ajax({
             url: uri + '/Login/cerrar',
