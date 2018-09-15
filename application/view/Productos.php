@@ -133,7 +133,6 @@
     <div class="table-responsive">
         <table id="registros_d"></table>
     </div>
-    <input type="button" value="Descargar a excel" id="enviar">
 </form>
 
 <script>

@@ -21,6 +21,7 @@
             <div class="col-md-3 form-group">
                 <label>Tipo de documento</label>
                 <select id="tipo_doc" class="form-control" name="txttipo_doc" required>
+                   <option value="">Seleccione</option>
                     <option value="Cedula">Cédula Ciudadanía</option>
                     <option value="Cedula_extran">Cédula Extranjería</option>
                     <option value="Tarjeta">Tarjeta Identidad</option>

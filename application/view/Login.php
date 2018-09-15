@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-//hola
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="<?= URL ?>/public/css/bootstrap-yeti.css">
@@ -90,6 +89,7 @@
     <script type="text/javascript" src="<?= URL?>/public/js/alertas.js"></script>
     <script type="text/javascript" src="<?= URL?>/public/js/jquery.js"></script>
     <script type="text/javascript" src="<?= URL?>/public/js/bootstrap.js"></script>
+    <script type="text/javascript" src="<?= URL?>/public/js/bootstrap2.js"></script>
 
 </body>
 

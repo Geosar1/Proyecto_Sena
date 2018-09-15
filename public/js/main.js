@@ -211,6 +211,7 @@ $(document).on('click', '#guardar', function () {
         $('#informacion').slideDown();
         $('#volver').show();
         $('#crear_producto').trigger("reset");
+        $('select').val('').trigger('change');
         id = "";
         contador = 0;
         buscar_producto();
