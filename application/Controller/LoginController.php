@@ -46,6 +46,20 @@ class LoginController {
     }
 
     }
+    
+    public function recuperar(){
+    $datos = new Login();
+    $datos->__SET("usuario", $_POST['usuario']);
+    $datos->__SET("clave", $_POST['clave']);
+    $p = $datos->recuperar_usuario();
+        
+    if(empty($p)){
+        echo "usuario incorrecto";
+    } else {
+        $_SESSION['USUARIO']= $p;
+    }
+
+    }
 
     public function limpiar(){
         unset($_SESSION['RESPUESTA']);

@@ -51,6 +51,7 @@
                                 <div class="errores" id="mensaje2">
                                     <p class="text-danger">Introduce tu contraseña.</p>
                                 </div>
+                                <p class="color-light" id="mensaje_recuperacion">Ingrese fecha de expedicion de su cedula</p>
                                 <div class="input-group" id="campo2">
                                     <span class="input-group-addon"><i class="fa fa-lock " aria-hidden="true"></i></span>
                                     <input type="password" name="pwd" id="key" class="form-control form-login btn-block" placeholder="Contraseña" autocomplete="off" />
@@ -61,10 +62,16 @@
                                         <button id="entrar" type="submit" class="btn btn-primary btn-block">Ingresar</button>
                                     </div>
                                 </div>
+                                <div class="col-lg-4 col-lg-offset-8">
+                                    <div class="form-group" id="campoapaterno">
+                                        <button id="recuperar" type="button" class="btn btn-primary btn-block">Recuperar</button>
+                                    </div>
+                                </div>
                                 <br> <br> <br>
                                 <div class="col-lg-8 col-lg-offset-4" style="margin:center">
 
-                                    <a class="underlineHover" id="recu" href="<?php echo URL; ?>login/recover">¿Olvidaste la contraseña?</a>
+                                    <a id="sele">¿Olvidaste la contraseña?</a>
+                                    <input type="checkbox" id="recordar">
                                 </div>
                             </div>
                         </form>
@@ -75,7 +82,6 @@
     </div>
     <script>
         var uri = "<?=URL?>";
-
     </script>
 
     <script type="text/javascript" src="<?= URL?>/public/js/jquery.min.js"></script>
