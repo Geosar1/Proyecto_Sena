@@ -43,7 +43,7 @@
 
             <div class="col-md-3 form-group">
                 <label>Cartera</label>
-                <input type="number" class="form-control" name="cartera_dis" id="cartera_dis" maxlength="7">
+                <input type="number" class="form-control" name="cartera_dis" id="cartera_dis" maxlength="11">
             </div>
         </div>
     </div>

@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-md-3 form-group">
                 <label>Nombre empresa</label>
-                <input type="text" class="form-control" id="nombre_em" name="txtnombre_em" maxlength="50" autocomplete="off" required>
+                <input type="text" class="form-control" id="nombre_em" name="txtnombre_em" maxlength="35" autocomplete="off" required>
             </div>
 
             <div class="col-md-3 form-group">
@@ -42,12 +42,12 @@
 
             <div class="col-md-3 form-group">
                 <label>Telefono</label>
-                <input type="number" class="form-control" id="tel" name="txttel" maxlength="11" autocomplete="off">
+                <input type="number" class="form-control" id="tel" name="txttel" maxlength="13" autocomplete="off">
             </div>
 
             <div class="col-md-3 form-group">
                 <label>Celular</label>
-                <input type="number" class="form-control" id="cel" name="txtcel" maxlength="11" autocomplete="off" required>
+                <input type="number" class="form-control" id="cel" name="txtcel" maxlength="13" autocomplete="off" required>
             </div>
         </div>
     </div>
