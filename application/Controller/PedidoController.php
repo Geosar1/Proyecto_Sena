@@ -75,11 +75,11 @@
                 $idcliente = "%";
             }
             if($fechaInicio == null){
-                $fechaInicio = "2017-01-01";
+                $fechaInicio = "1890-01-01";
             }
             
             if($fechaFin == null){
-                $fechaFin = "2020-01-01";
+                $fechaFin = "2030-12-31";
             }
             $consultapedidos = $cp->listar($idcliente, $fechaInicio, $fechaFin);
         

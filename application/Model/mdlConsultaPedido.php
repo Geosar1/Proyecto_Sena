@@ -3,14 +3,15 @@
 namespace Mini\Model;
 
 use Mini\Core\Model;
-use Mini\Model\mdlPedido;
 
 class mdlConsultaPedido extends Model {
 
     private $id_pedido;
-    private $id_cliente;
-    private $fecha_de_creacion;    
-    private $estado_de_pedido;
+    private $id_producto;
+    private $cantidad;    
+    private $subtotal_pedido;
+    private $id_cliente_pedido;
+    private $estado_pedido;
     private $tipo_venta;
     private $valor_total;
     private $observaciones;
@@ -61,6 +62,14 @@ class mdlConsultaPedido extends Model {
         $stm->bindParam(1, $this->estado_pedido);
         $stm->bindParam(2, $this->id_pedido);
         return $stm->execute();
+    }
+    public function consulta_detalle(){
+        $sql = "SELECT * FROM detalle_pedido_producto WHERE id = ?";
+        $stm = $this->db->prepare($sql);
+        $stm->bindParam(1, $this->id_pedido);
+        return $stm->execute();
+        return $stm->fetch();
+        
     }
 
 
