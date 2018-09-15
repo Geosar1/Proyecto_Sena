@@ -586,6 +586,7 @@ function editar_usuario(consulta) {
             $("#tipo_usu").val(contenido.rol_usuario);
             $("#user").val(contenido.usuario);
             $("#clave").val(contenido.clave);
+            $("#fec_exp").val(contenido.cambio_clave);
             buscar_usuario($('#nombres_us').val());
         })
         .fail(function () {

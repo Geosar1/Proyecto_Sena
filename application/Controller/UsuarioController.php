@@ -99,6 +99,7 @@ class UsuarioController {
         $usuario->__SET("rol_usuario", $_POST['txttipo_usu']);
         $usuario->__SET("usuario", $_POST['txtuser']);
         $usuario->__SET("clave", $_POST['txtclave']);
+        $usuario->__SET("cambio_clave", $_POST['txtfec_exp']);
         $consulta = $usuario->buscar_usuario();
         if(empty($consulta)){
         if($usuario->guardar()){
@@ -134,6 +135,7 @@ class UsuarioController {
         $usuario->__SET("rol_usuario", $_POST['txttipo_usu']);
         $usuario->__SET("usuario", $_POST['txtuser']);
         $usuario->__SET("clave", $_POST['txtclave']);
+        $usuario->__SET("cambio_clave", $_POST['txtfec_exp']);
 
         if($usuario->modificar()){
             $_SESSION['RESPUESTA']= "Usuario modificado correctamente";

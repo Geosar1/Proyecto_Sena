@@ -30,6 +30,10 @@
                 <label>Número documento</label>
                 <input name="txtnumero_doc" class="form-control" id="num_doc" type="text" maxlength="30" autocomplete="off" required>
             </div>
+            <div class="col-md-3 form-group">
+                <label>Fecha Expedición</label>
+                <input name="txtfec_exp" class="form-control" id="fec_exp" type="date" required>
+            </div>
         </div>
     </div>
 
