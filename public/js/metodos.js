@@ -729,7 +729,7 @@ function ConsultarDetalle(id) {
       if (detallepedido.length > 0) {
         $("#detallebodys").empty();
   
-        detallepedido.forEach((e, i) => {
+        detallepedido.forEach((e) => {
           $("#txtFecha").val(e.fecha_de_creacion);
           $("#txtCliente").val(e.nombres_cliente);
           $("#lbtotall").html(e.valor_total);
@@ -783,7 +783,7 @@ function ConsultarDetalle(id) {
           );
         });
       } else {
-        alert("no hay pedidos para ese rango seleccionado");
+        alert("no hay registros para el rango seleccionado");
       }
     });
   }
