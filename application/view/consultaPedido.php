@@ -48,13 +48,20 @@
 <th>Cliente</th>
 <th>Total</th>     
 <th>Estado</th>
-<th>Acciones</th>     
+  
 
 </tr>
 
 </thead>
 <tbody id="ped">
-     
+ <?php foreach($pedidos as $value): ?>
+ <tr>
+ <td><?= $value->fecha_de_creacion ?></td>
+ <td><?= $value->nombres_cliente.' '.$value->apellidos_cliente ?></td>
+ <td><?= $value->valor_total ?></td>
+ <td><?= $value->estado_pedido ?></td>
+ </tr>
+<?php endforeach; ?>
 
 </tbody>
 </table>
