@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
+//hola
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="<?= URL ?>/public/css/bootstrap-yeti.css">
