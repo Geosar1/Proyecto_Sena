@@ -114,19 +114,21 @@
 
                     try{
                         if($pedido->insertarDetallePedido()){
-                            $_SESSION["mensaje"] = "alert('Pedido Guardado con éxito')";
+                            $_SESSION["RESPUESTA"] = "Pedido Guardado con éxito";
 
                         }else{
-                            $_SESSION["mensaje"] = "alert('No se guardo el Pedido')";
+                            $_SESSION["RESPUESTA"] = "No se guardo el Pedido";
                         }
                     }catch(\Exception $e) {
-                        $_SESSION["mensaje"] = $e->getMessage();
+                        $_SESSION["RESPUESTA"] = $e->getMessage();
                     }
                     
                   
                     }
                     
                 }
+                $_SESSION["LOCAL"] = "7";
+
                 header("location: ".URL."Login/menu");
         }
  

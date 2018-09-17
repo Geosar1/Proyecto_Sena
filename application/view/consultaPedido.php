@@ -1,7 +1,7 @@
 <h2> Pedidos </H2>
 <hr/>
 <br/>
-
+<form action="">
 <div class="row">
             <div class="col-lg-3 col-md-3 col-sm-4 col-sx-12">
                 <div class="form-group">
@@ -33,8 +33,8 @@
 						<div class="col-lg-3 col-md-3 col-sm-4 col-sx-12">
                 <div class="form-group">
                     <br/>
-                    <button type="reset" class="btn btn primary " name="btnLimpiarindex" id="btnLimpiarindex">Limpiar
-                    </button>
+                    <input type="reset" name="btnLimpiarindex" id="btnLimpiarindex">
+                    
                 </div>
             </div>
      </div>
@@ -140,3 +140,4 @@
 
 <input type="button" value="Descargar a excel" id="enviar">
 
+</form>

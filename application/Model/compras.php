@@ -86,11 +86,8 @@ public function listarMaestro(){
         //     }
 
 public function guardarEncabezado()
-{
-     $sql = "CALL SP_InsertarCompra(?, ?)";
-    
-    echo $sql;
-    $stm = $this->db->prepare($sql); 
+{   
+    $stm = $this->db->prepare("CALL SP_InsertarCompra(?, ?)"); 
     echo $this->total;
     $stm->bindParam(1, $this->total); 
     $stm->bindParam(2, $this->id_proveedor); 

@@ -102,7 +102,7 @@ public function crear($id = -1){
             $fechaFin = $_GET["fechaFin"];
             $c = new compras();
             if($idProveedor == ""){
-                $idProveedor = "%";
+                $idProveedor = "%%";
             }
             if($fechaInicio == null){
                 $fechaInicio = "1890-01-01";

@@ -47,9 +47,8 @@ function traer() {
 
     } else if ($('#carga').val() == "7") {
         $('#contenido').html("");
-        $('#contenido').load(uri + '/Pedido/consultaPedido', function () {
-            ponerPrecio();
-            direccion();  
+        $('#contenido').load(uri + '/Pedido/consulta_Pedido',function(){
+            ConsultarDetalle(); 
         });
 
     } else if ($('#carga').val() == "8") {
