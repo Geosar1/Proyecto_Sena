@@ -1,22 +1,22 @@
-#crear_producto,
-#crear_detalle,
 #modificar_c,
 #modificar_p,
 #modificar_usuario,
 .alert,
 #modificar_cliente,
 #modificar_proveedor,
-#form_editar{
+#form_editar {
     display: none;
+}
+
+form {
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
 }
 
 #consulta_cartera label {
     font-size: 15px;
     margin-top: 10px;
-}
-
-#botones {
-    float: right;
 }
 
 input[type=button],
@@ -33,21 +33,24 @@ input[type=number],
 .select {
     color: black;
 }
+
 /* INPUT */
 .succes {
     background-color: #f04124;
     border-radius: 5px;
-    padding: 5px;
+    padding: 5px 10px 5px 10px;
     color: white;
+    margin-right: 30px;
 }
 
 #label2 {
     position: absolute;
     margin-left: 300px;
 }
-#form_pedido table{
-width : 855px;
-margin : 15px;
+
+#form_pedido table {
+    width: 855px;
+    margin: 15px;
 
 
 }

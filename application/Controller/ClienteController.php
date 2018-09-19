@@ -11,7 +11,7 @@ class ClienteController {
         if(isset($_SESSION['USUARIO'])){
             if($_SESSION['USUARIO']->rol_usuario== "ADMINISTRADOR" || $_SESSION['USUARIO']->rol_usuario== "BODEGA" || $_SESSION['USUARIO']->rol_usuario == "VENTAS"){
                 $rutas = new Ruta();
-                $resultado = $rutas->listar();
+                $resultado = $rutas->mostrar_rutas();
             }else {
                 header("location: ".URL."Login/menu");
             }
@@ -25,13 +25,17 @@ class ClienteController {
         $cliente = new Clientes();
         $salida="";
 
-        if(isset($_POST['nombre']) && isset($_POST['ruta'])){
+        if(isset($_POST['nombre']) && isset($_POST['ruta']) && isset($_POST['documento'])){
             $cliente->__SET("nombres", $_POST["nombre"]);
+            $cliente->__SET("apellidos", $_POST["apellidos"]);
+            $cliente->__SET("numero_doc", $_POST["documento"]);
             $cliente->__SET("id_ruta", $_POST["ruta"]);
             $lista = $cliente->listar();
         }else {
             $cliente->__SET("nombres", "");
             $cliente->__SET("id_ruta", "");
+            $cliente->__SET("numero_doc", "");
+            $cliente->__SET("apellidos", "");
             $lista = $cliente->listar();
         }
 
@@ -98,6 +102,51 @@ class ClienteController {
                 <button style='background-color: ".$color." ;' id='Estado_cliente' value=".$value->id_cliente.">".$estados."</button>
                 </td>
     </tr>";
+        endforeach;
+            $salida.="</tbody></table>";
+        }
+            echo $salida;
+    }
+    
+    public function historial(){
+        $cliente = new Clientes();
+        $salida="";
+        $cliente->__SET("id", $_POST['id']);
+        $resultado = $cliente->buscar_historial_pedidos();
+
+        if(empty($resultado)){
+        $salida.="No tiene Historial";
+        }else {
+        $salida.="<table class='tabla_datos'>
+        <thead>
+            <tr>
+                <th>Valor de pedido</th>
+                <th>Estado pedido</th>
+                <th>Observaciones</th>
+                <th>Fecha pedido</th>
+            </tr>
+            </thead>
+            <tbody>";
+        foreach($lista as $value):
+        if($value->estado_cliente==1){
+        $texto = "Activo";
+        } else {
+        $texto = "Inactivo";
+        }
+        $salida.="<tr>
+                <td>
+                    ".$value->valor_total."
+                </td>
+                <td>
+                    ".$value->estado_pedido."
+                </td>
+                <td>
+                    ".$value->observaciones."
+                </td>
+                <td>
+                    ".$value->fecha_de_creacion."
+                </td>
+        </tr>";
         endforeach;
             $salida.="</tbody></table>";
         }

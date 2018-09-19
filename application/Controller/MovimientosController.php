@@ -13,7 +13,7 @@ class MovimientosController {
                 $productos = new Producto();
                 $m = new Movimientos();
                 $productos->__SET("nombre", "");
-                $productos->__SET("proveedor", "");
+                $productos->__SET("id_categoria", "");
                 $pro = $productos->listar_productos();
             }else {
                 header("location: ".URL."Login/menu");

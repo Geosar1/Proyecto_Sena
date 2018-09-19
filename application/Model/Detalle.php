@@ -41,14 +41,6 @@ class Detalle extends Model {
         return $stm->fetchAll();
     }
     
-    public function mostrar_detalles(){
-        $stm = $this->db->prepare("CALL Listar_detalles_producto(?,?)");
-        $stm->bindParam(1, $this->producto);
-        $stm->bindParam(2, $this->proveedor);
-        $stm->execute();
-        return $stm->fetchAll();
-    }
-    
     public function cambiar_estado(){
         $stm = $this->db->prepare("CALL cambiar_estado_detalle(?,?)");
         $stm->bindParam(1, $this->id);

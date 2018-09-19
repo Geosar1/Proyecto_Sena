@@ -102,7 +102,7 @@ $(document).on('click', '#proveedores', function () {
 $(document).on('click', '#productos', function () {
     $('#contenido').html("");
     $('#contenido').load(uri + '/Producto/index', function () {
-        buscar_detalle();
+        buscar_producto();
     });
 });
 

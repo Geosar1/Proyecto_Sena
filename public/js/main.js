@@ -65,29 +65,6 @@ $(document).on('keyup', '#nombre_c', function () {
     }
 });
 
-//buscar detalle
-$(document).on('change', '#proveedor_d', function () {
-    var valor = $('#nombre_d').val();
-    var valor2 = $('#proveedor_d').val();
-
-    if (valor != "" || valor2 != "") {
-        buscar_detalle(valor, valor2);
-    } else {
-        buscar_detalle();
-    }
-});
-
-$(document).on('keyup', '#nombre_d', function () {
-    var valor = $('#nombre_d').val();
-    var valor2 = $('#proveedor_d').val();
-
-    if (valor != "" || valor2 != "") {
-        buscar_detalle(valor, valor2);
-    } else {
-        buscar_detalle();
-    }
-});
-
 //buscar proveedor
 $(document).on('keyup', '#nombre_em', function () {
     var valor = $('#nombre_em').val();
@@ -100,12 +77,14 @@ $(document).on('keyup', '#nombre_em', function () {
 });
 
 //buscar cliente
-$(document).on('keyup', '#nombres_c', function () {
+$(document).on('keyup', '#nombres_c,#num_doc,#apellidos', function () {
     var valor = $('#nombres_c').val();
     var valor2 = $('#select_r').val();
+    var valor3 = $('#num_doc').val();
+    var valor4 = $('#apellidos').val();
 
-    if (valor != "" || valor2 != "") {
-        buscar_cliente(valor, valor2);
+    if (valor != "" || valor2 != "" || valor3 != "" || valor4 != "") {
+        buscar_cliente(valor, valor2, valor3, valor4);
     } else {
         buscar_cliente();
     }
@@ -114,9 +93,11 @@ $(document).on('keyup', '#nombres_c', function () {
 $(document).on('change', '#select_r', function () {
     var valor = $('#nombres_c').val();
     var valor2 = $('#select_r').val();
+    var valor3 = $('#num_doc').val();
+    var valor4 = $('#apellidos').val();
 
-    if (valor != "" || valor2 != "") {
-        buscar_cliente(valor, valor2);
+    if (valor != "" || valor2 != "" || valor3 != "" || valor4 != "") {
+        buscar_cliente(valor, valor2, valor3, valor4);
     } else {
         buscar_cliente();
     }
@@ -135,109 +116,65 @@ $(document).on('keyup', '#nombres', function () {
 
 //Buscar producto
 $(document).on('keyup', '#nombre_p', function () {
-    var valor = $('#nombre_p').val();
-    var valor2 = $("#categorias_p").val();
-
-    if (valor != "" || valor2 != "") {
-        buscar_producto(valor, valor2);
+    if ($('#nombre_p').val() != "" || $("#categorias_p").val() != "") {
+        buscar_producto();
     } else {
         buscar_producto();
     }
 });
 
 $(document).on('change', '#categorias_p', function () {
-    var valor = $('#nombre_p').val();
-    var valor2 = $("#categorias_p").val();
-
-    if (valor2 != "" || valor != "") {
-        buscar_producto(valor, valor2);
+    if ($('#nombre_p').val() != "" || $("#categorias_p").val() != "") {
+        buscar_producto();
     } else {
         buscar_producto();
     }
 });
 
 //Form productos
-$(document).on('click', '#añadir', function () {
-    var valor = $('#nombre_p').val();
-
-    if (valor == "" || $('#cantidad_p').val() == "" || $('#stock_p').val() == "" || $('#precio_p').val() == "" || $('#categorias_p').val() == "") {
+$(document).on('click', '#guardar_producto', function () {
+    if ($('#nombre_p').val() == "" || $('#precio_p').val() == "" || $('#cantidad_p').val() == "" || $('#stock_p').val() == "" || $('#categorias_p').val() == "" || $('#proveedores_p').val() == "") {
         mensaje = "Debe llenar todos los campos";
         ver_fail();
     } else {
-        if (parseInt($('#cantidad_p').val()) >= parseInt($('#stock_p').val())) {
-            consultar_producto(valor);
-        } else {
-            mensaje = "La cantidad debe ser mayor al stock";
-            ver_fail();
-        }
+        consultar_producto();
     }
-
     return false;
 });
 
 $(document).on('click', '#cancelar', function () {
-    $('#añadir').show();
+    $('#crear_productos').trigger('reset');
+    buscar_producto();
+    $('#guardar_producto').show();
     $('#modificar_p').hide();
     $('select').val('').trigger('change');
-    buscar_producto();
+    $('#proveedores_p').prop('disabled', false);
 });
 
 $(document).on('click', '#agregar', function () {
-    var valor = $('#nombre_p').val();
-    var valor2 = $('#precio_p').val();
-    var valor3 = $('#cantidad_p').val();
-    var valor4 = $('#stock_p').val();
-    var valor5 = $('#categorias_p').val();
-    var valor6 = $('#proveedores_p').val();
-
-    if (valor6 != "") {
-        if (contador == 0) {
-            guardar_producto(valor, valor2, valor3, valor4, valor5, valor6);
-            $('#volver').hide();
-        } else {
-            guardar_detalle(id, valor6);
-        }
-
+    var valor = $('#proveedores_a').val();
+    if (valor != "") {
+        guardar_detalle(id, valor);
     } else {
         mensaje = "Debe seleccionar un proveedor";
         ver_fail();
     }
 });
 
-$(document).on('click', '#guardar', function () {
-    if (contador > 0) {
-        $('#lista').empty();
-        $('#crear_detalle').hide();
-        $('#informacion').slideDown();
-        $('#volver').show();
-        $('#crear_producto').trigger("reset");
-        $('select').val('').trigger('change');
-        id = "";
-        contador = 0;
-        buscar_producto();
-    } else {
-        mensaje = "Debe seleccionar y Agergar Un Proveedor";
-        ver_fail();
-    }
-});
-
 $(document).on('click', '#volver', function () {
-    var select = $('#proveedores_p');
-    select.val($('option:first', select).val());
-    $('#crear_detalle').slideUp();
-    $('#informacion').slideDown();
-    $('#lista').empty();
-    contador = 0;
-    id = "";
+    $('.modal-content').slideToggle(function () {
+        $('#simpleModal').hide();
+    });
+    return false;
 });
 
 $(document).on('click', '#asignar', function () {
-    contador = 1;
     id = $(this).val();
-    $('#informacion').hide();
-    $('#crear_detalle').slideDown();
-    listar_detalle(id);
-    $('#proveedores_p').focus();
+    $('.modal-content').slideToggle();
+    $('#simpleModal').show(function () {
+        $('.modal-content').slideDown();
+        listar_detalle(id);
+    });
     return false;
 });
 
@@ -258,24 +195,19 @@ $(document).on('click', '#Estado_p', function () {
 
 $(document).on('click', '#editar_p', function () {
     id = $(this).val();
-    $('#añadir').hide();
+    $('#guardar_producto').hide();
     $('#modificar_p').show();
     editar_producto(id);
+    $('#proveedores_p').prop('disabled', true);
     return false;
 });
 
 $(document).on('click', '#modificar_p', function () {
-    var valor = $('#nombre_p').val();
-    var valor2 = $('#precio_p').val();
-    var valor3 = $('#cantidad_p').val();
-    var valor4 = $('#stock_p').val();
-    var valor5 = $('#categorias_p').val();
-
-    if (valor == "" || valor2 == "" || valor3 == "" || valor4 == "" || valor5 == "") {
+    if ($('#nombre_p').val() == "" || $('#precio_p').val() == "" || $('#cantidad_p').val() == "" || $('#stock_p').val() == "" || $('#categorias_p').val() == "") {
         mensaje = "Debe llenar todos los campos";
         ver_fail();
     } else {
-        modificar_producto(valor, valor2, valor3, valor4, valor5, id);
+        modificar_producto();
     }
     return false;
 });
@@ -360,23 +292,25 @@ $(document).on('click', '#limpiar_c', function () {
 
 //Form cartera
 $(document).on('change', '#cedula', function () {
-    var cedula = $('#cedula').val();
-    $('#nombre_cliente').html("");
-    $('#cartera').html("0");
-    $('#disponible').html("0");
-    $('#pedido').html("0");
-
-    if (cedula != "") {
-        consultar_cartera(cedula);
+    if ($('#cedula').val() != "") {
+        consultar_cartera($('#cedula').val());
+    } else {
+        $('#nombre_cliente').html("");
+        $('#cartera').html("0");
+        $('#disponible').html("0");
+        $('#pedido').html("0");
+        $('select').val('').trigger('change');
+        $('#historial').empty();
     }
 });
 
-$(document).on('click', '#limpiar_c', function () {
+$(document).on('click', '#limpiar_cartera', function () {
     $('#nombre_cliente').html("");
     $('#cartera').html("0");
     $('#disponible').html("0");
     $('#pedido').html("0");
     $('select').val('').trigger('change');
+    $('#historial').empty();
 });
 
 //Form proveedores
@@ -437,6 +371,7 @@ $(document).on('click', '#can_mod', function () {
     $('#modificar_cliente').hide();
     $('#guardar_cliente').show();
     $('select').val('').trigger('change');
+    $('registro_cliente').trigger('reset');
     buscar_cliente();
 });
 
@@ -559,9 +494,9 @@ $(document).on('click', '#enviar', function () {
 //buscar rutas
 $(document).ready(function () {
     $('#rruta').DataTable();
-} );
+});
 //rutas
-$(document).on('change','#ddlMuni',function(){
+$(document).on('change', '#ddlMuni', function () {
 
 });
 
@@ -576,63 +511,99 @@ $(document).on('change', '#ddlMuni', function () {
     buscarBarrios($(this).val());
 })
 
-function ponerPrecio(elemento){
+function ponerPrecio(elemento) {
     var valor = $("#ddlProducto").val();
-    var precio = $("#ddlProducto [value='"+valor+"']").attr("precio");
-    var cantidades = $("#ddlProducto [value='"+valor+"']").attr("cantidad");
+    var precio = $("#ddlProducto [value='" + valor + "']").attr("precio");
+    var cantidades = $("#ddlProducto [value='" + valor + "']").attr("cantidad");
     $("#pPrecio").text(precio);
     $("#cCantidades").text(cantidades);
 }
 
-function direccion(elemento){
+function direccion(elemento) {
     var direcc = $("#ddlCliente").val();
-    var tel = $("#ddlCliente").val();        
-    var dato = $("#ddlCliente [value='"+direcc+"']").attr("direc");
+    var tel = $("#ddlCliente").val();
+    var dato = $("#ddlCliente [value='" + direcc + "']").attr("direc");
     $("#dDir").text(dato);
-    var dato2 = $("#ddlCliente [value='"+tel+"']").attr("tel");    
+    var dato2 = $("#ddlCliente [value='" + tel + "']").attr("tel");
     $("#tTel").text(dato2);
 
 
 }
-  
-    $(document).on('click','#adicionar',function() {
-      var producto = $("#ddlProducto").val();
-      var producto2 = $("#ddlProducto [value='"+producto+"']").attr("idP");
-      var cantidad = $("#txtCantidad").val();
-      var precio = $("#pPrecio").text();
-      var subtotal1 = (cantidad*precio);
-      
-      
-      var i = 1; //contador para asignar id al boton que borrara la fila
-      var fila = '<tr id="row' + i + '"><td> <input type="hidden" value="'+producto+'" name="idProducto[]" >' + producto2 + '</td><td> <input type="hidden" value="'+cantidad+'" name="cantidades[]" >' + cantidad + '</td><td>' + precio + '</td><td> <input type="hidden" value="'+subtotal1+'" name="subtotal[]" >' + subtotal1 +'</td><td><button type="button" name="remove" id="' + i + '" class="btn btn-danger btn_remove">Quitar</button></td></tr>'; //esto seria lo que contendria la fila
-      i++;
 
-   
-      $('#mytable tr:first').after(fila);
-        $("#adicionados").text(""); //esta instruccion limpia el div adicioandos para que no se vayan acumulando
-        var nFilas = $("#mytable tr").length;
-        $("#adicionados").append(nFilas - 1);
-        //le resto 1 para no contar la fila del header
+$(document).on('click', '#adicionar', function () {
+    var producto = $("#ddlProducto").val();
+    var producto2 = $("#ddlProducto [value='" + producto + "']").attr("idP");
+    var cantidad = $("#txtCantidad").val();
+    var precio = $("#pPrecio").text();
+    var subtotal1 = (cantidad * precio);
 
-        var chks = document.getElementsByName('subtotal[]');
-        var total = 0;
-        for(var i = 0; i < chks.length; i++) {
-          total += parseInt(chks[i].value)
-           }       
-        $("#gTotal").text(total)
-        var total1 = $("#gTotal").html();
-        $("#totalInput").val(total1);    
-          });
-          
-          
-    $(document).on('click', '.btn_remove', function() {
-      var button_id = $(this).attr("id");
-        //cuando da click obtenemos el id del boton
-        $('#row' + button_id + '').remove(); //borra la fila
-        //limpia el para que vuelva a contar las filas de la tabla
-        $("#adicionados").text("");
-        var nFilas = $("#mytable tr").length;
-        $("#adicionados").append(nFilas - 1);
-      });
 
-    
+    var i = 1; //contador para asignar id al boton que borrara la fila
+    var fila = '<tr id="row' + i + '"><td> <input type="hidden" value="' + producto + '" name="idProducto[]" >' + producto2 + '</td><td> <input type="hidden" value="' + cantidad + '" name="cantidades[]" >' + cantidad + '</td><td>' + precio + '</td><td> <input type="hidden" value="' + subtotal1 + '" name="subtotal[]" >' + subtotal1 + '</td><td><button type="button" name="remove" id="' + i + '" class="btn btn-danger btn_remove">Quitar</button></td></tr>'; //esto seria lo que contendria la fila
+    i++;
+
+
+    $('#mytable tr:first').after(fila);
+    $("#adicionados").text(""); //esta instruccion limpia el div adicioandos para que no se vayan acumulando
+    var nFilas = $("#mytable tr").length;
+    $("#adicionados").append(nFilas - 1);
+    //le resto 1 para no contar la fila del header
+
+    var chks = document.getElementsByName('subtotal[]');
+    var total = 0;
+    for (var i = 0; i < chks.length; i++) {
+        total += parseInt(chks[i].value)
+    }
+    $("#gTotal").text(total)
+    var total1 = $("#gTotal").html();
+    $("#totalInput").val(total1);
+});
+
+$(document).on('click', '.btn_remove', function () {
+    var button_id = $(this).attr("id");
+    //cuando da click obtenemos el id del boton
+    $('#row' + button_id + '').remove(); //borra la fila
+    //limpia el para que vuelva a contar las filas de la tabla
+    $("#adicionados").text("");
+    var nFilas = $("#mytable tr").length;
+    $("#adicionados").append(nFilas - 1);
+});
+
+$(document).on('click', '#adicionar', function () {
+    var producto = $("#ddlProducto").val();
+    var producto2 = $("#ddlProducto [value='" + producto + "']").attr("idP");
+    var cantidad = $("#txtCantidad").val();
+    var precio = $("#pPrecio").text();
+    var subtotal1 = (cantidad * precio);
+
+
+    var i = 1; //contador para asignar id al boton que borrara la fila
+    var fila = '<tr id="row' + i + '"><td> <input type="hidden" value="' + producto + '" name="idProducto[]" >' + producto2 + '</td><td> <input type="hidden" value="' + cantidad + '" name="cantidades[]" >' + cantidad + '</td><td>' + precio + '</td><td> <input type="hidden" value="' + subtotal1 + '" name="subtotal[]" >' + subtotal1 + '</td><td><button type="button" name="remove" id="' + i + '" class="btn btn-danger btn_remove">Quitar</button></td></tr>'; //esto seria lo que contendria la fila
+    i++;
+
+
+    $('#mytable tr:first').after(fila);
+    $("#adicionados").text(""); //esta instruccion limpia el div adicioandos para que no se vayan acumulando
+    var nFilas = $("#mytable tr").length;
+    $("#adicionados").append(nFilas - 1);
+    //le resto 1 para no contar la fila del header
+
+    var chks = document.getElementsByName('subtotal[]');
+    var total = 0;
+    for (var i = 0; i < chks.length; i++) {
+        total += parseInt(chks[i].value)
+    }
+    $("#gTotal").text(total)
+    var total1 = $("#gTotal").html();
+    $("#totalInput").val(total1);
+});
+
+$(document).on('click', '.btn_remove', function () {
+    var button_id = $(this).attr("id");
+    //cuando da click obtenemos el id del boton
+    $('#row' + button_id + '').remove(); //borra la fila
+    //limpia el para que vuelva a contar las filas de la tabla
+    $("#adicionados").text("");
+    var nFilas = $("#mytable tr").length;
+    $("#adicionados").append(nFilas - 1);
+});
