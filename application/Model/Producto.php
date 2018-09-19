@@ -11,7 +11,7 @@ class Producto extends Model {
     private $proveedor;
     private $id_categoria;
     private $precio_venta;
-    private $existencia;
+    private $cantidad;
     private $stock;
     private $estado;
 
@@ -27,7 +27,7 @@ class Producto extends Model {
         $stm = $this->db->prepare("CALL Guardar_producto(?,?,?,?,?)");
         $stm->bindParam(1, $this->nombre);
         $stm->bindParam(2, $this->precio_venta);
-        $stm->bindParam(3, $this->existencia);
+        $stm->bindParam(3, $this->cantidad);
         $stm->bindParam(4, $this->stock);
         $stm->bindParam(5, $this->id_categoria);
         return $stm->execute();
@@ -38,7 +38,7 @@ class Producto extends Model {
         $stm->bindParam(1, $this->id);
         $stm->bindParam(2, $this->nombre);
         $stm->bindParam(3, $this->precio_venta);
-        $stm->bindParam(4, $this->existencia);
+        $stm->bindParam(4, $this->cantidad);
         $stm->bindParam(5, $this->stock);  
         $stm->bindParam(6, $this->id_categoria);
         return $stm->execute();
@@ -54,7 +54,7 @@ class Producto extends Model {
     public function listar_productos(){
         $stm = $this->db->prepare("CALL Listar_productos(?,?)");
         $stm->bindParam(1, $this->nombre);
-        $stm->bindParam(2, $this->proveedor);
+        $stm->bindParam(2, $this->id_categoria);
         $stm->execute();
         return $stm->fetchAll();
     }

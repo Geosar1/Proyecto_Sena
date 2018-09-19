@@ -26,9 +26,11 @@ class Clientes extends Model {
     }
 
     public function listar(){
-        $stm = $this->db->prepare("CALL Listar_clientes(?,?)");
+        $stm = $this->db->prepare("CALL Listar_clientes(?,?,?,?)");
         $stm->bindParam(1,$this->nombres);
-        $stm->bindParam(2,$this->id_ruta);
+        $stm->bindParam(2,$this->apellidos);
+        $stm->bindParam(3,$this->id_ruta);
+        $stm->bindParam(4,$this->numero_doc);
         $stm->execute();
         return $stm->fetchAll();
     }
@@ -90,6 +92,13 @@ class Clientes extends Model {
     public function listar_cliente_pedido(){
         $sql = "CALL SP_ListarCliente () ";
         $stm = $this->db->prepare($sql);
+        $stm->execute();
+        return $stm->fetchAll();
+    }
+    
+    public function buscar_historial_pedidos(){
+        $stm = $this->db->prepare("CALL Buscar_historial(?)");
+        $stm->bindParam(1,$this->id);
         $stm->execute();
         return $stm->fetchAll();
     }

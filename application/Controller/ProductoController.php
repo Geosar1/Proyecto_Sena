@@ -35,13 +35,13 @@ class ProductoController {
         $producto = new Producto();
         $salida="";
         
-        if(isset($_POST['producto']) &&isset($_POST['proveedor'])){
+        if(isset($_POST['producto']) &&isset($_POST['categoria'])){
             $producto->__SET("nombre", $_POST["producto"]);
-            $producto->__SET("proveedor", $_POST["proveedor"]);
+            $producto->__SET("id_categoria", $_POST["categoria"]);
             $productos = $producto->listar_productos();
         }else {
             $producto->__SET("nombre", "");
-            $producto->__SET("proveedor", "");
+            $producto->__SET("id_categoria", "");
             $productos = $producto->listar_productos();
         }
         
@@ -118,7 +118,7 @@ $salida.="</tbody></table></div>";
 
         $producto->__SET("nombre", $_POST["producto"]);
         $producto->__SET("precio_venta", $_POST["precio"]);
-        $producto->__SET("existencia", $_POST["existencia"]);
+        $producto->__SET("cantidad", $_POST["cantidad"]);
         $producto->__SET("stock", $_POST["stock"]);
         $producto->__SET("id_categoria", $_POST["idc"]);
         $detalle->__SET("proveedor", $_POST["idp"]);
@@ -128,7 +128,7 @@ $salida.="</tbody></table></div>";
         $id= $existe->id_producto;
         $detalle->__SET("producto", $id);
         if($detalle->guardar_detalle()){
-            echo $id;
+            echo "si";
         }else {
             echo "no";
         }
@@ -170,13 +170,12 @@ $salida.="</tbody></table></div>";
         echo json_encode($p,JSON_FORCE_OBJECT);    
     }
 
-    
     public function modificar(){
         $producto = new Producto();
         $producto->__SET("nombre", $_POST["producto"]);
         $producto->__SET("id", $_POST["id"]);
         $producto->__SET("precio_venta", $_POST["precio"]);
-        $producto->__SET("existencia", $_POST["existencia"]);
+        $producto->__SET("cantidad", $_POST["cantidad"]);
         $producto->__SET("stock", $_POST["stock"]);
         $producto->__SET("id_categoria", $_POST["idc"]);
             

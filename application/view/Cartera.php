@@ -1,24 +1,20 @@
 <form id="consulta_cartera">
     <div id="margen">
-        <h2 id="titulo">Consultar cartera</h2>
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-3 form-group">
-                    <label>Clientes</label>
-                    <select class="form-control" id="cedula">
-                        <option value="">Seleccione cliente</option>
-                        <?php foreach($resultado as $value): ?>
-                        <option value="<?= $value->numero_documento ?>">
-                            <?= $value->nombres_cliente." ".$value->apellidos_cliente." Cedula:".$value->numero_documento ?>
-                        </option>
-                        <?php endforeach ?>
-                        ?>
-                    </select>
-                </div>
-            </div>
-        </div>
+       <input type="hidden" id="id-cliente">
+        <h2 id="titulo">Consultar cartera</h2> 
+        <select id="cedula">
+            <option value="">Seleccione cliente</option>
+            <?php foreach($resultado as $value): ?>
+            <option value="<?= $value->numero_documento ?>">
+                <?= $value->nombres_cliente." ".$value->apellidos_cliente." Cedula:".$value->numero_documento ?>
+            </option>
+            <?php endforeach ?>
+            ?>
+        </select> 
+        
+        <br>
 
-        <input type="reset" value="Limpiar" id="limpiar_c">
+        <input type="reset" value="Limpiar" id="limpiar_cartera">
 
         <br>
 
@@ -32,6 +28,10 @@
             <label>Valor del pedido pendiente:</label> <br>
             <label id="pedido">0</label>
         </div>
+    </div>
+    
+    <div class="table-responsive">
+        <table id="historial"></table>
     </div>
 </form>
 

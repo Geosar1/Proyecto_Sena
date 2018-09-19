@@ -28,8 +28,8 @@ function buscar_producto(consulta, consulta2) {
             type: 'POST',
             dataType: 'html',
             data: {
-                producto: consulta,
-                proveedor: consulta2
+                producto: $('#nombre_p').val(),
+                categoria: $("#categorias_p").val(),
             },
         })
         .done(function (respuesta) {
@@ -40,19 +40,18 @@ function buscar_producto(consulta, consulta2) {
         });
 }
 
-function consultar_producto(consulta) {
+function consultar_producto() {
     $.ajax({
             url: uri + '/producto/consultar_producto',
             type: 'POST',
             dataType: 'html',
             data: {
-                producto: consulta
+                producto: $('#nombre_p').val(),
             },
         })
         .done(function (respuesta) {
             if (respuesta == "no") {
-                $('#crear_detalle').slideDown();
-                $('#informacion').hide();
+                guardar_producto();
             } else {
                 mensaje = respuesta;
                 ver_fail();
@@ -63,18 +62,18 @@ function consultar_producto(consulta) {
         });
 }
 
-function guardar_producto(consulta, consulta2, consulta3, consulta4, consulta5, consulta6) {
+function guardar_producto() {
     $.ajax({
             url: uri + '/producto/guardar',
             type: 'POST',
             dataType: 'html',
             data: {
-                producto: consulta,
-                precio: consulta2,
-                existencia: consulta3,
-                stock: consulta4,
-                idc: consulta5,
-                idp: consulta6
+                producto: $('#nombre_p').val(),
+                cantidad: $('#cantidad_p').val(),
+                precio: $('#precio_p').val(),
+                stock: $('#stock_p').val(),
+                idc: $('#categorias_p').val(),
+                idp: $('#proveedores_p').val()
             },
         })
         .done(function (respuesta) {
@@ -82,11 +81,10 @@ function guardar_producto(consulta, consulta2, consulta3, consulta4, consulta5, 
                 mensaje = "Error al ejecutar la accion";
                 ver_fail();
             } else {
-                id = respuesta;
-                $("#lista").append("<li>" + $("#proveedores_p option:selected").text() + "</li>");
-                contador++;
                 mensaje = "Se creo correctamente";
                 ver_success();
+                $('#crear_productos').trigger('reset');
+                buscar_producto();
             }
         })
         .fail(function () {
@@ -150,27 +148,26 @@ function editar_producto(consulta) {
         });
 }
 
-function modificar_producto(consulta, consulta2, consulta3, consulta4, consulta5, consulta6) {
+function modificar_producto() {
     $.ajax({
             url: uri + '/producto/modificar',
             type: 'POST',
             dataType: 'html',
             data: {
-                producto: consulta,
-                precio: consulta2,
-                existencia: consulta3,
-                stock: consulta4,
-                idc: consulta5,
-                id: consulta6
+                producto: $('#nombre_p').val(),
+                cantidad: $('#cantidad_p').val(),
+                precio: $('#precio_p').val(),
+                stock: $('#stock_p').val(),
+                idc: $('#categorias_p').val(),
+                id: id,
             },
         })
         .done(function (respuesta) {
             if (respuesta == "si") {
                 mensaje = "Se modifico correctamente";
                 ver_success();
-                $('#añadir').show();
+                $('#guardar_producto').show();
                 $('#modificar_p').hide();
-                $('#crear_producto').trigger("reset");
                 buscar_producto();
             } else {
                 mensaje = "Error al ejecutar la accion,intentelo de nuevo";
@@ -187,8 +184,7 @@ function ver_agotados() {
             url: uri + '/producto/agotados',
             type: 'POST',
             dataType: 'html',
-            data: {
-            },
+            data: {},
         })
         .done(function (respuesta) {
             $('#table-ver').html(respuesta);
@@ -199,38 +195,19 @@ function ver_agotados() {
 }
 
 //Detalle Productos
-function buscar_detalle(consulta, consulta2) {
-    $.ajax({
-            url: uri + '/Detalle/tabla',
-            type: 'POST',
-            dataType: 'html',
-            data: {
-                producto: consulta,
-                proveedor: consulta2
-            },
-        })
-        .done(function (respuesta) {
-            $('#registros_d').html(respuesta);
-        })
-        .fail(function () {
-            console.log("error");
-        });
-}
-
-function guardar_detalle(consulta, consulta2) {
+function guardar_detalle() {
     $.ajax({
             url: uri + '/Detalle/guardar',
             type: 'POST',
             dataType: 'html',
             data: {
-                id: consulta,
-                idpro: consulta2
+                id: id,
+                idpro: $('#proveedores_a').val(),
             },
         })
         .done(function (respuesta) {
             if (respuesta == "si") {
-                $("#lista").append("<li>" + $("#proveedores_p option:selected").text() + "</li>");
-                contador++;
+                listar_detalle();
                 mensaje = "Se creo correctamente";
                 ver_success();
             } else {
@@ -243,17 +220,17 @@ function guardar_detalle(consulta, consulta2) {
         });
 }
 
-function listar_detalle(consulta) {
+function listar_detalle() {
     $.ajax({
-            url: uri + '/Detalle/lista_detalle',
+            url: uri + '/Detalle/tabla',
             type: 'POST',
             dataType: 'html',
             data: {
-                id: consulta
+                id: id,
             },
         })
         .done(function (respuesta) {
-            $('#lista').html(respuesta);
+            $('#detalle').html(respuesta);
         })
         .fail(function () {
             console.log("error");
@@ -274,15 +251,7 @@ function cambiar_detalle(consulta, consulta2) {
             if (respuesta == "si") {
                 mensaje = "Estado cambiado correctamente";
                 ver_success();
-
-                var buscar = $('#nombre_d').val();
-                var buscar2 = $('#proveedor_d').val();
-
-                if (buscar != "" || buscar2 != "") {
-                    buscar_detalle(buscar, buscar2);
-                } else {
-                    buscar_detalle();
-                }
+                listar_detalle(id);
             } else {
                 mensaje = "Error al cambiar el estado";
                 ver_fail();
@@ -422,12 +391,29 @@ function consultar_cartera(consulta) {
             },
         })
         .done(function (respuesta) {
-            console.log(JSON.stringify(respuesta));
             var contenido = jQuery.parseJSON(respuesta);
+            $('#id-cliente').val(contenido.id_cliente);
             $('#nombre_cliente').html(contenido.nombres_cliente + " " + contenido.apellidos_cliente);
             $('#cartera').html(contenido.cartera);
             $('#disponible').html((contenido.cartera) - (contenido.valor_total));
             $('#pedido').html(contenido.valor_total);
+            consultar_historial();
+        })
+        .fail(function () {
+            console.log("error");
+        });
+}
+
+function consultar_historial() {
+    $.ajax({
+            url: uri + '/cliente/historial',
+            type: 'POST',
+            data: {
+                id: $('#id-cliente').val(),
+            },
+        })
+        .done(function (respuesta) {
+            $('#historial').html(respuesta);
         })
         .fail(function () {
             console.log("error");
@@ -650,14 +636,16 @@ function cambiar_usuario(consulta, consulta2) {
 }
 
 //Clientes
-function buscar_cliente(consulta,consulta2) {
+function buscar_cliente(consulta, consulta2, consulta3, consulta4) {
     $.ajax({
             url: uri + '/cliente/tabla',
             type: 'POST',
             dataType: 'html',
             data: {
                 nombre: consulta,
-                ruta: consulta2
+                apellidos: consulta4,
+                ruta: consulta2,
+                documento: consulta3,
             },
         })
         .done(function (respuesta) {
@@ -687,7 +675,7 @@ function editar_cliente(consulta) {
             $("#cartera_dis").val(contenido.cartera);
             $("#cel").val(contenido.celular);
             $("#select_r").val(contenido.id_ruta);
-            buscar_cliente($('#nombres_c').val(),$('#select_r').val());
+            buscar_cliente($('#nombres_c').val(), $('#select_r').val(), $('#num_doc').val(), $('#apellidos').val());
         })
         .fail(function () {
             console.log("error");
@@ -727,7 +715,7 @@ function cambiar_cliente(consulta, consulta2) {
 }
 
 //limpiar session
-function limpiar(){
+function limpiar() {
     $.ajax({
             url: uri + '/login/limpiar',
             type: 'POST',
@@ -735,62 +723,63 @@ function limpiar(){
             data: {},
         })
         .done(function (respuesta) {
-        console.log(respuesta);
+            console.log(respuesta);
         })
         .fail(function () {
             console.log("error");
         });
 }
+
 //ajax consulta pedido
 function ConsultarDetalle(id) {
     $.ajax({
-      Type: "get",
-      dataType: "json",
-      url: uri + "/pedido/ConsultarDetalleP/" + id
-      
+        Type: "get",
+        dataType: "json",
+        url: uri + "/pedido/ConsultarDetalleP/" + id
+
     }).done(detallepedido => {
-      if (detallepedido.length > 0) {
-        $("#detallebodys").empty();
-  
-        detallepedido.forEach((e) => {
-          $("#txtFecha").val(e.fecha_de_creacion);
-          $("#txtCliente").val(e.nombres_cliente);
-          $("#lbtotall").html(e.valor_total);
-  
-          $("#detallebodys").append(
-            `<tr>
+        if (detallepedido.length > 0) {
+            $("#detallebodys").empty();
+
+            detallepedido.forEach((e) => {
+                $("#txtFecha").val(e.fecha_de_creacion);
+                $("#txtCliente").val(e.nombres_cliente);
+                $("#lbtotall").html(e.valor_total);
+
+                $("#detallebodys").append(
+                    `<tr>
               <td>${e.nombre_producto}</td>
               <td>${e.precio_venta}</td>
               <td>${e.cantidad}</td>
               <td>${e.subtotal}</td>
             </tr>`
-          );
-        });
-  
-        $("#Modal_Pedido").modal();
-      } else {
-        alert("no tiene pedidos");
-      }
+                );
+            });
+
+            $("#Modal_Pedido").modal();
+        } else {
+            alert("no tiene pedidos");
+        }
     });
-  }
-  
-  function ConsultarPed() {
+}
+
+function ConsultarPed() {
     $.ajax({
-      Type: "get",
-      dataType: "json",
-      url: uri + "pedido/ConsultarpedidoParametros",
-      data: {
-        idcliente: $("#idcliente").val(),
-        fechaInicio: $("#txtfechaInicio").val(),
-        fechaFin: $("#txtfechaFin").val()
-      }
+        Type: "get",
+        dataType: "json",
+        url: uri + "pedido/ConsultarpedidoParametros",
+        data: {
+            idcliente: $("#idcliente").val(),
+            fechaInicio: $("#txtfechaInicio").val(),
+            fechaFin: $("#txtfechaFin").val()
+        }
     }).done(consultapedidos => {
-      if (consultapedidos.length > 0) {
-        $("#ped").empty();
-  
-        consultapedidos.forEach((e, i) => {
-          $("#ped").append(
-            `<tr>
+        if (consultapedidos.length > 0) {
+            $("#ped").empty();
+
+            consultapedidos.forEach((e, i) => {
+                $("#ped").append(
+                    `<tr>
               <td>${e.fecha_de_creacion}</td>
               <td>${e.nombres_cliente+" "+e.apellidos_cliente}</td>
               <td>${e.valor_total}</td>
@@ -803,53 +792,52 @@ function ConsultarDetalle(id) {
            
               </td>
               </tr>`
-          );
-        });
-      } else {
-        alert("no hay registros para el rango seleccionado");
-      }
+                );
+            });
+        } else {
+            alert("no hay registros para el rango seleccionado");
+        }
     });
-  }
-  
+}
 
-  //listar barrios por municipios
-function buscarBarrios(consulta){
+//listar barrios por municipios
+function buscarBarrios(consulta) {
     $.ajax({
-        url: uri+ '/Ruta/consultar_barrio',
-        type:'POST',
-        datatype:'HTML',
-        data:{
-            id:consulta,
-        },
-         })
-         .done(function(datos){
-             $('#ddlbarri').html(datos);
-         })
+            url: uri + '/Ruta/consultar_barrio',
+            type: 'POST',
+            datatype: 'HTML',
+            data: {
+                id: consulta,
+            },
+        })
+        .done(function (datos) {
+            $('#ddlbarri').html(datos);
+        })
 
-         .fail(function(){
-             console.log("error");
-         });
+        .fail(function () {
+            console.log("error");
+        });
 }
 
 //ediar barrios
-function editarBarrios(consulta){
+function editarBarrios(consulta) {
     $.ajax({
-        url: uri+ '/Ruta/editar',
-        type:'POST',
-        datatype:'HTML',
-        data:{
-            id:consulta,
-        },
-         })
-         .done(function(datos){
-            var contenido= jQuery.parseJSON(datos);
+            url: uri + '/Ruta/editar',
+            type: 'POST',
+            datatype: 'HTML',
+            data: {
+                id: consulta,
+            },
+        })
+        .done(function (datos) {
+            var contenido = jQuery.parseJSON(datos);
             $('#txxtId').val(contenido.id_ruta);
             $('#txtNombre').val(contenido.nombre_ruta);
-            $('#ddlMuni').val(contenido.id_municipio);     
-             $('#ddlbarri').val(contenido.id_barrio);
-         })
+            $('#ddlMuni').val(contenido.id_municipio);
+            $('#ddlbarri').val(contenido.id_barrio);
+        })
 
-         .fail(function(){
-             console.log("error");
-         });
+        .fail(function () {
+            console.log("error");
+        });
 }

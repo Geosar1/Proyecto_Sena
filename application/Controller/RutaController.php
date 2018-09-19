@@ -9,62 +9,38 @@ use Mini\Model\barrio;
 class RutaController{
 
     public function index(){
-
         $rutas = new Ruta();
         $ruta = $rutas->listar();
 
         $rut = $rutas->listarMunicipio();
         
-    
         $ba = $rutas->listar_municipio_barrioo();
-        //require APP."view/_templates/header.php";
-        require APP."view/Ruta/index.php";
-        //require APP."view/_templates/footer.php";
+        require APP."view/tabla-rutas.php";
     }
 
     
     public function crear(){
-
-        //$Municipio = new municipio();
-        //$municipios = $Municipio->listar();
-        
-        
         $rutas = new Ruta();
      
         $rut = $rutas->listarMunicipio();
         $ba = $rutas->listar_municipio_barrioo();
-
-        //$rutas = new Ruta();
-        //$rutas= $rutas->listar_municipio_barrioo();
-
-
-        //require APP."view/_templates/header.php";
         
-        require APP."view/ruta/crear.php";
-        //require APP."view/_templates/footer.php";
+        require APP."view/crear-ruta.php";
     }
-
-
-
 
     public function editar(){
         $rutas = new Ruta();
         $rutas->__SET("id_ruta", $_POST['id']);
         $r = $rutas->editar();
-        //$Municipio = new municipio();
-        //$municipios = $Municipio->listarMunicipio();
 
-        //require APP."view/ruta/index.php";
         echo json_encode($r);
     }
+    
     public function guardar(){
          $rutas = new Ruta();
          $rutas->__SET("nombre_ruta", $_POST["txtNombre"]);
          $rutas->__SET("id_municipio", $_POST["ddlMuni"]);
          $rutas->__SET("id_barrio", $_POST["ddlbarri"]);
-         
-         //$ruta->__SET("estado", $_POST["txtestado"]);
-         // $ruta->crear();
 
         if($rutas->crear()){
             $_SESSION["RESPUESTA"] = "Guardado";
@@ -98,9 +74,6 @@ class RutaController{
         $rutas->__SET("id_municipio", $_POST["ddlMuni"]);
         $rutas->__SET("id_barrio", $_POST["ddlbarri"]);
         $rutas->__SET("id_ruta", $_POST["txxtId"]);
-
-        //$ruta->__SET("estado", $_POST["txtestado"]);
-        // $ruta->crear();
 
        if($rutas->modificar()){
            $_SESSION["RESPUESTA"] = "Modificado";

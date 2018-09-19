@@ -12,6 +12,8 @@ class CarteraController {
             $clientes = new Clientes();
             $clientes->__SET("nombres", "");
             $clientes->__SET("id_ruta", "");
+            $clientes->__SET("numero_doc", "");
+            $clientes->__SET("apellidos", "");
             $resultado= $clientes->listar();
         }else {
             header("location: ".URL."Login/menu");

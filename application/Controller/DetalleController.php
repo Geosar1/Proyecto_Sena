@@ -9,24 +9,12 @@ class DetalleController {
     public function tabla(){
         $detalle = new Detalle();
         $salida="";
+        $detalle->__SET("id", $_POST["id"]);
+        $productos = $detalle->listar_detalle();
         
-        if(isset($_POST['producto']) &&isset($_POST['proveedor'])){
-            $detalle->__SET("producto", $_POST["producto"]);
-            $detalle->__SET("proveedor", $_POST["proveedor"]);
-            $productos = $detalle->mostrar_detalles();
-        }else {
-            $detalle->__SET("producto", "");
-            $detalle->__SET("proveedor", "");
-            $productos = $detalle->mostrar_detalles();
-        }
-        
-        if(empty($productos)){
-        $salida.="No hay registros";
-        }else {
-        $salida.="<table class='tabla_datos'>
+        $salida.="<table>
         <thead>
             <tr>
-                <th>Producto</th>
                 <th>Proveedor</th>
                 <th>Estado</th>
                 <th>
@@ -46,9 +34,6 @@ class DetalleController {
         }
         $salida.="<tr>
                 <td>
-                    ".$value->nombre_producto."
-                </td>
-                <td>
                     ".$value->nombre_empresa."
                 </td>
                 <td>
@@ -59,9 +44,8 @@ class DetalleController {
                 </td>
     </tr>"; 
         endforeach;
-            $salida.="</tbody></table>";
-        }
-            echo $salida;
+        $salida.="</tbody></table>";
+        echo $salida;
     }
     
     public function Guardar(){
@@ -80,18 +64,6 @@ class DetalleController {
          }else {
            echo "Existe";
         }
-    }
-    
-    public function lista_detalle(){
-        $detalle = new Detalle();
-        $html="";
-        $detalle->__SET("id", $_POST['id']);
-        $p = $detalle->listar_detalle();
-        
-        foreach($p as $valor){
-        $html.="<li>".$valor->nombre_empresa."</li>";
-        }
-        echo ($html);
     }
     
     public function estado_detalle(){
