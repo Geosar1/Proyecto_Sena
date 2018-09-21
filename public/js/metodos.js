@@ -635,19 +635,26 @@ function cambiar_usuario(consulta, consulta2) {
         });
 }
 
-function cambiar_contrasena(consulta) {
+function cambiar_contrasena(consulta, consulta2) {
     $.ajax({
-            url: uri + '/usuario/modificar',
+            url: uri + '/usuario/cambiar_clave',
             type: 'POST',
             data: {
-                id: consulta
+                clave: consulta,
+                id: id,
             },
         })
         .done(function (respuesta) {
-            var contenido = jQuery.parseJSON(respuesta);
-            $('#id_usuario').val(contenido.id_usuario);
-            $("#clave").val(contenido.clave);
-            buscar_usuario($('#nombres_us').val());
+            if (respuesta == "Si") {
+                mensaje = "Clave cambiada correctamente";
+                ver_success();
+                $('.modal-content').slideToggle(function () {
+                    $('#simpleModalPass').hide();
+                });
+            } else {
+                mensaje = "Error";
+                ver_fail();
+            }
         })
         .fail(function () {
             console.log("error");

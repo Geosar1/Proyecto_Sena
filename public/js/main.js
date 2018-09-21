@@ -420,7 +420,7 @@ $(document).on('click', '#cambiarPass', function () {
 $(document).on('click', '#btcambiarpass', function () {
     var valor = $('#cambiopass').val();
     if (valor != "") {
-        cambiar_contrasena(id, valor);
+        cambiar_contrasena(valor);
     } else {
         mensaje = "Debe ingresar una contraseña valida";
         ver_fail();
