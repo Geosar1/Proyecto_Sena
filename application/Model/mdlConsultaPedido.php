@@ -10,7 +10,7 @@ class mdlConsultaPedido extends Model {
     private $id_producto;
     private $cantidad;    
     private $subtotal_pedido;
-    private $id_cliente_pedido;
+    private $id_cliente;
     private $estado_pedido;
     private $tipo_venta;
     private $valor_total;
@@ -35,7 +35,7 @@ class mdlConsultaPedido extends Model {
     public function listar($id_cliente, $fechaInicio, $fechaFin){
         $sql = "SELECT p.*, c.id_cliente, c.nombres_cliente, apellidos_cliente 
         from pedido p 
-        INNER JOIN cliente c on (p.id_cliente_pedido = c.id_cliente) 
+        INNER JOIN cliente c on (p.id_cliente = c.id_cliente)
         where c.id_cliente like ? AND fecha_de_creacion BETWEEN ? AND ?";
  
         $stm = $this->db->prepare($sql);
@@ -46,10 +46,8 @@ class mdlConsultaPedido extends Model {
         return $stm->fetchAll();        
  }
  public function ConsultarPorId(){
-    $sql = "SELECT p.id_pedido as idp,p.id_cliente_pedido,p.fecha_de_creacion,p.estado_pedido as estadop, p.tipo_venta, dpp.*,p.* from pedido p 
-    INNER JOIN detalle_pedido_producto dpp on (p.id_pedido = dpp.id_pedido) 
-    INNER JOIN producto pr on (dpp.id_producto = pr.id_producto) 
-    WHERE p.id_pedido = ? ";
+    $sql = "SELECT p.*, dpp.* from pedido p INNER JOIN detalle_pedido_producto dpp
+    ON (p.id_pedido = dpp.id_pedido) WHERE p.id_pedido= ?";
     $stm = $this->db->prepare($sql); 
     $stm->bindParam(1, $this->id_pedido); 
     $stm->execute(); 

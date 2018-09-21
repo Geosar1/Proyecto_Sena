@@ -30,11 +30,10 @@
         public function ConsultarDetalleP($id){
             $pedido = new mdlConsultaPedido();
             $pedido->__SET("id_pedido",$id);         
-            $detallepedido = $pedidos->ConsultarPorId();
+            $detallepedido = $pedido->ConsultarPorId();
             echo json_encode($detallepedido);
         }
         public function detalle($id){
-
             $pedido = new mdlConsultaPedido();
             $pedidos->__SET("id_pedido", $id);
             $registro = $pedidos->detalle();
