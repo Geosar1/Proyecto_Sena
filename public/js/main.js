@@ -395,6 +395,7 @@ $(document).on('click', '#editar_usuario', function () {
     editar_usuario($(this).val());
     $('#guardar_usuario').hide();
     $('#modificar_usuario').show();
+    $('#clave').prop('disabled', true);
     return false;
 });
 
@@ -403,6 +404,32 @@ $(document).on('click', '#cancelar_mod', function () {
     $('#guardar_usuario').show();
     $('#registro_pre').trigger("reset");
     buscar_usuario();
+    return false;
+});
+$(document).on('click', '#cambiarPass', function () {
+    id = $(this).val();
+    $('.modal-content').slideToggle();
+    $('#simpleModalPass').show(function () {
+        $('.modal-content').slideDown();
+       
+    });
+    return false;
+});
+
+$(document).on('click', '#btcambiarpass', function () {
+    var valor = $('#cambiopass').val();
+    if (valor != "") {
+        cambiar_contrasena(id, valor);
+    } else {
+        mensaje = "Debe ingresar una contraseña valida";
+        ver_fail();
+    }
+});
+
+$(document).on('click', '#volverpass', function () {
+    $('.modal-content').slideToggle(function () {
+        $('#simpleModalPass').hide();
+    });
     return false;
 });
 

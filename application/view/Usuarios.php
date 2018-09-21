@@ -21,7 +21,7 @@
             <div class="col-md-3 form-group">
                 <label>Tipo de documento</label>
                 <select id="tipo_doc" class="form-control" name="txttipo_doc" required>
-                   <option value="">Seleccione</option>
+                    <option value="">Seleccione</option>
                     <option value="Cedula">Cédula Ciudadanía</option>
                     <option value="Cedula_extran">Cédula Extranjería</option>
                     <option value="Tarjeta">Tarjeta Identidad</option>
@@ -83,3 +83,21 @@
     </div>
     <input type="button" value="Descargar a excel" id="enviar">
 </form>
+
+<div id="simpleModalPass" class="modal">
+    <div class="modal-content">
+        <div class="modal-body">
+            <h3>Modificar Contraseña</h3><br>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 form-group">
+                        <label>Ingrese la nueva Contraseña</label>
+                        <input id="cambiopass" class="form-control" name="txtcambiopass" type="text" maxlength="32" autocomplete="off" required> <br>
+                        <input class="succes" id="btcambiarpass" type="button" value="Modificar">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button id="volverpass" type="button">Cerrar</button> <br>
+    </div>
+</div>

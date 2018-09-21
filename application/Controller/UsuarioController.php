@@ -33,8 +33,9 @@ class UsuarioController {
                 <th>Numero documento</th>
                 <th>Tipo Usuario</th>
                 <th>Usuario</th>
-                <th>Clave</th>
                 <th>Estado</th>
+                <th>
+                </th>
                 <th>
                 </th>
                 <th>
@@ -72,10 +73,10 @@ class UsuarioController {
                     ".$value->usuario."
                 </td>
                 <td>
-                    ".$value->clave."
+                    ".$texto."
                 </td>
                 <td>
-                    ".$texto."
+                    <button id='cambiarPass' value=".$value->id_usuario." title='Cambiar contraseña' style = 'background-color: gray'><i class='fas fa-key'></i></button>
                 </td>
                 <td>
                     <button class='modificar' id='editar_usuario' value=".$value->id_usuario.">Modificar</button>

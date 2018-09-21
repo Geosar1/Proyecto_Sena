@@ -82,4 +82,12 @@ class Usuario extends Model {
         $stm->bindParam(2,$this->estado);
         return $stm->execute();
     }
+
+    public function modificar_contrase(){
+        $stm = $this->db->prepare("CALL Modificar_contrase(?,?)");
+        $stm->bindParam(1,$this->id);
+        $stm->bindParam(2,$this->clave);
+       
+        return $stm->execute();
+    }
 }

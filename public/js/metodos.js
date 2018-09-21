@@ -635,6 +635,25 @@ function cambiar_usuario(consulta, consulta2) {
         });
 }
 
+function cambiar_contrasena(consulta) {
+    $.ajax({
+            url: uri + '/usuario/modificar',
+            type: 'POST',
+            data: {
+                id: consulta
+            },
+        })
+        .done(function (respuesta) {
+            var contenido = jQuery.parseJSON(respuesta);
+            $('#id_usuario').val(contenido.id_usuario);
+            $("#clave").val(contenido.clave);
+            buscar_usuario($('#nombres_us').val());
+        })
+        .fail(function () {
+            console.log("error");
+        });
+}
+
 //Clientes
 function buscar_cliente(consulta, consulta2, consulta3, consulta4) {
     $.ajax({
