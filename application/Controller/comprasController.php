@@ -42,9 +42,7 @@ public function crear($id = -1){
     }
 
     public function guardar(){
-   
         try{
-                
                 $compras = new compras(); 
                $compras->__SET ("total",$_POST["total"]);
                $compras->__SET ("id_proveedor",$_POST["ddlproveedor"]);
@@ -54,10 +52,7 @@ public function crear($id = -1){
                     $idCompra = $compras->UltimaCompra()->Id;
                     for($i = 0; $i<count($_POST["productos"]); $i++)
                     {
-                       $compras->__SET ("id_compra", $idCompra); 
-                       
-                       /*en el campo $_POST["productos"] es un array que está lleno de el objeto "item" que creamos en el método crear de javascript*/
-                       /*Accedemos a las propiedades tomando el array, indicando la posición y luego el nombre de la propiedad como se creó en el javascript*/
+                       $compras->__SET ("id_compra", $idCompra);
                        $compras->__SET ("id_producto", str_replace("/","",$_POST["productos"][$i]));
                        $compras->__SET ("precio_unitario", str_replace("/","",$_POST["precios"][$i]));
                        $compras->__SET ("cantidad", str_replace("/","",$_POST["cantidades"][$i]));
@@ -84,9 +79,6 @@ public function crear($id = -1){
            $_SESSION['LOCAL']="6";
        header("location:" .URL."/Login/menu");
        }
-   
-
-   
 
         public function Consultarproveedor($id){
             $p = new Proveedor();
@@ -126,15 +118,9 @@ public function crear($id = -1){
         function Estado($id,$estado)
         {
             echo $id;
-    
-
             $compra = new compras();
-            /*se envía al modelo al estado que ingresa por parámetro desde el href que tiene el botón en la vista index ya que el boton es inactivar */
             $compra-> __SET("estado",$estado);
-            /*Se obtiene el id de la compra que se envía como parametro en la peticón ajax y se envía al modelo con el _SET*/            
             $compra-> __SET("id_compra",$id);
-            
-            /*Se ejecuta el método cambiar estado y se  convierte en json la respuesta de esa ejecuión para que la petición ajax pueda utilizarlo facilmente */
             if($compra->cambiarEstado())
             {                
                
@@ -145,11 +131,5 @@ public function crear($id = -1){
                 $_SESSION["alerta"] = "alert('Ocurrió un error al cambiar el estado,por favor intente de nuevo.')";                    
             }
         }
-
-        // public function fatura(){
-
-        //     require APP."view/compra/factura.php";
-        //        }
    }
 
-   

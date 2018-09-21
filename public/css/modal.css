@@ -9,6 +9,28 @@
     background-color: rgba(0, 0, 0, 0.5);
 }
 
+#header-modal{
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    background-color: #434343;
+    color: white;
+    text-align: center;
+    padding: 3px;
+}
+
+#footer-modal{
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    background-color: #434343;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+
+.modal-body {
+    padding: 5px;
+}
+
 .modal-content,
 .modal-contents
 {

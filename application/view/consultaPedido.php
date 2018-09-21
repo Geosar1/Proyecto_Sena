@@ -69,8 +69,10 @@
 
 <div id="simpleModals" class="modal">
     <div class="modal-contents">
-        <div class="modal-body">
+        <div id="header-modal">
             <h3> Detalle Pedido </h3>
+        </div>
+        <div class="modal-body">
             <div class="row">
                 <div class="col-lg-4 col-md-4 col-sm-6 col-sx-6">
                     <div class="form-group">
@@ -107,7 +109,8 @@
 
                 </tbody>
             </table>
-
+        </div>
+        <div id="footer-modal">
             <button id="volver" type="button">Cerrar</button>
         </div>
     </div>

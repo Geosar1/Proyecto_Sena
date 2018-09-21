@@ -403,6 +403,7 @@ $(document).on('click', '#cancelar_mod', function () {
     $('#modificar_usuario').hide();
     $('#guardar_usuario').show();
     $('#registro_pre').trigger("reset");
+    $('#clave').prop('disabled', false);
     buscar_usuario();
     return false;
 });
@@ -411,7 +412,7 @@ $(document).on('click', '#cambiarPass', function () {
     $('.modal-content').slideToggle();
     $('#simpleModalPass').show(function () {
         $('.modal-content').slideDown();
-       
+
     });
     return false;
 });
@@ -613,4 +614,81 @@ $(document).on('click', '#volver', function () {
     return false;
 });
 
+//Form compras
+function validar() {
+    if (lista.length <= 0) {
+        alert("Debe ingresar por lo menos un producto.");
+        return false;
+    } else {
+        return true;
+    }
+}
 
+function eliminarproducto(elemento) {
+
+    var e = $(elemento).parent().parent();
+    $(e).remove();
+
+}
+
+function validaCadena(cadena, patron) {
+    if (!cadena.search(patron))
+        return true;
+    else
+        return false;
+}
+
+function agregarProducto() {
+    if ($("#txtCantidad").val() == "") {
+        alert("Ingrese una cantidad");
+        return false;
+    }
+    var idProducto = $("#ddlproducto").val();
+    var idproveedor = $("#proveedor").val();
+    var item = {
+        proveedorId: idproveedor,
+        productocodigo: idProducto,
+        nombreproducto: $("#ddlproducto [value='" + idProducto + "']").text(),
+        precio: $("#txtPrecio").val(),
+        cantidad: $("#txtCantidad").val(),
+        total: $("#lbtotal").val()
+
+    };
+
+    lista.push(item);
+    var Html = "<tr>";
+    Html += "<td>" + item.productocodigo + "</td>";
+    Html += "<td>" + item.nombreproducto + "</td>";
+    Html += "<td>" + item.precio + "</td>";
+    Html += "<td>" + item.cantidad + "</td>";
+    Html += "<td>" + item.precio * item.cantidad +
+        " <input type='hidden' id='productos[]' name='productos[]' value=" + item.productocodigo + "/>" /*Creamos un campo oculto para que se guarden todos los items que vayan agregando*/ +
+        " <input type='hidden' id='precios[]' name='precios[]' value=" + item.precio + "/>" +
+        " <input type='hidden' id='cantidades[]' name='cantidades[]' value=" + item.cantidad + "/>"
+    Html += "<td><a onClick='eliminarproducto(this)' >Eliminar</a></td>";
+    Html += "</tr>";
+    $("#detallebody").append(Html);
+    $("#txtCantidad").val("");
+    $("#txtPrecio").val("");
+
+    var valortotal = 0;
+    valortotal = item.precio * item.cantidad;
+    valortotal += parseInt($("#lbtotal").text());
+    $("#lbtotal").text(valortotal);
+    $("#total").val(valortotal);
+
+}
+
+function LimpiarForm() {
+    $("#txtContacto").val("");
+    $("#txtTipoDoc").val("");
+    $("#txtDocumento").val("");
+    $("#txtCelular").val("");
+    $("#txtDireccion").val("");
+    $("#txtTipoProducto").val("");
+    $("#txtEstado").val("");
+    $("#txtCantidad").val("");
+    $("#txtPrecio").val("");
+    $("#proveedor").attr("disabled", false);
+    $("select").val('').trigger('change');
+}

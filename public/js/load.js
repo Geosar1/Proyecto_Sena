@@ -122,6 +122,8 @@ $(document).on('click', '#compras', function () {
     $('#contenido').html("");
     $('#contenido').load(uri+'/compras/crear', function () {
         listar_proveedor();
+        $("#proveedor").select2();
+        $("#ddlproducto").select2();
     });
 });
 

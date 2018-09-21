@@ -68,8 +68,10 @@
 
 <div id="simpleModal" class="modal">
     <div class="modal-content">
-        <div class="modal-body">
+        <div id="header-modal">
             <h3>Proveedores</h3>
+        </div>
+        <div class="modal-body">
             <div class="container">
                 <div class="row">
                     <div class="col-md-4 form-group">
@@ -91,7 +93,8 @@
             <div class="table-responsive">
                 <table id="detalle"></table>
             </div>
-
+        </div>
+        <div id="footer-modal">
             <button id="volver" type="button">Cerrar</button>
         </div>
     </div>

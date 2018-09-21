@@ -86,18 +86,16 @@
 
 <div id="simpleModalPass" class="modal">
     <div class="modal-content">
-        <div class="modal-body">
-            <h3>Modificar Contraseña</h3><br>
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6 form-group">
-                        <label>Ingrese la nueva Contraseña</label>
-                        <input id="cambiopass" class="form-control" name="txtcambiopass" type="text" maxlength="32" autocomplete="off" required> <br>
-                        <input class="succes" id="btcambiarpass" type="button" value="Modificar">
-                    </div>
-                </div>
-            </div>
+        <div id="header-modal">
+            <h3>Modificar Contraseña</h3>
         </div>
-        <button id="volverpass" type="button">Cerrar</button> <br>
+        <div class="modal-body">
+            <label>Ingrese la nueva Contraseña</label>
+            <input id="cambiopass" class="form-control" name="txtcambiopass" type="text" maxlength="32" autocomplete="off" required> <br>
+            <input class="succes" id="btcambiarpass" type="button" value="Modificar">
+        </div>
+        <div id="footer-modal">
+            <button id="volverpass" type="button">Cerrar</button>
+        </div>
     </div>
 </div>
