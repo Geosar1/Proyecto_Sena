@@ -180,7 +180,8 @@ $(document).on('click', '#crearPedido', function () {
 $(document).on('click', '#consultaPedido', function () {
     $('#contenido').html("");
     $('#contenido').load(uri + '/Pedido/consulta_Pedido',function(){
-    ConsultarDetalle();
+    ConsultarPed();
+
     });
     
 

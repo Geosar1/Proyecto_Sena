@@ -731,36 +731,35 @@ function limpiar() {
 }
 
 //ajax consulta pedido
-function ConsultarDetalle(id) {
+function ConsultarDetalleP(id) {
     $.ajax({
-        Type: "get",
-        dataType: "json",
-        url: uri + "/pedido/ConsultarDetalleP/" + id
+            Type: "get",
+            dataType: "json",
+            url: uri + "/pedido/ConsultarDetalleP/" + id
+        }).done(detallepedido => {
+            if (detallepedido.length > 0) {
+                $("#detallebodys").empty();
 
-    }).done(detallepedido => {
-        if (detallepedido.length > 0) {
-            $("#detallebodys").empty();
+                detallepedido.forEach((e, i) => {
+                    $("#txtFecha").val(e.fecha_de_creacion);
+                    $("#txtCliente").val(e.id_cliente);
+                    $("#lbtotall").html(e.valor_total);
 
-            detallepedido.forEach((e) => {
-                $("#txtFecha").val(e.fecha_de_creacion);
-                $("#txtCliente").val(e.nombres_cliente);
-                $("#lbtotall").html(e.valor_total);
-
-                $("#detallebodys").append(
-                    `<tr>
-              <td>${e.nombre_producto}</td>
+                    $("#detallebodys").append(
+                        `<tr>
+              <td>${e.id_pedido}</td>
               <td>${e.precio_venta}</td>
               <td>${e.cantidad}</td>
-              <td>${e.subtotal}</td>
+              <td>${e.subtotal_pedido}</td>
             </tr>`
-                );
-            });
+                    );
+                });
 
-            $("#Modal_Pedido").modal();
-        } else {
-            alert("no tiene pedidos");
-        }
-    });
+                $("#Modal_Pedido").modal();
+            } else {
+                alert("no tiene pedidos");
+            }
+        });
 }
 
 function ConsultarPed() {
@@ -786,10 +785,7 @@ function ConsultarPed() {
               <td>${e.estado_pedido}</td>
 
               <td>
-              <a class="btn btn-primary" onclick="ConsultarDetalle('${
-                e.id_cliente
-              }')">Ver Detalle</a>
-           
+           <button id="ver-detalle" value="${e.id_cliente}">Ver detalle</button>
               </td>
               </tr>`
                 );
