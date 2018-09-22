@@ -1,6 +1,7 @@
 var id;
 var proveedores;
 var contador = 0;
+var lista = [];
 
 //Movimientos
 function buscar_movimientos(consulta, consulta2) {
@@ -594,7 +595,6 @@ function editar_usuario(consulta) {
             $('#num_doc').val(contenido.numero_documento);
             $("#tipo_usu").val(contenido.rol_usuario);
             $("#user").val(contenido.usuario);
-            $("#clave").val(contenido.clave);
             $("#fec_exp").val(contenido.cambio_clave);
             buscar_usuario($('#nombres_us').val());
         })
@@ -635,19 +635,26 @@ function cambiar_usuario(consulta, consulta2) {
         });
 }
 
-function cambiar_contrasena(consulta) {
+function cambiar_contrasena(consulta, consulta2) {
     $.ajax({
-            url: uri + '/usuario/modificar',
+            url: uri + '/usuario/cambiar_clave',
             type: 'POST',
             data: {
-                id: consulta
+                clave: consulta,
+                id: id,
             },
         })
         .done(function (respuesta) {
-            var contenido = jQuery.parseJSON(respuesta);
-            $('#id_usuario').val(contenido.id_usuario);
-            $("#clave").val(contenido.clave);
-            buscar_usuario($('#nombres_us').val());
+            if (respuesta == "Si") {
+                mensaje = "Clave cambiada correctamente";
+                ver_success();
+                $('.modal-content').slideToggle(function () {
+                    $('#simpleModalPass').hide();
+                });
+            } else {
+                mensaje = "Error";
+                ver_fail();
+            }
         })
         .fail(function () {
             console.log("error");
@@ -752,33 +759,33 @@ function limpiar() {
 //ajax consulta pedido
 function ConsultarDetalleP(id) {
     $.ajax({
-            Type: "get",
-            dataType: "json",
-            url: uri + "/pedido/ConsultarDetalleP/" + id
-        }).done(detallepedido => {
-            if (detallepedido.length > 0) {
-                $("#detallebodys").empty();
+        Type: "get",
+        dataType: "json",
+        url: uri + "/pedido/ConsultarDetalleP/" + id
+    }).done(detallepedido => {
+        if (detallepedido.length > 0) {
+            $("#detallebodys").empty();
 
-                detallepedido.forEach((e, i) => {
-                    $("#txtFecha").val(e.fecha_de_creacion);
-                    $("#txtCliente").val(e.id_cliente);
-                    $("#lbtotall").html(e.valor_total);
+            detallepedido.forEach((e, i) => {
+                $("#txtFecha").val(e.fecha_de_creacion);
+                $("#txtCliente").val(e.id_cliente);
+                $("#lbtotall").html(e.valor_total);
 
-                    $("#detallebodys").append(
-                        `<tr>
+                $("#detallebodys").append(
+                    `<tr>
               <td>${e.id_pedido}</td>
               <td>${e.precio_venta}</td>
               <td>${e.cantidad}</td>
               <td>${e.subtotal_pedido}</td>
             </tr>`
-                    );
-                });
+                );
+            });
 
-                $("#Modal_Pedido").modal();
-            } else {
-                alert("no tiene pedidos");
-            }
-        });
+            $("#Modal_Pedido").modal();
+        } else {
+            alert("no tiene pedidos");
+        }
+    });
 }
 
 function ConsultarPed() {
@@ -855,4 +862,107 @@ function editarBarrios(consulta) {
         .fail(function () {
             console.log("error");
         });
+}
+
+//Compras
+function listar_proveedor(Code) {
+    $.ajax({
+        Type: "get",
+        dataType: "json",
+        url: uri + "/compras/Consultarproveedor/" + Code
+    }).done(respuesta => {
+        $("#ddlproducto").empty();
+
+        respuesta.forEach((e, i) => {
+            $("#ddlproducto").append(
+                "<option value='" +
+                e.id_producto +
+                "' nombre='" +
+                e.nombre_producto +
+                "'>" +
+                e.nombre_producto +
+                "</option>"
+            );
+        });
+
+        if (respuesta.length > 0) {
+            $("#txtContacto").val(respuesta[0].nombre_contacto);
+            $("#txtTipoDoc").val(respuesta[0].tipo_documento);
+            $("#txtDocumento").val(respuesta[0].numero_documento);
+            $("#txtCelular").val(respuesta[0].celular);
+            $("#txtDireccion").val(respuesta[0].direccion);
+            $("#txtTipoProducto").val(respuesta[0].nombre_categoria);
+            $("#txtEstado").val(respuesta[0].direccion);
+            $("#ddlproveedor").val(Code);
+            $("#proveedor").attr("disabled", true);
+        } else {
+            alert("La consulta de proveedor no generó resultados.");
+        }
+    });
+}
+
+function ConsultarDetalle(id) {
+    $.ajax({
+        Type: "get",
+        dataType: "json",
+        url: uri + "/compras/ConsultarDetalle/" + id
+    }).done(detalleCompra => {
+        if (detalleCompra.length > 0) {
+            $("#detallebodys").empty();
+
+            detalleCompra.forEach((e, i) => {
+                $("#txtFecha").val(e.fecha_de_compra);
+                $("#txtTipoProveedor").val(e.nombre_empresa);
+                $("#lbtotall").html(e.total_compra);
+
+                $("#detallebodys").append(
+                    `<tr>
+              <td>${e.nombre_producto}</td>
+              <td>${e.precio_unitario}</td>
+              <td>${e.cantidad}</td>
+              <td>${e.subtotal_compra}</td>
+            </tr>`
+                );
+            });
+
+            $("#Modal_Compra").modal();
+        } else {
+            alert("no tiene compras");
+        }
+    });
+}
+
+function ConsultarCompra() {
+    $.ajax({
+        Type: "get",
+        dataType: "json",
+        url: uri + "compras/ConsultarCompra",
+        data: {
+            idproveedor: $("#proveedor").val(),
+            fechaInicio: $("#txtfechaInicio").val(),
+            fechaFin: $("#txtfechaFin").val()
+        }
+    }).done(compra => {
+        if (compra.length > 0) {
+            $("#consultaCompra").empty();
+
+            compra.forEach((e, i) => {
+                $("#consultaCompra").append(
+                    `<tr>
+              <td>${e.fecha_de_compra}</td>
+              <td>${e.nombre_empresa}</td>
+              <td>${e.total_compra}</td>
+              <td>
+              <a class="btn btn-primary" onclick="ConsultarDetalle('${
+                e.id_compra
+              }')">Ver Detalle</a>
+
+              </td>
+              </tr>`
+                );
+            });
+        } else {
+            alert("no hay compras para ese rango seleccionado");
+        }
+    });
 }

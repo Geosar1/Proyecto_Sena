@@ -135,8 +135,6 @@ class UsuarioController {
         $usuario->__SET("numero_doc", $_POST['txtnumero_doc']);
         $usuario->__SET("rol_usuario", $_POST['txttipo_usu']);
         $usuario->__SET("usuario", $_POST['txtuser']);
-        $usuario->__SET("clave", $_POST['txtclave']);
-        $usuario->__SET("cambio_clave", $_POST['txtfec_exp']);
 
         if($usuario->modificar()){
             $_SESSION['RESPUESTA']= "Usuario modificado correctamente";
@@ -161,5 +159,17 @@ class UsuarioController {
             echo "no";
         }
     }
+    }
+
+    public function cambiar_clave(){
+        $usuario = new Usuario();
+        $usuario->__SET("clave", $_POST["clave"]);
+        $usuario->__SET("id", $_POST["id"]);
+
+        if($usuario->modificar_contrase()){
+            echo "Si";
+        }else {
+            echo "No";
+        }
     }
 }
