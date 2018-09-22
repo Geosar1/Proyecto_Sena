@@ -116,8 +116,6 @@ $(document).on('click', '#rutas', function () {
     $('#contenido').load(uri + '/Ruta/index');
 });
 
-
-
 $(document).on('click', '#compras', function () {
     $('#contenido').html("");
     $('#contenido').load(uri+'/compras/crear', function () {
@@ -154,13 +152,13 @@ $(document).on('click', '#movimientos', function () {
         buscar_movimientos();
     });
 });
+
 //boton crear ruta
 $(document).on('click', '#cr', function () {
     $('#contenido').html("");
     $('#contenido').load(uri + '/Ruta/crear');
 
 });
-
 
 //boton editar ruta
 $(document).on('click', '#tedi', function () {
@@ -175,16 +173,11 @@ $(document).on('click', '#crearPedido', function () {
     $('#contenido').load(uri + '/Pedido/index');
     ponerPrecio();
     direccion();
-    
-
 });
 
 $(document).on('click', '#consultaPedido', function () {
     $('#contenido').html("");
     $('#contenido').load(uri + '/Pedido/consulta_Pedido',function(){
     ConsultarPed();
-
     });
-    
-
 });
