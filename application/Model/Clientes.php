@@ -98,7 +98,7 @@ class Clientes extends Model {
     
     public function buscar_historial_pedidos(){
         $stm = $this->db->prepare("CALL Buscar_historial(?)");
-        $stm->bindParam(1,$this->id);
+        $stm->bindParam(1,$this->numero_doc);
         $stm->execute();
         return $stm->fetchAll();
     }

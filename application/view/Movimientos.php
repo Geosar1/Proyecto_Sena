@@ -54,5 +54,4 @@
     $(document).ready(function() {
         $("#producto_mov").select2();
     });
-
 </script>

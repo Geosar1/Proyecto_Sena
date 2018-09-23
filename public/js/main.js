@@ -299,8 +299,8 @@ $(document).on('change', '#cedula', function () {
         $('#cartera').html("0");
         $('#disponible').html("0");
         $('#pedido').html("0");
-        $('select').val('').trigger('change');
         $('#historial').empty();
+        $('select').val('').trigger('change');
     }
 });
 
@@ -309,8 +309,8 @@ $(document).on('click', '#limpiar_cartera', function () {
     $('#cartera').html("0");
     $('#disponible').html("0");
     $('#pedido').html("0");
-    $('select').val('').trigger('change');
     $('#historial').empty();
+    $('select').val('').trigger('change');
 });
 
 //Form proveedores
@@ -407,6 +407,7 @@ $(document).on('click', '#cancelar_mod', function () {
     buscar_usuario();
     return false;
 });
+
 $(document).on('click', '#cambiarPass', function () {
     id = $(this).val();
     $('.modal-content').slideToggle();
@@ -519,26 +520,12 @@ $(document).on('click', '#enviar', function () {
     return false;
 });
 
-//buscar rutas
-$(document).ready(function () {
-    $('#rruta').DataTable();
-});
 //rutas
 $(document).on('change', '#ddlMuni', function () {
-
-});
-
-$(document).on('change', '#ddlMuni', function () {
-
-});
-
-$(document).on('change', '#ddlMuni', function () {
-
-    //var valor = $('#ddlMuni'.val());
-    var mun = $('#ddlMuni').val();
     buscarBarrios($(this).val());
 })
 
+//pedidos
 function ponerPrecio(elemento) {
     var valor = $("#ddlProducto").val();
     var precio = $("#ddlProducto [value='" + valor + "']").attr("precio");
@@ -613,6 +600,10 @@ $(document).on('click', '#volver', function () {
     });
     return false;
 });
+
+$(document).on('click','#Estado_pedido',function(){
+    alert($(this).val());
+})
 
 //Form compras
 function validar() {
@@ -691,4 +682,10 @@ function LimpiarForm() {
     $("#txtPrecio").val("");
     $("#proveedor").attr("disabled", false);
     $("select").val('').trigger('change');
+}
+
+function LimpiarForm2() {
+        $("#txtfechaFin").val("");
+        $("#txtfechaInicio").val("");
+        $("select").val('').trigger('change');
 }

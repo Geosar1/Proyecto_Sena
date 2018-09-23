@@ -410,7 +410,7 @@ function consultar_historial() {
             url: uri + '/cliente/historial',
             type: 'POST',
             data: {
-                id: $('#id-cliente').val(),
+                doc: $('#cedula').val(),
             },
         })
         .done(function (respuesta) {
@@ -813,6 +813,9 @@ function ConsultarPed() {
               <td>
            <button id="ver-detalle" value="${e.id_cliente}">Ver detalle</button>
               </td>
+            <td>
+           <button id="Estado_pedido" value="${e.id_pedido}">cambiar_estado</button>
+              </td>
               </tr>`
                 );
             });
@@ -856,6 +859,7 @@ function editarBarrios(consulta) {
             $('#txxtId').val(contenido.id_ruta);
             $('#txtNombre').val(contenido.nombre_ruta);
             $('#ddlMuni').val(contenido.id_municipio);
+            buscarBarrios(contenido.id_municipio);
             $('#ddlbarri').val(contenido.id_barrio);
         })
 
