@@ -71,4 +71,8 @@ class LoginController {
     public function ayuda(){
         require APP.'view/ayuda.php';
     }
+
+    public function reportes(){
+        require APP.'view/reportes.php';
+    }
 }

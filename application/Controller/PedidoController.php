@@ -32,11 +32,16 @@
             echo json_encode($registro);
         } 
         
-        public function cambiar($id, $estado){
-            $pedido = new mdlConsultaPedido();
-            $pedido->__SET("id", $id);
-            $pedido->__SET("estado", $estado);
-            echo $pedido->cambiar_estado()?"0":"1";
+        public function cambiar_estado(){
+            $pedido = new mdlPedido();
+            $pedido->__SET("id_pedido", $_POST['id']);
+            $pedido->__SET("estado_pedido", $_POST['estado']);
+
+            if($pedido->cambiar_estado()){
+                echo "si";
+            }else{
+                echo "no";
+            }
         } 
 
         public function consulta_Pedido(){

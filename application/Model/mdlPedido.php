@@ -26,10 +26,6 @@ class mdlPedido extends Model {
         return $this->$attr;
     }
 
-       
-
-    
-
     public function insertarPedido(){
         $sql = "CALL SP_InsertarPedido(?, ?, ?, ?, ?)";
         $stm = $this->db->prepare($sql);
@@ -58,5 +54,10 @@ class mdlPedido extends Model {
         return $stm->fetch();
     }
 
-      
+    public function cambiar_estado(){
+        $stm = $this->db->prepare("CALL Cambiar_estado_pedido(?,?)");
+        $stm->bindParam(1, $this->id_pedido);
+        $stm->bindParam(2, $this->estado_pedido);
+        return $stm->execute();
+    }
 }

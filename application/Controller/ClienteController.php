@@ -120,6 +120,7 @@ class ClienteController {
         $salida.="<table class='tabla_datos'>
         <thead>
             <tr>
+                <th>ID</th>
                 <th>Valor de pedido</th>
                 <th>Estado pedido</th>
                 <th>Observaciones</th>
@@ -129,11 +130,16 @@ class ClienteController {
             <tbody>";
         foreach($resultado as $value):
         if($value->estado_pedido==1){
-        $texto = "Activo";
+            $texto = "Pendiente";
+        } else if($value->estado_pedido==2) {
+            $texto = "Entregado";
         } else {
-        $texto = "Inactivo";
+            $texto = "Cancelado";
         }
         $salida.="<tr>
+                <td>
+                    ".$value->id_pedido."
+                </td>
                 <td>
                     ".$value->valor_total."
                 </td>

@@ -146,6 +146,13 @@ $(document).on('click', '#movimientos', function () {
     });
 });
 
+$(document).on('click', '#reportes', function () {
+    $('#contenido').html("");
+    $('#contenido').load(uri + '/login/reportes', function () {
+        buscar_movimientos();
+    });
+});
+
 //boton crear ruta
 $(document).on('click', '#cr', function () {
     $('#contenido').html("");

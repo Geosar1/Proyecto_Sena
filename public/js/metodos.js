@@ -803,6 +803,15 @@ function ConsultarPed() {
             $("#ped").empty();
 
             consultapedidos.forEach((e, i) => {
+                var texto;
+                var color;
+                if (e.estado_pedido == 1) {
+                    texto = "Pendiente";
+                    color = "green";
+                } else if (e.estado_pedido == 2) {
+                    texto = "Entregado";
+                    color = "#f04124";
+                }
                 $("#ped").append(
                     `<tr>
               <td>${e.fecha_de_creacion}</td>
@@ -811,10 +820,13 @@ function ConsultarPed() {
               <td>${e.estado_pedido}</td>
 
               <td>
-           <button id="ver-detalle" value="${e.id_cliente}">Ver detalle</button>
+           <button class="detalle" id="ver-detalle" value="${e.id_cliente}">Ver detalle</button>
               </td>
             <td>
-           <button id="Estado_pedido" value="${e.id_pedido}">cambiar_estado</button>
+           <button style='background-color:${color}' id="Estado_pedido" value="${e.id_pedido}">${texto}</button>
+              </td>
+            <td>
+           <button style='background-color:red' id="Estado_pedido" value="${e.id_pedido}">Cancelar</button>
               </td>
               </tr>`
                 );
@@ -823,6 +835,31 @@ function ConsultarPed() {
             alert("no hay registros para el rango seleccionado");
         }
     });
+}
+
+function cambiar_pedido(consulta, consulta2) {
+    $.ajax({
+            url: uri + '/pedido/cambiar_estado',
+            type: 'POST',
+            dataType: 'html',
+            data: {
+                id: consulta,
+                estado: consulta2
+            },
+        })
+        .done(function (respuesta) {
+            if (respuesta == "si") {
+                mensaje = "Estado del pedido cambiado correctamente";
+                ver_success();
+                ConsultarPed();
+            } else {
+                mensaje = "Error al cambiar estado";
+                ver_fail();
+            }
+        })
+        .fail(function () {
+            console.log("error");
+        });
 }
 
 //listar barrios por municipios

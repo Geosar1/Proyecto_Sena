@@ -41,7 +41,7 @@
         </div>
     </div>
     <div class="table-responsive">
-        <table class="table">
+        <table>
             <thead>
                 <tr>
                     <th>Fecha</th>
@@ -91,7 +91,7 @@
 
             </div>
 
-            <table class="table" id="detalle">
+            <table id="detalle">
                 <thead>
                     <tr>
                         <th>Id Pedido</th>

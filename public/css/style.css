@@ -108,6 +108,10 @@ table .modificar {
     background-color: royalblue;
 }
 
+table .detalle {
+    background-color: royalblue;
+}
+
 .table-responsive {
     max-height: 300px;
 }

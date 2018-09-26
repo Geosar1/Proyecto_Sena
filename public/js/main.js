@@ -602,7 +602,17 @@ $(document).on('click', '#volver', function () {
 });
 
 $(document).on('click','#Estado_pedido',function(){
-    alert($(this).val());
+    id = $(this).val();
+    var cambio = $(this).html();
+    var valor;
+    if(cambio == "Pendiente"){
+        valor = "2";
+        cambiar_pedido(id, valor);
+    }else {
+        mensaje = "Este pedido ya fue entregado";
+        ver_success();
+    }
+    return false;
 })
 
 //Form compras

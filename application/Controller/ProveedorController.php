@@ -33,7 +33,7 @@ class ProveedorController {
         if(empty($lista)){
         $salida.="No hay registros";
         }else {
-        $salida.="<table class='tabla_datos'>
+        $salida.="<table>
         <thead>
             <tr>
                 <th>Nombre empresa</th>
