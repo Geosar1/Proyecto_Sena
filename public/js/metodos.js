@@ -635,7 +635,7 @@ function cambiar_usuario(consulta, consulta2) {
         });
 }
 
-function cambiar_contrasena(consulta, consulta2) {
+function cambiar_contrasena(consulta) {
     $.ajax({
             url: uri + '/usuario/cambiar_clave',
             type: 'POST',
@@ -1006,4 +1006,25 @@ function ConsultarCompra() {
             alert("no hay compras para ese rango seleccionado");
         }
     });
+}
+
+
+//Reportes
+function reporte_por_ruta(consulta, consulta2,consulta3) {
+    $.ajax({
+            url: uri + '/reporte/reporte_por_ruta',
+            type: 'POST',
+            dataType: 'html',
+            data: {
+                id: consulta,
+                inicio: consulta2,
+                fin: consulta3
+            },
+        })
+        .done(function (respuesta) {
+            $('#datos-reportes').html(respuesta);
+        })
+        .fail(function () {
+            console.log("error");
+        });
 }

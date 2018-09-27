@@ -4,7 +4,7 @@
 .alert,
 #modificar_cliente,
 #modificar_proveedor,
-#form_editar {
+#form_editar{
     display: none;
 }
 

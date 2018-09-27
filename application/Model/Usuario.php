@@ -17,7 +17,7 @@ class Usuario extends Model {
     private $estado;
     private $correo_electronico;
     private $codigo;
-    private $fecha_recuperacion;
+    private $fecha_expedicion;
 
     public function __SET($attr, $valor){
         $this->$attr = $valor;
@@ -35,7 +35,7 @@ class Usuario extends Model {
     }
 
     public function guardar(){
-        $stm = $this->db->prepare("CALL Guardar_usuario(?,?,?,?,?,?,?)");
+        $stm = $this->db->prepare("CALL Guardar_usuario(?,?,?,?,?,?,?,?)");
         $stm->bindParam(1,$this->nombres_usuario);
         $stm->bindParam(2,$this->apellidos_usuario);
         $stm->bindParam(3,$this->tipo_doc);
@@ -43,6 +43,7 @@ class Usuario extends Model {
         $stm->bindParam(5,$this->rol_usuario);
         $stm->bindParam(6,$this->usuario);
         $stm->bindParam(7,$this->clave);
+        $stm->bindParam(8,$this->fecha_expedicion);
         return $stm->execute();
     }
 
@@ -61,7 +62,7 @@ class Usuario extends Model {
     }
 
     public function modificar(){
-        $stm = $this->db->prepare("CALL Modificar_usuario(?,?,?,?,?,?,?)");
+        $stm = $this->db->prepare("CALL Modificar_usuario(?,?,?,?,?,?,?,?)");
         $stm->bindParam(1,$this->id);
         $stm->bindParam(2,$this->nombres_usuario);
         $stm->bindParam(3,$this->apellidos_usuario);
@@ -69,6 +70,7 @@ class Usuario extends Model {
         $stm->bindParam(5,$this->numero_doc);
         $stm->bindParam(6,$this->rol_usuario);
         $stm->bindParam(7,$this->usuario);
+        $stm->bindParam(8,$this->fecha_expedicion);
         return $stm->execute();
     }
 

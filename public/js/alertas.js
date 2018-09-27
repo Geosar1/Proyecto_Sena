@@ -8,7 +8,7 @@ function ver_success() {
         $(".alert-success").slideDown(function () {
             $(".alert-success").fadeTo(4000, 500).slideUp(100, function () {
             });
-        }); // 500 : Time will remain on the screen
+        });
     });
 }
 
@@ -20,7 +20,7 @@ function ver_fail() {
         $(".alert-fail").slideDown(function () {
             $(".alert-fail").fadeTo(4000, 500).slideUp(100,function () {
             });
-        }); // 500 : Time will remain on the screen
+        });
     });
 }
 

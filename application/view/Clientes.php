@@ -82,5 +82,4 @@
     $(document).ready(function() {
         $("#select_r").select2();
     });
-
 </script>

@@ -413,13 +413,13 @@ $(document).on('click', '#cambiarPass', function () {
     $('.modal-content').slideToggle();
     $('#simpleModalPass').show(function () {
         $('.modal-content').slideDown();
-
     });
     return false;
 });
 
 $(document).on('click', '#btcambiarpass', function () {
     var valor = $('#cambiopass').val();
+
     if (valor != "") {
         cambiar_contrasena(valor);
     } else {
@@ -601,14 +601,14 @@ $(document).on('click', '#volver', function () {
     return false;
 });
 
-$(document).on('click','#Estado_pedido',function(){
+$(document).on('click', '#Estado_pedido', function () {
     id = $(this).val();
     var cambio = $(this).html();
     var valor;
-    if(cambio == "Pendiente"){
+    if (cambio == "Pendiente") {
         valor = "2";
         cambiar_pedido(id, valor);
-    }else {
+    } else {
         mensaje = "Este pedido ya fue entregado";
         ver_success();
     }
@@ -695,7 +695,59 @@ function LimpiarForm() {
 }
 
 function LimpiarForm2() {
-        $("#txtfechaFin").val("");
-        $("#txtfechaInicio").val("");
-        $("select").val('').trigger('change');
+    $("#txtfechaFin").val("");
+    $("#txtfechaInicio").val("");
+    $("select").val('').trigger('change');
 }
+
+//Form reportes
+$(document).on('change', '#reporte', function () {
+    if ($(this).val() != "") {
+        if ($(this).val() == 1) {
+            $('#inicio').prop('disabled', false);
+            $('#fin').prop('disabled', false);
+            $('#select_reportes').prop('disabled', true);
+            $('#select_reportes').val('').trigger('change');
+            $('#datos-reportes').empty();
+        } else if ($(this).val() == 2) {
+            $('#inicio').prop('disabled', false);
+            $('#fin').prop('disabled', false);
+            $('#select_reportes').prop('disabled', true);
+            $('#select_reportes').val('').trigger('change');
+            $('#datos-reportes').empty();
+        } else if ($(this).val() == 3) {
+            $('#inicio').prop('disabled', false);
+            $('#fin').prop('disabled', false);
+            $('#select_reportes').prop('disabled', true);
+            $('#select_reportes').val('').trigger('change');
+            $('#datos-reportes').empty();
+        } else if ($(this).val() == 4) {
+            $('#inicio').prop('disabled', true);
+            $('#fin').prop('disabled', true);
+            $('#select_reportes').prop('disabled', false);
+            mensaje = "Seleccione una ruta";
+            ver_success();
+        }
+    } else {
+        $('#inicio').prop('disabled', true);
+        $('#fin').prop('disabled', true);
+        $('#select_reportes').prop('disabled', true);
+        $('#datos-reportes').empty();
+    }
+});
+
+$(document).on('change', '#select_reportes', function () {
+    if ($(this).val() != "") {
+        reporte_por_ruta($(this).val(), $('#inicio').val(), $('#fin').val());
+    } else {
+        $('#datos-reportes').empty();
+    }
+});
+
+$(document).on('click', '#limpiar_reporte', function () {
+    $('#datos-reportes').empty();
+    $('#inicio').prop('disabled', true);
+    $('#fin').prop('disabled', true);
+    $('#select_reportes').prop('disabled', true);
+    $('select').val('').trigger('change');
+})

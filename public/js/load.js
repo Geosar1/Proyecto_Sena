@@ -1,4 +1,4 @@
-$(traer(), mostrar(), menus(),ver_agotados());
+$(traer(), mostrar(), menus(), ver_agotados(), recuperar());
 
 function menus() {
     if ($('#user_log').val() == "ADMINISTRADOR") {
@@ -36,19 +36,19 @@ function traer() {
         $('#contenido').load(uri + '/Proveedor/index', function () {
             buscar_proveedor();
         });
-    } else if ($('#carga').val() == "4"){
+    } else if ($('#carga').val() == "4") {
 
     } else if ($('#carga').val() == "5") {
         $('#contenido').html("");
 
     } else if ($('#carga').val() == "6") {
         $('#contenido').html("");
-        $('#contenido').load(uri+'/compras/crear');
+        $('#contenido').load(uri + '/compras/crear');
 
     } else if ($('#carga').val() == "7") {
         $('#contenido').html("");
-        $('#contenido').load(uri + '/Pedido/consulta_Pedido',function(){
-            ConsultarDetalle(); 
+        $('#contenido').load(uri + '/Pedido/consulta_Pedido', function () {
+            ConsultarDetalle();
         });
 
     } else if ($('#carga').val() == "8") {
@@ -68,6 +68,21 @@ function mostrar() {
         mensaje = $('#org').val();
         ver_success();
         limpiar();
+    }
+}
+
+function recuperar() {
+    if ($('#recuperar').val() != "") {
+        $('#contenido').html("");
+        $('#contenido').load(uri + '/Usuario/index', function () {
+            buscar_usuario();
+            id=$('#recuperar').val();
+            $('.modal-content').slideToggle();
+            $('#simpleModalPass').show(function () {
+                $('.modal-content').slideDown();
+                $('#volverpass').hide();
+            });
+        });
     }
 }
 
@@ -118,7 +133,7 @@ $(document).on('click', '#rutas', function () {
 
 $(document).on('click', '#compras', function () {
     $('#contenido').html("");
-    $('#contenido').load(uri+'/compras/crear', function () {
+    $('#contenido').load(uri + '/compras/crear', function () {
         listar_proveedor();
         $("#proveedor").select2();
         $("#ddlproducto").select2();
@@ -127,7 +142,7 @@ $(document).on('click', '#compras', function () {
 
 $(document).on('click', '#ReporteCompras', function () {
     $('#contenido').html("");
-    $('#contenido').load(uri+'/compras/index', function () {
+    $('#contenido').load(uri + '/compras/index', function () {
         ConsultarCompra()
     });
 });
@@ -148,8 +163,10 @@ $(document).on('click', '#movimientos', function () {
 
 $(document).on('click', '#reportes', function () {
     $('#contenido').html("");
-    $('#contenido').load(uri + '/login/reportes', function () {
-        buscar_movimientos();
+    $('#contenido').load(uri + '/reporte/index', function () {
+        $('#inicio').prop('disabled', true);
+        $('#fin').prop('disabled', true);
+        $('#select_reportes').prop('disabled', true);
     });
 });
 
@@ -178,13 +195,12 @@ $(document).on('click', '#crearPedido', function () {
 
 $(document).on('click', '#consultaPedido', function () {
     $('#contenido').html("");
-    $('#contenido').load(uri + '/Pedido/consulta_Pedido',function(){
-    ConsultarPed();
+    $('#contenido').load(uri + '/Pedido/consulta_Pedido', function () {
+        ConsultarPed();
     });
 });
 
 $(document).on('click', '#ayuda', function () {
     $('#contenido').html("");
-    $('#contenido').load(uri + '/login/ayuda',function(){
-    });
+    $('#contenido').load(uri + '/login/ayuda', function () {});
 });
