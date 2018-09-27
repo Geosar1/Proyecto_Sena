@@ -111,7 +111,7 @@ class ClienteController {
     public function historial(){
         $cliente = new Clientes();
         $salida="";
-        $cliente->__SET("id", $_POST['id']);
+        $cliente->__SET("numero_doc", $_POST['doc']);
         $resultado = $cliente->buscar_historial_pedidos();
 
         if(empty($resultado)){
@@ -120,6 +120,7 @@ class ClienteController {
         $salida.="<table class='tabla_datos'>
         <thead>
             <tr>
+                <th>ID</th>
                 <th>Valor de pedido</th>
                 <th>Estado pedido</th>
                 <th>Observaciones</th>
@@ -127,18 +128,23 @@ class ClienteController {
             </tr>
             </thead>
             <tbody>";
-        foreach($lista as $value):
-        if($value->estado_cliente==1){
-        $texto = "Activo";
+        foreach($resultado as $value):
+        if($value->estado_pedido==1){
+            $texto = "Pendiente";
+        } else if($value->estado_pedido==2) {
+            $texto = "Entregado";
         } else {
-        $texto = "Inactivo";
+            $texto = "Cancelado";
         }
         $salida.="<tr>
+                <td>
+                    ".$value->id_pedido."
+                </td>
                 <td>
                     ".$value->valor_total."
                 </td>
                 <td>
-                    ".$value->estado_pedido."
+                    ".$texto."
                 </td>
                 <td>
                     ".$value->observaciones."

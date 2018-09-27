@@ -41,24 +41,20 @@
         </div>
     </div>
     <div class="table-responsive">
-        <table class="table">
+        <table>
             <thead>
                 <tr>
-
-
                     <th>Fecha</th>
                     <th>Cliente</th>
                     <th>Total</th>
                     <th>Estado</th>
-
-
+                    <th></th>
+                    <th></th>
+                    <th></th>
                 </tr>
 
             </thead>
-            <tbody id="ped">
-
-
-            </tbody>
+            <tbody id="ped"></tbody>
         </table>
 
     </div>
@@ -95,10 +91,9 @@
 
             </div>
 
-            <table class="table" id="detalle">
+            <table id="detalle">
                 <thead>
                     <tr>
-
                         <th>Id Pedido</th>
                         <th>Producto</th>
                         <th>Cantidad</th>

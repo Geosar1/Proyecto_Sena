@@ -96,6 +96,12 @@ if(isset ($_SESSION['USUARIO'])){ ?>
                 <li>
                     <a id="movimientos" href="#"><i class="fa fa-people-carry fa-lg" style="color: silver"></i> Movimientos </a>
                 </li>
+                <li>
+                    <a id="reportes" href="#"><i class="fas fa-pen-alt fa-lg"></i>Reportes</a>
+                </li>
+                <li>
+                    <a id="ayuda" href="#"><i class="fas fa-info-circle fa-lg"></i>Ayuda en linea</a>
+                </li>
             </ul>
 
         </div>

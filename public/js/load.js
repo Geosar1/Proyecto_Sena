@@ -127,15 +127,8 @@ $(document).on('click', '#compras', function () {
 
 $(document).on('click', '#ReporteCompras', function () {
     $('#contenido').html("");
-    $('#contenido').load(uri+'/compras/crear', function () {
-        listar_proveedor();
-    });
-});
-
-$(document).on('click', '#ReporteCompras', function () {
-    $('#contenido').html("");
     $('#contenido').load(uri+'/compras/index', function () {
-        ConsultarDetalle();
+        ConsultarCompra()
     });
 });
 
@@ -153,11 +146,17 @@ $(document).on('click', '#movimientos', function () {
     });
 });
 
+$(document).on('click', '#reportes', function () {
+    $('#contenido').html("");
+    $('#contenido').load(uri + '/login/reportes', function () {
+        buscar_movimientos();
+    });
+});
+
 //boton crear ruta
 $(document).on('click', '#cr', function () {
     $('#contenido').html("");
     $('#contenido').load(uri + '/Ruta/crear');
-
 });
 
 //boton editar ruta
@@ -165,9 +164,11 @@ $(document).on('click', '#tedi', function () {
     var id = $(this).val();
     $('#form_editar').show();
     $('#tabla_rutas').hide();
+    $('#inicio_ruta').hide();
     editarBarrios(id);
 });
 
+//Pedidos
 $(document).on('click', '#crearPedido', function () {
     $('#contenido').html("");
     $('#contenido').load(uri + '/Pedido/index');
@@ -179,5 +180,11 @@ $(document).on('click', '#consultaPedido', function () {
     $('#contenido').html("");
     $('#contenido').load(uri + '/Pedido/consulta_Pedido',function(){
     ConsultarPed();
+    });
+});
+
+$(document).on('click', '#ayuda', function () {
+    $('#contenido').html("");
+    $('#contenido').load(uri + '/login/ayuda',function(){
     });
 });
