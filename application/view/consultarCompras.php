@@ -1,5 +1,5 @@
 <form id="idindex">
-   <h2>Consultar Compras</h2>
+    <h2>Consultar Compras</h2>
     <div class="row">
         <div class="col-lg-3 col-md-3 col-sm-4 col-sx-12">
             <div class="form-group">
@@ -49,67 +49,51 @@
     </table>
 </form>
 
-<div class="modal" id="Modal_Compra" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="compra">
-
-                </h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body" id="contenedor_detalleCompra">
-
-                <div class="panel panel-default">
-                    <div class="panel-heading"></div>
-                    <div class="panel-body">
-                        <h3> Detalle Compra </h3>
-                        <br />
-                        <hr />
-                        <div class="row">
-                            <div class="col-lg-4 col-md-4 col-sm-6 col-sx-6">
-                                <div class="form-group">
-                                    <label for="">Fecha Compra</label>
-                                    <input type="text" id="txtFecha" class="form-control" name="txtFecha" disabled="true">
-                                </div>
-                            </div>
-                            <div class="col-lg- col-md-4 col-sm-6 col-sx-6">
-                                <div class="form-group">
-                                    <label for="">Proveedor</label>
-                                    <input type="text" id="txtTipoProveedor" class="form-control" name="txtTipoProveedor" disabled="true">
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-4 col-sm-6 col-sx-6">
-                                <div class="form-group">
-                                    <H1>TOTAL</H1>
-                                    <label for="" name="lbtotal" id="lbtotall">0</label>
-                                </div>
-                            </div>
-
-                        </div>
-                        <table id="detalle">
-                            <thead>
-                                <tr>
-
-                                    <th>Nombre Producto</th>
-                                    <th>Precio</th>
-                                    <th>Cantidad</th>
-                                    <th>Subtotal</th>
-                                </tr>
-                            </thead>
-                            <tbody id="detallebodys">
-
-                            </tbody>
-                        </table>
-
+<div id="simpleModal-compra" class="modal">
+    <div class="modal-contents">
+        <div id="header-modal">
+            <h3> Detalle Compra </h3>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-lg-4 col-md-4 col-sm-6 col-sx-6">
+                    <div class="form-group">
+                        <label for="">Fecha Compra</label>
+                        <input type="text" id="txtFecha" class="form-control" name="txtFecha" disabled="true">
                     </div>
                 </div>
+                <div class="col-lg- col-md-4 col-sm-6 col-sx-6">
+                    <div class="form-group">
+                        <label for="">Proveedor</label>
+                        <input type="text" id="txtTipoProveedor" class="form-control" name="txtTipoProveedor" disabled="true">
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-6 col-sx-6">
+                    <div class="form-group">
+                        <H1>TOTAL</H1>
+                        <label for="" name="lbtotal" id="lbtotall">0</label>
+                    </div>
+                </div>
+
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">cerrar</button>
-            </div>
+            <table id="detalle">
+                <thead>
+                    <tr>
+
+                        <th>Nombre Producto</th>
+                        <th>Precio</th>
+                        <th>Cantidad</th>
+                        <th>Subtotal</th>
+                    </tr>
+                </thead>
+                <tbody id="detallebodys">
+
+                </tbody>
+            </table>
+
+        </div>
+        <div id="footer-modal">
+            <button id="volver-compra" type="button">Cerrar</button>
         </div>
     </div>
 </div>

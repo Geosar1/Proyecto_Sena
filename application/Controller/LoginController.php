@@ -57,6 +57,7 @@ class LoginController {
         echo "usuario incorrecto";
     } else {
         $_SESSION['USUARIO']= $p;
+        $_SESSION['RECUPERACION']= $p;
     }
 
     }
@@ -70,9 +71,5 @@ class LoginController {
     
     public function ayuda(){
         require APP.'view/ayuda.php';
-    }
-
-    public function reportes(){
-        require APP.'view/reportes.php';
     }
 }

@@ -1,18 +1,17 @@
 <form id="form_editar" action="<?= URL ?>ruta/modificarr" method="post">
     <input type="hidden" name="txxtId" id="txxtId">
-    <div class="row">
-        <div class="col">
-            <div class="form-group">
+    <h2>Modificar Ruta</h2>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 form-group">
                 <label for="">Nombre de ruta</label>
-                <Input type="text" class="form-control" id="txtNombre" name="txtNombre">
+                <Input autocomplete="off" type="text" class="form-control" id="txtNombre" name="txtNombre">
             </div>
-        </div>
 
-        <div class="col">
-            <div class="form-group">
+            <div class="col-md-4 form-group">
                 <label for="">Municipio</label>
-                <select class="form-contro1" name="ddlMuni" id="ddlMuni">
-                    <option value="option">Seleccione</option>
+                <select class="form-control" name="ddlMuni" id="ddlMuni">
+                    <option value="">Seleccione</option>
                     <?php foreach($rut as $value): ?>
                     <option value="<?= $value->id_municipio ?>">
                         <?= $value->nombre_municipio?>
@@ -21,20 +20,20 @@
 
                 </select>
             </div>
-        </div>
 
-        <div class="col">
-            <div class="form-group">
+            <div class="col-md-4 form-group">
                 <label for="">Barrio </label>
-                <select class="form-contro2" name="ddlbarri" id="ddlbarri">
-                    <option value="option">Seleccione </option>
+                <select class="form-control" name="ddlbarri" id="ddlbarri">
+                    <option value="">Seleccione </option>
                 </select>
             </div>
-        </div>
 
-    </div>
-    <div class="row">
-        <button type="submit" class="succes">Guardar</button>
+        </div>
+        <div class="container">
+            <div class="row">
+                <button type="submit" class="succes">Guardar Cambios</button>
+            </div>
+        </div>
     </div>
 </form>
 
@@ -86,6 +85,6 @@
                 <?php endforeach; ?>
             </tbody>
         </table>
-        <input type="button" value="Descargar a excel" id="enviar">
     </div>
+    <input type="button" value="Descargar a excel" id="enviar">
 </form>

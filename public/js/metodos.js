@@ -635,7 +635,7 @@ function cambiar_usuario(consulta, consulta2) {
         });
 }
 
-function cambiar_contrasena(consulta, consulta2) {
+function cambiar_contrasena(consulta) {
     $.ajax({
             url: uri + '/usuario/cambiar_clave',
             type: 'POST',
@@ -994,10 +994,7 @@ function ConsultarCompra() {
               <td>${e.nombre_empresa}</td>
               <td>${e.total_compra}</td>
               <td>
-              <a class="btn btn-primary" onclick="ConsultarDetalle('${
-                e.id_compra
-              }')">Ver Detalle</a>
-
+<button class="detalle" id="detalle-compra" value="${e.id_compra}">Ver detalle</button>
               </td>
               </tr>`
                 );
@@ -1006,4 +1003,26 @@ function ConsultarCompra() {
             alert("no hay compras para ese rango seleccionado");
         }
     });
+}
+
+
+//Reportes
+function reportes(consulta, consulta2,consulta3,consulta4) {
+    $.ajax({
+            url: uri + '/reporte/reporte_por_ruta',
+            type: 'POST',
+            dataType: 'html',
+            data: {
+                id: consulta,
+                inicio: consulta2,
+                fin: consulta3,
+                reporte: consulta4
+            },
+        })
+        .done(function (respuesta) {
+            $('#datos-reportes').html(respuesta);
+        })
+        .fail(function () {
+            console.log("error");
+        });
 }

@@ -74,9 +74,9 @@ if(isset ($_SESSION['USUARIO'])){ ?>
                 <li>
                     <a id="compras" href="#"><i class="fa fa-shopping-cart fa-lg" style="color: silver"></i> Compras</a>
                     <ul class="children-c">
-                    <li>
-                    <a id="ReporteCompras" href="#"><i class="fa fa-shopping-cart fa-lg" style="color: silver"></i> Reporte Compras</a>
-                    </li>
+                        <li>
+                            <a id="ReporteCompras" href="#"><i class="fa fa-shopping-cart fa-lg" style="color: silver"></i> Reporte Compras</a>
+                        </li>
                     </ul>
                 </li>
                 <li>
@@ -141,7 +141,13 @@ if(isset ($_SESSION['USUARIO'])){ ?>
         </div>
         <!-- /. PAGE WRAPPER  -->
     </div>
+    <?php if(isset($_SESSION['RECUPERACION'])): ?>
+    <input type="hidden" id="recuperar" value="<?= $_SESSION['RECUPERACION']->id_usuario?>">
+    <?php else: ?>
+    <input type="hidden" id="recuperar">
+    <?php endif; ?>
 </body>
+
 </html>
 <?php } else {
     header("location: ".URL."Login/index");
