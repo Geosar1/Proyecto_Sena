@@ -28,11 +28,11 @@
                 </select>
             </div>
             <div class="col-md-4 form-group">
-                <label>Número documento</label>
+                <label>Número de documento</label>
                 <input name="txtnumero_doc" class="form-control" id="num_doc" type="text" maxlength="30" autocomplete="off" required>
             </div>
             <div class="col-md-4 form-group">
-                <label>Fecha Expedición</label>
+                <label>Fecha de Expedición</label>
                 <input name="txtfec_exp" class="form-control" id="fec_exp" type="date" required>
             </div>
         </div>

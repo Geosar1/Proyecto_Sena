@@ -41,7 +41,7 @@
             </div>
             <div class="col-lg-4 col-md-4 col-sm-6 col-sx-12">
                 <div class="form-group">
-                    <label for="">Direccion</label>
+                    <label for="">Dirección</label>
                     <input type="text" id="txtDireccion" class="form-control" name="txtDireccion" disabled="true">
                 </div>
             </div>

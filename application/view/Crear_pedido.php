@@ -36,13 +36,13 @@
 				</select>	<br><br>
 				
 			<div class="form-group col-sm-6 col-md-6">
-			<label for="">Direccion :</label>
+			<label for="">Dirección :</label>
 			<h3 id="dDir" class="form-control">-</h3>
 			</div>
 				
 			<div class="form-group col-sm-6 col-md-6">		
 				
-			<label for="">Telefono :</label>
+			<label for="">Teléfono :</label>
 			<h3 id="tTel" class="form-control">-</h3>
 			</div>
 					

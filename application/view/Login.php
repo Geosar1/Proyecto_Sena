@@ -50,7 +50,7 @@
                                 <div class="errores" id="mensaje2">
                                     <p class="text-danger">Introduce tu contraseña.</p>
                                 </div>
-                                <p class="color-light" id="mensaje_recuperacion">Ingrese fecha de expedicion de su cedula.</p>
+                                <p class="color-light" id="mensaje_recuperacion">Ingrese fecha de expedición de su cédula.</p>
                                 <div class="input-group" id="campo2">
                                     <span class="input-group-addon"><i class="fa fa-lock " aria-hidden="true"></i></span>
                                     <input type="password" name="pwd" id="key" class="form-control form-login btn-block" placeholder="Contraseña" autocomplete="off" />

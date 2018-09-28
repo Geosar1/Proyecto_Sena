@@ -22,12 +22,12 @@
     <div class="container">
         <div class="row">
             <div class="col-md-4 form-group">
-                <label>Stock minimo</label>
+                <label>Stock Mínimo</label>
                 <input class="form-control" id="stock_p" type="number" name="stock" required>
             </div>
 
             <div class="col-md-4 form-group">
-                <label>Categoria*</label> <br>
+                <label>Categoría*</label> <br>
                 <select class="form-control" id="categorias_p" required>
                     <option value="">Seleccione</option>
                     <?php foreach($lista as $value): ?>

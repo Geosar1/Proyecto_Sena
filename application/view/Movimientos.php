@@ -7,7 +7,7 @@
                 <select class="form-control" id="mov" name="mov" required>
                     <option value="">Seleccione</option>
                     <option value="baja">Dada de baja</option>
-                    <option value="devolucion">Devolucion</option>
+                    <option value="devolucion">Devolución</option>
                 </select>
             </div>
 
@@ -33,7 +33,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-4 form-group">
-                <label>Descripcion</label>
+                <label>Descripción</label>
                 <input class="form-control" name="descripcion" type="text" id="descripcion_mv" maxlength="50" autocomplete="off" required>
             </div>
         </div>

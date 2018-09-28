@@ -1,5 +1,5 @@
 <form id="registro_cliente" action="" method="post">
-    <h2 id="titulo">Cliente</h2>
+    <h2 id="titulo">Clientes</h2>
     <input type="hidden" id="id_cliente" name="id">
 
     <div class="container-fluid">
@@ -27,13 +27,13 @@
                 <label>Tipo de documento</label>
                 <select class="form-control" id="tipo_doc" name="txttipo_doc" required>
                     <option>Seleccione</option>
-                    <option value="Cedula">Cedula ciudadania</option>
-                    <option value="Cedula extranjera">Cedula extranjera</option>
+                    <option value="Cedula">Cédula Ciudadanía</option>
+                    <option value="Cedula extranjera">Cédula Extranjería</option>
                 </select>
             </div>
 
             <div class="col-md-4 form-group">
-                <label>Numero documento*</label>
+                <label>Número documento*</label>
                 <input type="text" class="form-control" name="txtnumero_doc" id="num_doc" maxlength="25" autocomplete="off" required>
             </div>
 
@@ -47,7 +47,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-4 form-group">
-                <label>Direccion</label>
+                <label>Dirección</label>
                 <input type="text" class="form-control" id="dc" name="txtdc" maxlength="25" autocomplete="off" required>
             </div>
 

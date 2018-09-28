@@ -64,7 +64,7 @@ if(isset ($_SESSION['USUARIO'])){ ?>
                             <a id="agotados" href="#"><i class="fa fa-exclamation-triangle fa-lg" style="color: silver"></i> Productos agotados</a>
                         </li>
                         <li>
-                            <a id="categorias" href="#"><i class="fa fa-copy fa-lg" style="color: silver"></i> Categorias</a>
+                            <a id="categorias" href="#"><i class="fa fa-copy fa-lg" style="color: silver"></i> Categorías</a>
                         </li>
                     </ul>
                 </li>
@@ -100,7 +100,7 @@ if(isset ($_SESSION['USUARIO'])){ ?>
                     <a id="reportes" href="#"><i class="fas fa-pen-alt fa-lg"></i>Reportes</a>
                 </li>
                 <li>
-                    <a id="ayuda" href="#"><i class="fas fa-info-circle fa-lg"></i>Ayuda en linea</a>
+                    <a id="ayuda" href="#"><i class="fas fa-info-circle fa-lg"></i>Ayuda en línea</a>
                 </li>
             </ul>
 
