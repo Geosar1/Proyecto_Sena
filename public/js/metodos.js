@@ -994,10 +994,7 @@ function ConsultarCompra() {
               <td>${e.nombre_empresa}</td>
               <td>${e.total_compra}</td>
               <td>
-              <a class="btn btn-primary" onclick="ConsultarDetalle('${
-                e.id_compra
-              }')">Ver Detalle</a>
-
+<button class="detalle" id="detalle-compra" value="${e.id_compra}">Ver detalle</button>
               </td>
               </tr>`
                 );
@@ -1010,7 +1007,7 @@ function ConsultarCompra() {
 
 
 //Reportes
-function reporte_por_ruta(consulta, consulta2,consulta3) {
+function reportes(consulta, consulta2,consulta3,consulta4) {
     $.ajax({
             url: uri + '/reporte/reporte_por_ruta',
             type: 'POST',
@@ -1018,7 +1015,8 @@ function reporte_por_ruta(consulta, consulta2,consulta3) {
             data: {
                 id: consulta,
                 inicio: consulta2,
-                fin: consulta3
+                fin: consulta3,
+                reporte: consulta4
             },
         })
         .done(function (respuesta) {

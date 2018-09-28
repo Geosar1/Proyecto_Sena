@@ -26,4 +26,28 @@ class Reporte extends Model {
         $stm->execute();
         return $stm->fetchAll();
     }
+
+    public function buscar_reportevendidos(){
+        $stm = $this->db->prepare("CALL Buscar_reporte_productosvendidos(?,?)");
+        $stm->bindParam(1, $this->fecha_inicio);
+        $stm->bindParam(2, $this->fecha_fin);
+        $stm->execute();
+        return $stm->fetchAll();
+    }
+
+    public function buscar_reporteclientes(){
+        $stm = $this->db->prepare("CALL Buscar_reporte_clientescompras(?,?)");
+        $stm->bindParam(1, $this->fecha_inicio);
+        $stm->bindParam(2, $this->fecha_fin);
+        $stm->execute();
+        return $stm->fetchAll();
+    }
+
+    public function buscar_reportecomprados(){
+        $stm = $this->db->prepare("CALL Buscar_reporte_productoscomprados(?,?)");
+        $stm->bindParam(1, $this->fecha_inicio);
+        $stm->bindParam(2, $this->fecha_fin);
+        $stm->execute();
+        return $stm->fetchAll();
+    }
 }

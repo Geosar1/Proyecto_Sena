@@ -16,12 +16,103 @@ class ReporteController {
     public function reporte_por_ruta(){
         $reporte = new Reporte();
         $salida="";
+        $inicio;
+        $fin;
+
+        if($_POST['inicio'] != ""){
+            $inicio = $_POST['inicio'];
+        }else {
+            $inicio = "2000-01-01";
+        }
+
+        if($_POST['fin'] != ""){
+            $fin= $_POST['fin'];
+        }else {
+            $fin = "3000-01-01";
+        }
+
         $reporte->__SET("id_ruta", $_POST["id"]);
-        $reporte->__SET("fecha_inicio", "");
-        $reporte->__SET("fecha_fin", "");
-        $datos = $reporte->Buscar_reporteruta();
+        $reporte->__SET("fecha_inicio", $inicio);
+        $reporte->__SET("fecha_fin", $fin);
         
-        if(empty($datos)){
+        if($_POST["reporte"] == "1"){
+            $datos = $reporte->buscar_reporteclientes();
+            if(empty($datos)){
+            $salida.="No hay compras";
+            }else {
+        $salida.="<table>
+        <thead>
+            <tr>
+                <th>Nombre cliente</th>
+                <th>Total compras</th>
+            </tr>
+            </thead>
+            <tbody>";
+        foreach($datos as $value):
+        $salida.="<tr>
+                <td>
+                    ".$value->cliente."
+                </td>
+                <td>
+                    ".$value->entregado."
+                </td>
+    </tr>";
+        endforeach;
+        $salida.="</tbody></table>";
+        }
+        }else if($_POST["reporte"] == "2"){
+            $datos = $reporte->buscar_reportevendidos();
+            if(empty($datos)){
+            $salida.="No hay ventas";
+            }else {
+        $salida.="<table>
+        <thead>
+            <tr>
+                <th>Nombre producto</th>
+                <th>Cantidad vendida</th>
+            </tr>
+            </thead>
+            <tbody>";
+        foreach($datos as $value):
+        $salida.="<tr>
+                <td>
+                    ".$value->nombre_producto."
+                </td>
+                <td>
+                    ".$value->vendido."
+                </td>
+    </tr>";
+        endforeach;
+        $salida.="</tbody></table>";
+            }
+        }else if($_POST["reporte"] == "3"){
+            $datos = $reporte->buscar_reportecomprados();
+            if(empty($datos)){
+            $salida.="No hay compras";
+            }else {
+        $salida.="<table>
+        <thead>
+            <tr>
+                <th>Nombre producto</th>
+                <th>Cantidad Comprada</th>
+            </tr>
+            </thead>
+            <tbody>";
+        foreach($datos as $value):
+        $salida.="<tr>
+                <td>
+                    ".$value->nombre_producto."
+                </td>
+                <td>
+                    ".$value->comprado."
+                </td>
+    </tr>";
+        endforeach;
+        $salida.="</tbody></table>";
+            }
+        }else if($_POST["reporte"] == "4"){
+            $datos = $reporte->Buscar_reporteruta();
+            if(empty($datos)){
             $salida.="No hay ventas";
         }else {
         $salida.="<table>
@@ -60,7 +151,9 @@ class ReporteController {
         endforeach;
         $salida.="</tbody></table>";
         }
+        }
+
+
         echo $salida;
     }
-    
 }

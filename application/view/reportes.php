@@ -41,7 +41,10 @@
 </form>
 
 <div id="informe">
-    <table id="datos-reportes"></table>
+    <div class="table-responsive">
+        <table id="datos-reportes"></table>
+    </div>
+
     <input type="button" value="Descargar a excel" id="enviar">
 </div>
 
@@ -49,4 +52,5 @@
     $(document).ready(function() {
         $("#select_reportes").select2();
     });
+
 </script>

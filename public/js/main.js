@@ -700,6 +700,23 @@ function LimpiarForm2() {
     $("select").val('').trigger('change');
 }
 
+$(document).on('click', '#detalle-compra', function () {
+    var ide = $(this).val();
+    $('.modal-contents').slideToggle();
+    $('#simpleModal-compra').show(function () {
+        $('.modal-contents').slideDown();
+        ConsultarDetalle(ide);
+    });
+    return false;
+});
+
+$(document).on('click', '#volver-compra', function () {
+    $('.modal-contents').slideToggle(function () {
+        $('#simpleModal-compra').hide();
+    });
+    return false;
+});
+
 //Form reportes
 $(document).on('change', '#reporte', function () {
     if ($(this).val() != "") {
@@ -709,22 +726,26 @@ $(document).on('change', '#reporte', function () {
             $('#select_reportes').prop('disabled', true);
             $('#select_reportes').val('').trigger('change');
             $('#datos-reportes').empty();
+            reportes("", $('#inicio').val(), $('#fin').val(), $('#reporte').val());
         } else if ($(this).val() == 2) {
             $('#inicio').prop('disabled', false);
             $('#fin').prop('disabled', false);
             $('#select_reportes').prop('disabled', true);
             $('#select_reportes').val('').trigger('change');
             $('#datos-reportes').empty();
+            reportes("", $('#inicio').val(), $('#fin').val(), $('#reporte').val());
         } else if ($(this).val() == 3) {
             $('#inicio').prop('disabled', false);
             $('#fin').prop('disabled', false);
             $('#select_reportes').prop('disabled', true);
             $('#select_reportes').val('').trigger('change');
             $('#datos-reportes').empty();
+            reportes("", $('#inicio').val(), $('#fin').val(), $('#reporte').val());
         } else if ($(this).val() == 4) {
             $('#inicio').prop('disabled', true);
             $('#fin').prop('disabled', true);
             $('#select_reportes').prop('disabled', false);
+            $('#datos-reportes').empty();
             mensaje = "Seleccione una ruta";
             ver_success();
         }
@@ -738,9 +759,25 @@ $(document).on('change', '#reporte', function () {
 
 $(document).on('change', '#select_reportes', function () {
     if ($(this).val() != "") {
-        reporte_por_ruta($(this).val(), $('#inicio').val(), $('#fin').val());
+        $('#inicio').prop('disabled', false);
+        $('#fin').prop('disabled', false);
+        reportes($(this).val(), $('#inicio').val(), $('#fin').val(), $('#reporte').val());
     } else {
         $('#datos-reportes').empty();
+    }
+});
+
+$(document).on('change', '#inicio,#fin', function () {
+    if ($('#inicio').val() != "" || $('#fin').val() != "") {
+        if ($('#reporte').val() == 1) {
+            reportes("", $('#inicio').val(), $('#fin').val(), $('#reporte').val());
+        } else if ($('#reporte').val() == 2) {
+            reportes("", $('#inicio').val(), $('#fin').val(), $('#reporte').val());
+        } else if ($('#reporte').val() == 3) {
+            reportes("", $('#inicio').val(), $('#fin').val(), $('#reporte').val());
+        } else if ($('#reporte').val() == 4) {
+            reportes($('#select_reportes').val(), $('#fin').val(), $('#reporte').val(), $('#reporte').val());
+        }
     }
 });
 
