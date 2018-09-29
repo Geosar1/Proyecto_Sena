@@ -55,7 +55,7 @@ function consultar_producto() {
                 guardar_producto();
             } else {
                 mensaje = respuesta;
-                ver_fail();
+                ver_alerta();
             }
         })
         .fail(function () {
@@ -80,10 +80,10 @@ function guardar_producto() {
         .done(function (respuesta) {
             if (respuesta == "no" || respuesta == "No se guardo") {
                 mensaje = "Error al ejecutar la accion";
-                ver_fail();
+                ver_alerta();
             } else {
                 mensaje = "Se creo correctamente";
-                ver_success();
+                ver_alerta();
                 $('#crear_productos').trigger('reset');
                 buscar_producto();
             }
@@ -106,7 +106,7 @@ function cambiar_producto(consulta, consulta2) {
         .done(function (respuesta) {
             if (respuesta == "si") {
                 mensaje = "Estado del producto cambiado correctamente";
-                ver_success();
+                ver_alerta();
 
                 var buscar = $('#nombre_p').val();
                 var buscar2 = $("#categorias_p").val();
@@ -118,7 +118,7 @@ function cambiar_producto(consulta, consulta2) {
                 }
             } else {
                 mensaje = "Error al cambiar el estado";
-                ver_fail();
+                ver_alerta();
             }
         })
         .fail(function () {
@@ -166,13 +166,13 @@ function modificar_producto() {
         .done(function (respuesta) {
             if (respuesta == "si") {
                 mensaje = "Se modifico correctamente";
-                ver_success();
+                ver_alerta();
                 $('#guardar_producto').show();
                 $('#modificar_p').hide();
                 buscar_producto();
             } else {
                 mensaje = "Error al ejecutar la accion,intentelo de nuevo";
-                ver_fail();
+                ver_alerta();
             }
         })
         .fail(function () {
@@ -210,10 +210,10 @@ function guardar_detalle() {
             if (respuesta == "si") {
                 listar_detalle();
                 mensaje = "Se creo correctamente";
-                ver_success();
+                ver_alerta();
             } else {
                 mensaje = "Este proveedor ya fue asignado";
-                ver_fail();
+                ver_alerta();
             }
         })
         .fail(function () {
@@ -251,11 +251,11 @@ function cambiar_detalle(consulta, consulta2) {
         .done(function (respuesta) {
             if (respuesta == "si") {
                 mensaje = "Estado cambiado correctamente";
-                ver_success();
+                ver_alerta();
                 listar_detalle(id);
             } else {
                 mensaje = "Error al cambiar el estado";
-                ver_fail();
+                ver_alerta();
             }
         })
         .fail(function () {
@@ -293,10 +293,10 @@ function guardar_categoria(consulta) {
         .done(function (respuesta) {
             if (respuesta == "Ya existe") {
                 mensaje = respuesta;
-                ver_fail();
+                ver_alerta();
             } else {
                 mensaje = "Se guardo la categoria correctamente";
-                ver_success();
+                ver_alerta();
                 buscar_categoria();
             }
         })
@@ -318,7 +318,7 @@ function cambiar_categoria(consulta, consulta2) {
         .done(function (respuesta) {
             if (respuesta == "si") {
                 mensaje = "Estado de la categoria cambiado correctamente";
-                ver_success();
+                ver_alerta();
 
                 var buscar = $('#nombre_c').val();
 
@@ -329,7 +329,7 @@ function cambiar_categoria(consulta, consulta2) {
                 }
             } else {
                 mensaje = "Error al cambiar el estado";
-                ver_fail();
+                ver_alerta();
             }
         })
         .fail(function () {
@@ -367,14 +367,14 @@ function modificar_categoria(consulta, consulta2) {
         .done(function (respuesta) {
             if (respuesta == "si") {
                 mensaje = "Categoria modificada correctamente";
-                ver_success();
+                ver_alerta();
                 buscar_categoria($('#nombre_c').val());
                 $('#guardar_c').show();
                 $('#modificar_c').hide();
                 id = "";
             } else {
                 mensaje = respuesta;
-                ver_fail();
+                ver_alerta();
             }
         })
         .fail(function () {
@@ -541,7 +541,7 @@ function cambiar_proveedor(consulta, consulta2) {
         .done(function (respuesta) {
             if (respuesta == "si") {
                 mensaje = "Estado del proveedor cambiado correctamente";
-                ver_success();
+                ver_alerta();
 
                 var buscar = $('#nombre_em').val();
 
@@ -552,7 +552,7 @@ function cambiar_proveedor(consulta, consulta2) {
                 }
             } else {
                 mensaje = "Error al cambiar el estado";
-                ver_fail();
+                ver_alerta();
             }
         })
         .fail(function () {
@@ -616,7 +616,7 @@ function cambiar_usuario(consulta, consulta2) {
         .done(function (respuesta) {
             if (respuesta == "si") {
                 mensaje = "Estado del usuario cambiado correctamente";
-                ver_success();
+                ver_alerta();
 
                 var buscar = $('#nombres_us').val();
 
@@ -627,7 +627,7 @@ function cambiar_usuario(consulta, consulta2) {
                 }
             } else {
                 mensaje = "Error al cambiar el estado del usuario";
-                ver_fail();
+                ver_alerta();
             }
         })
         .fail(function () {
@@ -647,13 +647,13 @@ function cambiar_contrasena(consulta) {
         .done(function (respuesta) {
             if (respuesta == "Si") {
                 mensaje = "Clave cambiada correctamente";
-                ver_success();
+                ver_alerta();
                 $('.modal-content').slideToggle(function () {
                     $('#simpleModalPass').hide();
                 });
             } else {
                 mensaje = "Error";
-                ver_fail();
+                ver_alerta();
             }
         })
         .fail(function () {
@@ -721,7 +721,7 @@ function cambiar_cliente(consulta, consulta2) {
         .done(function (respuesta) {
             if (respuesta == "si") {
                 mensaje = "Estado del cliente cambiado correctamente";
-                ver_success();
+                ver_alerta();
 
                 var buscar = $('#nombres').val();
 
@@ -732,7 +732,7 @@ function cambiar_cliente(consulta, consulta2) {
                 }
             } else {
                 mensaje = "Error al cambiar el estado";
-                ver_fail();
+                ver_alerta();
             }
         })
         .fail(function () {
@@ -783,7 +783,8 @@ function ConsultarDetalleP(id) {
 
             $("#Modal_Pedido").modal();
         } else {
-            alert("no tiene pedidos");
+            mensaje = "no tiene pedidos";
+            ver_alerta();
         }
     });
 }
@@ -832,7 +833,8 @@ function ConsultarPed() {
                 );
             });
         } else {
-            alert("no hay registros para el rango seleccionado");
+            mensaje ="no hay registros para el rango seleccionado";
+            ver_alerta();
         }
     });
 }
@@ -850,11 +852,11 @@ function cambiar_pedido(consulta, consulta2) {
         .done(function (respuesta) {
             if (respuesta == "si") {
                 mensaje = "Estado del pedido cambiado correctamente";
-                ver_success();
+                ver_alerta();
                 ConsultarPed();
             } else {
                 mensaje = "Error al cambiar estado";
-                ver_fail();
+                ver_alerta();
             }
         })
         .fail(function () {
@@ -937,7 +939,8 @@ function listar_proveedor(Code) {
             $("#ddlproveedor").val(Code);
             $("#proveedor").attr("disabled", true);
         } else {
-            alert("La consulta de proveedor no generó resultados.");
+            mensaje ="La consulta de proveedor no generó resultados.";
+            ver_alerta();
         }
     });
 }
@@ -968,7 +971,8 @@ function ConsultarDetalle(id) {
 
             $("#Modal_Compra").modal();
         } else {
-            alert("no tiene compras");
+            mensaje ="no tiene compras";
+            ver_alerta();
         }
     });
 }
@@ -1000,7 +1004,8 @@ function ConsultarCompra() {
                 );
             });
         } else {
-            alert("no hay compras para ese rango seleccionado");
+            mensaje ="no hay compras para ese rango seleccionado";
+            ver_alerta();
         }
     });
 }
