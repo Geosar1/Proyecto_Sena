@@ -472,7 +472,6 @@ $(document).on('change', '#recordar', function () {
         $('#key').get(0).type = 'date';
         $('#entrar').hide();
         $('#recuperar').show();
-        mensaje = "Ingresa tus datos de seguridad";
         ver_success();
     } else {
         $('#user').attr("placeholder", "Usuario");
@@ -787,4 +786,4 @@ $(document).on('click', '#limpiar_reporte', function () {
     $('#fin').prop('disabled', true);
     $('#select_reportes').prop('disabled', true);
     $('select').val('').trigger('change');
-})
+});

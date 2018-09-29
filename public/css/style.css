@@ -119,3 +119,102 @@ table .detalle {
 .table-responsive {
     max-height: 300px;
 }
+
+/*Alerta menu */
+.alert{
+    position: absolute;
+    padding-right: 55px;
+    max-width: 300px;
+    margin-top: 90px;
+    border-radius: 15px;
+    background-color: #FFF;
+    color: #283896;
+    -webkit-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+    display: none;
+    z-index: 1000000;
+    cursor: pointer;
+}
+/*alert-success*/
+.alert-succes button{
+    background-color: #c9460c;
+    color:#FFF;
+}
+
+.alert-succes hr{
+        border-color: #c9460c;
+}
+/**/
+/*alert-warning*/
+.alert-warning button{
+    background-color: #E5A218;
+    color:#FFF;
+}
+
+.alert-warning hr{
+        border-color: #E5A218;
+}
+/**/
+/*alert-error*/
+.alert-error button{
+    background-color: #FF0000;
+    color:#FFF;
+}
+
+.alert-error hr{
+    border-color: #FF0000;
+}
+/**/
+
+.hr-alert {
+    margin-top: 0px;
+    margin-bottom: 10px;
+    border: 0;
+    border-top: 4px solid #eee;
+}
+
+.btn-circle {
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  padding: 6px 0;
+  font-size: 12px;
+  line-height: 1.428571429;
+  border-radius: 15px;
+}
+
+.btn-circle.btn-lg {
+  width: 50px;
+  height: 50px;
+  padding: 10px 16px;
+  font-size: 18px;
+  line-height: 1.33;
+  border-radius: 25px;
+}
+.btn-circle.btn-xl-alert  {
+  width: 70px;
+  height: 70px;
+  padding: 10px 16px;
+  font-size: 24px;
+  line-height: 1.33;
+  border-radius: 35px;
+  cursor:default;
+  transition: background-color 1s, color 1s;
+}
+
+.btn-float-alert{
+    position: absolute;
+    right:-20px;
+    top:-20px;
+}
+
+.pull-right {
+    position: absolute;
+    right: 20px;
+}
+
+strong {
+    font-size: 15px;
+    text-align: center;
+}
