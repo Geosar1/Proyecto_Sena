@@ -89,4 +89,11 @@ class ruta extends Model{
         $stm->execute();
         return $stm->fetchAll();
     }
+
+    public function buscar_ruta(){
+        $stm = $this->db->prepare("CALL Buscar_Rutas(?)");
+        $stm->bindParam(1,$this->nombre_ruta);
+        $stm->execute();
+        return $stm->fetchAll();
+    }
 }

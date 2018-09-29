@@ -41,15 +41,20 @@ class RutaController{
          $rutas->__SET("nombre_ruta", $_POST["txtNombre"]);
          $rutas->__SET("id_municipio", $_POST["ddlMuni"]);
          $rutas->__SET("id_barrio", $_POST["ddlbarri"]);
-
-        if($rutas->crear()){
-            $_SESSION["RESPUESTA"] = "Guardado";
-        } else {
-            $_SESSION["RESPUESTA"] = "No se guardo";
+         $consulta = $rutas->buscar_ruta();
+         if(empty($consulta)){
+         if($rutas ->crear()){
+                $_SESSION['RESPUESTA']= "Ruta guardada correctamente";
+            }else {
+                $_SESSION["RESPUESTA"] = "No se guardo";
+            }
+            }else{
+                $_SESSION["RESPUESTA"] = "La Ruta ya existe";
+            }
+    
+            $_SESSION['LOCAL']= "8";
+            header("location: ".URL."Login/menu");
         }
-        $_SESSION["LOCAL"] = "8";
-        header("location: ".URL."Login/menu"); 
-    }
 
        public function estado($id_ruta,$estado ){
         $rutas = new ruta();
