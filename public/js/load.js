@@ -183,6 +183,8 @@ $(document).on('click', '#tedi', function () {
     $('#tabla_rutas').hide();
     $('#inicio_ruta').hide();
     editarBarrios(id);
+
+    return false;
 });
 
 //Pedidos
