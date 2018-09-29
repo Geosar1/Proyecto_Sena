@@ -13,6 +13,10 @@ form {
     margin: 0 auto;
     text-align: center;
 }
+form a,
+form h5 {
+    float: left;
+}
 
 #consulta_cartera label {
     font-size: 15px;

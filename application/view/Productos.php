@@ -1,6 +1,6 @@
 <form id="crear_productos">
     <h2 id="titulo">Productos</h2>
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
             <div class="col-md-4 form-group">
                 <label>Nombre Producto*</label>
@@ -19,7 +19,7 @@
         </div>
     </div>
 
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
             <div class="col-md-4 form-group">
                 <label>Stock Mínimo</label>
