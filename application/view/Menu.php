@@ -141,11 +141,6 @@ if(isset ($_SESSION['USUARIO'])){ ?>
         </div>
         <!-- /. PAGE WRAPPER  -->
     </div>
-    <?php if(isset($_SESSION['RECUPERACION'])): ?>
-    <input type="hidden" id="recuperar" value="<?= $_SESSION['RECUPERACION']->id_usuario?>">
-    <?php else: ?>
-    <input type="hidden" id="recuperar">
-    <?php endif; ?>
 </body>
 
 </html>

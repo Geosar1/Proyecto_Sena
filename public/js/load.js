@@ -1,4 +1,4 @@
-$(traer(), mostrar(), menus(), ver_agotados(), recuperar());
+$(traer(), mostrar(), menus(), ver_agotados());
 
 function menus() {
     if ($('#user_log').val() == "ADMINISTRADOR") {
@@ -66,7 +66,7 @@ function traer() {
 function mostrar() {
     if ($('#org').val() != "") {
         mensaje = $('#org').val();
-        ver_success();
+        ver_alerta();
         limpiar();
     }
 }

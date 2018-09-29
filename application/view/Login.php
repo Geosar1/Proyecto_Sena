@@ -4,15 +4,13 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="<?= URL ?>/public/css/bootstrap-yeti.css">
     <link rel="stylesheet" href="<?= URL ?>/public/css/Login.css">
-    <link rel="stylesheet" href="<?= URL ?>/public/css/alerta.css">
     <link rel="stylesheet" href="<?= URL ?>/public/font-awesome/css/font-awesome.min.css">
-
 </head>
 
 <body>
     <div class="container">
         <div class="row">
-            <div class="popupunder alert alert-success fade in"><strong>Success : </strong> The update process has been completed successfull!</div>
+            <div class="popupunder alert alert-success fade in">Ingresa tus datos de seguridad</div>
         </div>
     </div>
 
