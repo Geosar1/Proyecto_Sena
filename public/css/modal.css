@@ -1,12 +1,29 @@
 .modal {
     display: none;
     position: fixed;
-    z-index: 1;
+    z-index: 1000000;
     left: 0;
     top: 0;
     height: 100%;
     width: 100%;
     background-color: rgba(0, 0, 0, 0.5);
+}
+
+.succes {
+    background-color: #f04124;
+    border-radius: 5px;
+    padding: 5px 10px 5px 10px;
+    color: white;
+    margin-right: 30px;
+}
+
+input[type=button],
+input[type=reset],
+input[type=submit],
+button {
+    border: none;
+    margin-bottom: 5px;
+    margin-top: 8px;
 }
 
 #volver,

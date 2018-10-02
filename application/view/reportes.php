@@ -10,6 +10,7 @@
                     <option value="2">Productos mas vendidos</option>
                     <option value="3">Productos mas comprados</option>
                     <option value="4">Ventas por ruta</option>
+                    <option value="5">Movimientos</option>
                 </select>
             </div>
             <div class="col-md-4 form-group">
@@ -35,6 +36,18 @@
                     <?php endforeach ?>
                 </select>
             </div>
+
+            <div class="col-md-4 form-group">
+                <label>Producto</label>
+                <select class="form-control" name="producto" id="producto_report" required>
+                    <option value="">Seleccione</option>
+                    <?php foreach($pro as $value): ?>
+                    <option value="<?= $value->id_producto ?>">
+                        <?= $value->nombre_producto ?>
+                    </option>
+                    <?php endforeach ?>
+                </select>
+            </div>
         </div>
     </div>
     <input id="limpiar_reporte" type="reset" value="Limpiar">
@@ -51,6 +64,6 @@
 <script>
     $(document).ready(function() {
         $("#select_reportes").select2();
+        $("#producto_report").select2();
     });
-
 </script>

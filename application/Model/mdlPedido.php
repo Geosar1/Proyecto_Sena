@@ -60,4 +60,11 @@ class mdlPedido extends Model {
         $stm->bindParam(2, $this->estado_pedido);
         return $stm->execute();
     }
+
+    public function buscar_pedido(){
+        $stm = $this->db->prepare("CALL Buscar_pedido(?)");
+        $stm->bindParam(1, $this->id_pedido);
+        $stm->execute();
+        return $stm->fetchAll();
+    }
 }

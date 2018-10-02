@@ -10,6 +10,8 @@ class Movimientos extends Model {
     private $producto;
     private $descripcion;
     private $cantidad;
+    private $pedido;
+    private $valor;
 
     public function __SET($attr, $valor){
         $this->$attr = $valor;
@@ -42,6 +44,17 @@ class Movimientos extends Model {
         $stm->bindParam(2,$this->tipo);
         $stm->bindParam(3,$this->descripcion);
         $stm->bindParam(4,$this->cantidad);
+        return $stm->execute();
+    }
+
+    public function guardar(){
+        $stm = $this->db->prepare("CALL Guardar_movimiento(?,?,?,?,?,?)");
+        $stm->bindParam(1,$this->producto);
+        $stm->bindParam(2,$this->tipo);
+        $stm->bindParam(3,$this->descripcion);
+        $stm->bindParam(4,$this->cantidad);
+        $stm->bindParam(5,$this->pedido);
+        $stm->bindParam(6,$this->valor);
         return $stm->execute();
     }
 }
