@@ -661,10 +661,7 @@ function cambiar_contrasena(consulta) {
             if (respuesta == "Si") {
                 mensaje = "Clave cambiada correctamente";
                 ver_alerta();
-<<<<<<< HEAD
                 ver_success();
-=======
->>>>>>> origin/master
                 $('.modal-content').slideToggle(function () {
                     $('#simpleModalPass').hide();
                 });
@@ -850,11 +847,7 @@ function ConsultarPed() {
                 );
             });
         } else {
-<<<<<<< HEAD
             mensaje = "no hay registros para el rango seleccionado";
-=======
-            mensaje ="no hay registros para el rango seleccionado";
->>>>>>> origin/master
             ver_alerta();
         }
     });
@@ -878,7 +871,6 @@ function cambiar_pedido(consulta, consulta2) {
             } else {
                 mensaje = "Error al cambiar estado";
                 ver_alerta();
-<<<<<<< HEAD
             }
         })
         .fail(function () {
@@ -901,8 +893,6 @@ function buscar_pedido(consulta) {
                 ver_alerta();
             } else {
                 $('#producto_mov').html(respuesta);
-=======
->>>>>>> origin/master
             }
         })
         .fail(function () {
@@ -985,11 +975,7 @@ function listar_proveedor(Code) {
             $("#ddlproveedor").val(Code);
             $("#proveedor").attr("disabled", true);
         } else {
-<<<<<<< HEAD
             mensaje = "La consulta de proveedor no generó resultados.";
-=======
-            mensaje ="La consulta de proveedor no generó resultados.";
->>>>>>> origin/master
             ver_alerta();
         }
     });
@@ -1021,11 +1007,7 @@ function ConsultarDetalle(id) {
 
             $("#Modal_Compra").modal();
         } else {
-<<<<<<< HEAD
             mensaje = "no tiene compras";
-=======
-            mensaje ="no tiene compras";
->>>>>>> origin/master
             ver_alerta();
         }
     });
@@ -1058,11 +1040,7 @@ function ConsultarCompra() {
                 );
             });
         } else {
-<<<<<<< HEAD
             mensaje = "no hay compras para ese rango seleccionado";
-=======
-            mensaje ="no hay compras para ese rango seleccionado";
->>>>>>> origin/master
             ver_alerta();
         }
     });

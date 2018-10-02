@@ -443,12 +443,13 @@ $(document).on('click', '#reset_mov', function () {
     buscar_movimientos();
 });
 
-<<<<<<< HEAD
 $(document).on('change', '#mov', function () {
     if ($(this).val() == "pedido") {
         $('#pedido').prop('disabled', false);
         $('#pedido').prop('required', true);
-=======
+    }
+});
+
 //Login
 $(document).on('click', '#entrar', function () {
     var dato = $('#user').val();
@@ -481,7 +482,6 @@ $(document).on('change', '#recordar', function () {
         $('#entrar').hide();
         $('#recuperar').show();
         ver_success();
->>>>>>> origin/master
     } else {
         $('#pedido').prop('disabled', true);
         $('#pedido').prop('required', false);
@@ -539,8 +539,6 @@ function direccion(elemento) {
     $("#dDir").text(dato);
     var dato2 = $("#ddlCliente [value='" + tel + "']").attr("tel");
     $("#tTel").text(dato2);
-
-
 }
 
 $(document).on('click', '#adicionar', function () {
@@ -611,7 +609,7 @@ $(document).on('click', '#Estado_pedido', function () {
         ver_success();
     }
     return false;
-})
+});
 
 //Form compras
 function validar() {
@@ -658,7 +656,6 @@ function agregarProducto() {
         total: $("#lbtotal").val()
 
     };
-
 
     lista.forEach(element => {
         if (element.productocodigo == idProducto) {
@@ -825,12 +822,9 @@ $(document).on('click', '#limpiar_reporte', function () {
     $('#select_reportes').prop('disabled', true);
     $('select').val('').trigger('change');
 });
-<<<<<<< HEAD
 
 //Form login
 $(document).on('click', '#quitar', function () {
     cerrar();
     return false;
 });
-=======
->>>>>>> origin/master
