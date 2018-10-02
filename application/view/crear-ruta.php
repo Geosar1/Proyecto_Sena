@@ -1,9 +1,10 @@
 <form action="<?= URL ?>ruta/guardar" method="post">
-    <h2>Crear Ruta</h2>
+    <h2 id="titulo">Crear Ruta</h2>
+    <hr />
     <div class="container">
         <div class="row">
             <div class="col-md-4 form-group">
-                <label for="">Nombre de ruta</label>
+                <label for="">Nombre de Ruta</label>
                 <Input autocomplete="off" type="text" class="form-control" id="txtNombre" name="txtNombre">
             </div>
 

@@ -123,7 +123,7 @@ if(isset ($_SESSION['USUARIO'])){ ?>
                             <br>
                             <h2>Bienvenido.</h2>
 
-                            <h5>Que actividad deseas hacer hoy? </h5><br>
+                            <h4>Que actividad deseas hacer hoy? </h4><br>
                             <?php if($_SESSION['USUARIO']->rol_usuario == "ADMINISTRADOR" || $_SESSION['USUARIO']->rol_usuario == "BODEGA"){?>
                             <h4>Productos agotados</h4>
                             <table id="table-ver"></table>

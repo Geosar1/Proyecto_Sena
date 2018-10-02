@@ -29,8 +29,8 @@ class UsuarioController {
             <tr>
                 <th>Nombres</th>
                 <th>Apellidos</th>
-                <th>Tipo documento</th>
-                <th>Numero documento</th>
+                <th>Tipo Documento</th>
+                <th>Número Documento</th>
                 <th>Tipo Usuario</th>
                 <th>Usuario</th>
                 <th>Estado</th>

@@ -1,5 +1,7 @@
 <form action="<?= URL ?>pedido\guardar" method="POST" name="pedido" id="form_pedido">
 
+<h2> Crear Pedidos </H2>
+<hr />
 	<div class="container">
 
 		<div class="card bg-warning text-black col-sm-9 col-md-9 col-sx-12">

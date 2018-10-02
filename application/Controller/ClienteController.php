@@ -47,9 +47,9 @@ class ClienteController {
             <tr>
                 <th>Nombres</th>
                 <th>Apellidos</th>
-                <th>Tipo documento</th>
-                <th>Numero documento</th>
-                <th>Direccion</th>
+                <th>Tipo Documento</th>
+                <th>Número Documento</th>
+                <th>Dirección</th>
                 <th>Celular</th>
                 <th>Ruta</th>
                 <th>Estado</th>

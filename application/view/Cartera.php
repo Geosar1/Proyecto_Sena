@@ -1,8 +1,9 @@
 <form id="consulta_cartera">
     <input type="hidden" id="id-cliente">
-    <h2 id="titulo">Consultar cartera</h2>
+    <h2 id="titulo">Consultar Cartera</h2>
+    <hr />
     <select id="cedula">
-        <option value="">Seleccione cliente</option>
+        <option value="">Seleccione Cliente</option>
         <?php foreach($resultado as $value): ?>
         <option value="<?= $value->numero_documento ?>">
             <?= $value->nombres_cliente." ".$value->apellidos_cliente." Cedula:".$value->numero_documento ?>
@@ -19,13 +20,13 @@
 <form id="datos-cliente">
     <div>
        <h3>Datos</h3>
-        <label>Nombre cliente:</label> <br>
+        <label>Nombre Cliente:</label> <br>
         <label id="nombre_cliente">""</label> <br>
-        <label>Cartera Limite:</label> <br>
+        <label>Cartera Límite:</label> <br>
         <label id="cartera">0</label> <br>
-        <label>Cartera disponible:</label> <br>
+        <label>Cartera Disponible:</label> <br>
         <label id="disponible">0</label> <br>
-        <label>Valor del pedido pendiente:</label> <br>
+        <label>Valor del Pedido Pendiente:</label> <br>
         <label id="pedido">0</label>
     </div>
 

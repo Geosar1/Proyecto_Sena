@@ -69,7 +69,7 @@ class ReporteController {
         <thead>
             <tr>
                 <th>Nombre producto</th>
-                <th>Cantidad vendida</th>
+                <th>Cantidad Vendida</th>
             </tr>
             </thead>
             <tbody>";
@@ -93,7 +93,7 @@ class ReporteController {
         $salida.="<table>
         <thead>
             <tr>
-                <th>Nombre producto</th>
+                <th>Nombre Producto</th>
                 <th>Cantidad Comprada</th>
             </tr>
             </thead>
@@ -118,12 +118,12 @@ class ReporteController {
         $salida.="<table>
         <thead>
             <tr>
-                <th>Nombre cliente</th>
+                <th>Nombre Cliente</th>
                 <th>ID Pedido</th>
                 <th>Fecha</th>
-                <th>Tipo de venta</th>
-                <th>Precio del pedido</th>
-                <th>observaciones</th>
+                <th>Tipo de Venta</th>
+                <th>Precio del Pedido</th>
+                <th>Observaciones</th>
             </tr>
             </thead>
             <tbody>";

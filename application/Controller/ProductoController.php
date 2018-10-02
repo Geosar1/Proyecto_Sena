@@ -52,11 +52,11 @@ $salida.="<div class='table-responsive'><table class='table'>
         <thead>
             <tr>
                 <th>Nombre</th>
-                <th>Precio de venta</th>
+                <th>Precio de Venta</th>
                 <th>Existencia</th>
                 <th>Estado</th>
-                <th>Stock minimo</th>
-                <th>Categoria</th>
+                <th>Stock Mínimo</th>
+                <th>Categoría</th>
                 <th>
                 </th>
                 <th>
@@ -96,7 +96,7 @@ if($value->estado_producto==1){
                     ".$value->nombre_categoria."
                 </td>
                 <td>
-                    <button id='asignar' value=".$value->id_producto." title='Asignar proveedor' style = 'background-color: gray'><i class='fas fa-user-plus'></i></button>
+                    <button id='asignar' value=".$value->id_producto." title='Asignar Proveedor' style = 'background-color: gray'><i class='fas fa-user-plus'></i></button>
                 </td>
                 <td>
                     <button class='modificar' id='editar_p' value=".$value->id_producto.">Modificar</button>

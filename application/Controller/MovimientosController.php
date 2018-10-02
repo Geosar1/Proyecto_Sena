@@ -44,9 +44,9 @@ class MovimientosController {
         <thead>
             <tr>
                 <th>Producto</th>
-                <th>Tipo de movimiento</th>
-                <th>cantidad</th>
-                <th>Descripcion</th>
+                <th>Tipo de Movimiento</th>
+                <th>Cantidad</th>
+                <th>Descripción</th>
                 <th>Fecha</th>
             </tr>
             </thead>

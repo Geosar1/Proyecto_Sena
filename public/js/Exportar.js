@@ -9,5 +9,5 @@ function descargarExcel() {
     buscar_usuario();
     buscar_producto();
     mensaje = "Reporte generado correctamente";
-    ver_success();
+    ver_alerta();
 }

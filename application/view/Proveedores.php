@@ -1,5 +1,6 @@
 <form id="registro_pre" action="" method="post">
     <h2 id="titulo">Proveedores</h2>
+    <hr />
     <input type="hidden" id="id_proveedor" name="id">
     <div class="container-fluid">
         <div class="row">
@@ -52,15 +53,11 @@
         </div>
     </div>
 
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-4 form-group">
+    
                 <input class="succes" id="guardar_proveedor" type="submit" value="Guardar" formaction="<?= URL ?>proveedor/guardar">
                 <input class="succes" id="modificar_proveedor" type="submit" value="Guardar cambios" formaction="<?= URL ?>proveedor/modificar">
                 <input id="cancelar_mod" type="reset" value="Cancelar">
-            </div>
-        </div>
-    </div>
+         
 
     <br>
 

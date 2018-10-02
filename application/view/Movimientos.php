@@ -1,12 +1,13 @@
 <form method="post" action="<?= URL ?>movimientos/guardar">
     <h2 id="titulo2">Movimientos</h2>
+    <hr />
     <div class="container">
         <div class="row">
             <div class="col-md-4 form-group">
-                <label>Tipo de movimiento</label>
+                <label>Tipo de Movimiento</label>
                 <select class="form-control" id="mov" name="mov" required>
                     <option value="">Seleccione</option>
-                    <option value="baja">Dada de baja</option>
+                    <option value="baja">Dada de Baja</option>
                     <option value="devolucion">Devolución</option>
                 </select>
             </div>

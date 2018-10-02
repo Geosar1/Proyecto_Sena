@@ -1,5 +1,6 @@
 <form id="registro_cliente" action="" method="post">
     <h2 id="titulo">Clientes</h2>
+    <hr />
     <input type="hidden" id="id_cliente" name="id">
 
     <div class="container-fluid">

@@ -1,4 +1,4 @@
-<h2> Pedidos </H2>
+<h2> Consultar Pedidos </H2>
 <hr />
 <br />
 <form action="">

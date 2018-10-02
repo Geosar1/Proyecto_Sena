@@ -1,5 +1,6 @@
 <form id="registro_pre" action="" method="post">
     <h2 id="titulo">Usuarios</h2>
+    <hr />
     <input type="hidden" id="id_usuario" name="id">
 
     <div class="container-fluid">
@@ -66,17 +67,13 @@
 
     <br>
 
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-4 form-group">
+    
+           
 
                 <input class="succes" id="guardar_usuario" type="submit" value="Guardar" formaction="<?= URL ?>usuario/guardar">
                 <input class="succes" id="modificar_usuario" type="submit" value="Guardar cambios" formaction="<?= URL ?>usuario/modificar">
                 <input id="cancelar_mod" type="reset" value="Cancelar">
 
-            </div>
-        </div>
-    </div>
 
     <br>
     <div class="table-responsive">

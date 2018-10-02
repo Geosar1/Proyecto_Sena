@@ -1,11 +1,13 @@
-<div class="container">
+<div class="container-fluid">
     <form action=" <?= URL ?>compras/guardar" method="POST" id="idcrear">
+    <h2>Crear Compras</h2>
+    <hr />
         <div class="row">
             <div class="col-lg-4 col-md-4 col-sm-6 col-sx-12">
                 <div class="form-group">
-                    <label for="">proveedor</label>
+                    <label for="">Proveedor</label>
                     <select id="proveedor" class="form-control" onchange="listar_proveedor(this.value)">
-                        <option selected value="">seleccionar</option>
+                        <option selected value="">Seleccionar</option>
                         <?php foreach($proveedores as $valor): ?>
                         <option value="<?= $valor->id_proveedor?>">
                             <?= $valor->nombre_empresa?>
@@ -16,7 +18,7 @@
             </div>
             <div class="col-lg-4 col-md-4 col-sm-6 col-sx-12">
                 <div class="form-group">
-                    <label for="">contacto</label>
+                    <label for="">Contacto</label>
                     <input type="text" id="txtContacto" class="form-control" name="txtContacto" disabled="true">
                     <input type="hidden" id="ddlproveedor" class="form-control" name="ddlproveedor">
                 </div>
@@ -49,9 +51,9 @@
         <div class="row">
             <div class="col-lg-4 col-md-4 col-sm-6 col-sx-12">
                 <div class="form-group">
-                    <label for="">producto</label>
+                    <label for="">Producto</label>
                     <select name="ddlproducto" id="ddlproducto" class="form-control">
-                        <option value="">seleccionar</option>
+                        <option value="">Seleccionar</option>
                     </select>
                 </div>
             </div>
@@ -89,13 +91,13 @@
                 <div class="form-group">
                     <label for=""> </label>
                     <br />
-                    <button onclick="agregarProducto()" type="button" class="btn btn primary">Agregar</button>
+                    <button onclick="agregarProducto()" type="button" class="succes">Agregar</button>
                 </div>
             </div>
             <div class="col-lg-1 col-md-1 col-sm-2 col-sx-2">
                 <div class="form-group">
                     <br />
-                    <button onclick="LimpiarForm()" type="reset" class="btn btn primary " name="btnLimpiar" id="btnLimpiar">Cancelar
+                    <button onclick="LimpiarForm()" class="btn btn" type="reset" name="btnLimpiar" id="btnLimpiar">Cancelar
                     </button>
                 </div>
             </div>
@@ -122,7 +124,7 @@
         <div class="row">
             <div class="col-lg-4 col-md-4 col-sm-6 col-sx-12">
                 <div class="form-group">
-                    <button type="submit" class="btn btn primary" name="guardarCompra" onClick="return validar();">Guardar
+                    <button type="submit" class="succes" name="guardarCompra" onClick="return validar();">Guardar
                     </button>
 
                 </div>

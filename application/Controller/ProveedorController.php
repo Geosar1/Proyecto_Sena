@@ -36,12 +36,12 @@ class ProveedorController {
         $salida.="<table>
         <thead>
             <tr>
-                <th>Nombre empresa</th>
-                <th>Nombre contacto</th>
-                <th>Tipo documento</th>
-                <th>Numero documento</th>
-                <th>Direccion</th>
-                <th>Telefono</th>
+                <th>Nombre Empresa</th>
+                <th>Nombre Contacto</th>
+                <th>Tipo Documento</th>
+                <th>Número Documento</th>
+                <th>Dirección</th>
+                <th>Teléfono</th>
                 <th>Celular</th>
                 <th>Estado</th>
                 <th>

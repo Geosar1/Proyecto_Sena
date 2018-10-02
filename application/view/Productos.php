@@ -1,5 +1,6 @@
 <form id="crear_productos">
     <h2 id="titulo">Productos</h2>
+    <hr />
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-4 form-group">

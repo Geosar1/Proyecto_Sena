@@ -1,10 +1,11 @@
 <form id="form_editar" action="<?= URL ?>ruta/modificarr" method="post">
     <input type="hidden" name="txxtId" id="txxtId">
     <h2>Modificar Ruta</h2>
+    <hr />
     <div class="container">
         <div class="row">
             <div class="col-md-4 form-group">
-                <label for="">Nombre de ruta</label>
+                <label for="">Nombre de Ruta</label>
                 <Input autocomplete="off" type="text" class="form-control" id="txtNombre" name="txtNombre">
             </div>
 
@@ -38,7 +39,8 @@
 </form>
 
 <div id="inicio_ruta">
-    <h2>Rutas</h2>
+    <h2 id="titulo">Rutas</h2>
+    <hr />
     <input class="succes" id="cr" type="submit" value="Crear Ruta">
 </div>
 
@@ -47,7 +49,7 @@
         <table id="rruta">
             <thead>
                 <tr>
-                    <th>Nombre de ruta</th>
+                    <th>Nombre de Ruta</th>
                     <th>Barrio</th>
                     <th>Municipio</th>
                     <th>Estado</th>
@@ -85,6 +87,6 @@
                 <?php endforeach; ?>
             </tbody>
         </table>
-    </div>
-    <input type="button" value="Descargar a excel" id="enviar">
+    </div> <br>
+    <input type="button" value="Descargar a Excel" id="enviar">
 </form>

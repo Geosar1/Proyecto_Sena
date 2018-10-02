@@ -1,11 +1,12 @@
 <form id="idindex">
     <h2>Consultar Compras</h2>
+    <hr />
     <div class="row">
         <div class="col-lg-3 col-md-3 col-sm-4 col-sx-12">
             <div class="form-group">
-                <label for="">proveedor</label>
+                <label for="">Proveedor</label>
                 <select id="proveedor" class="form-control" onchange="ConsultarCompra(this.value)">
-                    <option selected value="">seleccionar</option>
+                    <option selected value="">Seleccionar</option>
                     <?php foreach($proveedores as $valor): ?>
                     <option value="<?= $valor->id_proveedor?>">
                         <?= $valor->nombre_empresa?>
@@ -39,9 +40,9 @@
         <thead>
             <tr>
                 <th>Fecha</th>
-                <th>proveedor</th>
+                <th>Proveedor</th>
                 <th>Total</th>
-                <th>Ver detalle</th>
+                <th>Ver Detalle</th>
             </tr>
 
         </thead>

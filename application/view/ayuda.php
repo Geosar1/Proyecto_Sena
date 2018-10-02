@@ -5,11 +5,12 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12 form-group">
-                 <h5>Esta sección está dedicada a brindar ayuda a través de documentos en formato PDF, donde podrás ubicar en primer lugar el nombre del módulo que deseas conocer, después de dar clic en el enlace, se abrirá en otra página el documento y paso seguido navegaras dentro del documento buscando la información requerida. </h5>
+                <h5>Esta sección está dedicada a brindar ayuda a través de documentos en formato PDF, donde podrás ubicar en primer lugar el nombre del módulo que deseas conocer, después de dar clic en el enlace, se abrirá en otra página el documento y paso seguido navegaras dentro del documento buscando la información requerida. </h5>
             </div>
         </div>
     </div>
-    
+    <hr />
+
     <div class="container-fluid">
         <div class="row">
 
@@ -30,7 +31,7 @@
             </div>
             <br>
             <div class="col-md-12 form-group">
-               <a>Modulo de Cartera.</a>
+                <a>Modulo de Cartera.</a>
             </div>
             <br>
             <div class="col-md-12 form-group">
@@ -50,19 +51,18 @@
             </div>
             <br>
             <div class="col-md-12 form-group">
-               <a>Modulo de Reportes.</a>
+                <a>Modulo de Reportes.</a>
             </div>
-            <br>
-            <div class="col-md-12 form-group">
-                 <h5>Esperamos que esta información te sea de gran ayuda, en caso contrario, no dudes en contactar al administrador del sistema.</h5>
-            </div>
-            
         </div>
     </div>
-    
+    <br>
+    <hr />
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12 form-group">
+                <h5>Esperamos que esta información te sea de gran ayuda, en caso contrario, no dudes en contactar al administrador del sistema a través del correo: administrador@distrijuanes.com</h5>
+            </div>
 
-    
-
-
-
+        </div>
+    </div>
 </form>

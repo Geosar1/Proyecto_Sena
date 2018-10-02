@@ -1,23 +1,24 @@
 <form>
     <h2>Reportes</h2>
+    <hr />
     <div class="container">
         <div class="row">
             <div class="col-md-4 form-group">
-                <label for="exampleFormControlSelect1">Tipo reporte</label>
+                <label for="exampleFormControlSelect1">Tipo de Reporte</label>
                 <select id="reporte" class="form-control" id="exampleFormControlSelect1">
                     <option value="">Seleccione</option>
-                    <option value="1">Clientes que mas compran</option>
-                    <option value="2">Productos mas vendidos</option>
-                    <option value="3">Productos mas comprados</option>
-                    <option value="4">Ventas por ruta</option>
+                    <option value="1">Clientes que más Compran</option>
+                    <option value="2">Productos más Vendidos</option>
+                    <option value="3">Productos más Comprados</option>
+                    <option value="4">Ventas por Ruta</option>
                 </select>
             </div>
             <div class="col-md-4 form-group">
-                <label for="">Fecha de inicio</label>
+                <label for="">Fecha de Inicio</label>
                 <input id="inicio" type="date" class="form-control">
             </div>
             <div class="col-md-4 form-group">
-                <label for="">Fecha fin</label>
+                <label for="">Fecha Fin</label>
                 <input id="fin" type="date" class="form-control">
             </div>
         </div>
@@ -45,7 +46,7 @@
         <table id="datos-reportes"></table>
     </div>
 
-    <input type="button" value="Descargar a excel" id="enviar">
+    <input type="button" value="Descargar a Excel" id="enviar">
 </div>
 
 <script>
