@@ -5,10 +5,7 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="<?= URL ?>/public/css/bootstrap-yeti.css">
     <link rel="stylesheet" href="<?= URL ?>/public/css/Login.css">
-<<<<<<< HEAD
     <link rel="stylesheet" href="<?= URL ?>/public/css/modal.css">
-=======
->>>>>>> origin/master
     <link rel="stylesheet" href="<?= URL ?>/public/font-awesome/css/font-awesome.min.css">
 </head>
 
