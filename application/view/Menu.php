@@ -7,7 +7,6 @@ if(isset ($_SESSION['USUARIO'])){ ?>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="<?= URL ?>/public/css/bootstrap-yeti.css">
     <link rel="stylesheet" href="<?= URL ?>/public/css/custom.css">
-    <link rel="stylesheet" href="<?= URL ?>/public/css/alerta.css">
 </head>
 
 <body>

@@ -1,9 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="<?= URL ?>/public/css/bootstrap-yeti.css">
     <link rel="stylesheet" href="<?= URL ?>/public/css/Login.css">
+<<<<<<< HEAD
+    <link rel="stylesheet" href="<?= URL ?>/public/css/modal.css">
+=======
+>>>>>>> origin/master
     <link rel="stylesheet" href="<?= URL ?>/public/font-awesome/css/font-awesome.min.css">
 </head>
 
@@ -81,8 +86,24 @@
         var uri = "<?=URL?>";
     </script>
 
+    <div id="simpleModalPass" class="modal">
+        <div class="modal-content">
+            <div id="header-modal">
+                <h3>Modificar Contraseña</h3>
+            </div>
+            <div class="modal-body">
+                <label>Ingrese la nueva Contraseña</label>
+                <input id="cambiopass" class="form-control" name="txtcambiopass" type="text" maxlength="32" autocomplete="off" required> <br>
+                <input class="succes" id="btcambiarpass" type="button" value="Modificar"><br>
+            </div>
+            <div id="footer-modal">
+                <button id="volverpass" type="button">Cerrar</button>
+            </div>
+        </div>
+    </div>
+
     <script type="text/javascript" src="<?= URL?>/public/js/jquery.min.js"></script>
-    <script type="text/javascript" src="<?= URL?>/public/js/main.js"></script>
+    <script type="text/javascript" src="<?= URL?>/public/js/login.js"></script>
     <script type="text/javascript" src="<?= URL?>/public/js/metodos.js"></script>
     <script type="text/javascript" src="<?= URL?>/public/js/alertas.js"></script>
 </body>

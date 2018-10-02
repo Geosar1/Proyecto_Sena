@@ -56,8 +56,7 @@ class LoginController {
     if(empty($p)){
         echo "usuario incorrecto";
     } else {
-        $_SESSION['USUARIO']= $p;
-        $_SESSION['RECUPERACION']= $p;
+        echo $p->id_usuario;
     }
 
     }

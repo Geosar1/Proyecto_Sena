@@ -4,12 +4,17 @@ namespace Mini\Controller;
 
 use Mini\Model\Reporte;
 use Mini\Model\Ruta;
+use Mini\Model\Producto;
 
 class ReporteController {
     
     public function index(){
         $rutas = new Ruta();
         $resultado = $rutas->mostrar_rutas();
+        $productos = new Producto();
+        $productos->__SET("nombre", "");
+        $productos->__SET("id_categoria", "");
+        $pro = $productos->listar_productos();
         require APP.'view/reportes.php';
     }
     
@@ -34,6 +39,7 @@ class ReporteController {
         $reporte->__SET("id_ruta", $_POST["id"]);
         $reporte->__SET("fecha_inicio", $inicio);
         $reporte->__SET("fecha_fin", $fin);
+        $reporte->__SET("producto", $_POST['producto']);
         
         if($_POST["reporte"] == "1"){
             $datos = $reporte->buscar_reporteclientes();
@@ -114,7 +120,7 @@ class ReporteController {
             $datos = $reporte->Buscar_reporteruta();
             if(empty($datos)){
             $salida.="No hay ventas";
-        }else {
+            }else {
         $salida.="<table>
         <thead>
             <tr>
@@ -147,12 +153,61 @@ class ReporteController {
                 <td>
                     ".$value->observaciones."
                 </td>
+    </tr>";
+        endforeach;
+        $salida.="</tbody></table>";
+        }
+        }else if($_POST["reporte"] == "5"){
+            $datos = $reporte->buscar_reportemovimientos();
+            if(empty($datos)){
+            $salida.="No Hay Movimientos";
+            }else {
+        $salida.="<table'>
+        <thead>
+            <tr>
+                <th>Tipo de movimiento</th>
+                <th>Pedido</th>
+                <th>Producto</th>
+                <th>cantidad</th>
+                <th>Descripcion</th>
+                <th>Estado del producto</th>
+                <th>Fecha</th>
+            </tr>
+            </thead>
+            <tbody>";
+        foreach($datos as $value):
+                if($value->estado_producto == 1){
+                    $texto = "Activo";
+                }else {
+                    $texto = "Inactivo";
+                }
+        $salida.="<tr>
+                <td>
+                    ".$value->tipo_movimiento."
+                </td>
+                <td>
+                    ".$value->id_pedido."
+                </td>
+                <td>
+                    ".$value->nombre_producto."
+                </td>
+                <td>
+                    ".$value->cantidad."
+                </td>
+                <td>
+                    ".$value->descripcion."
+                </td>
+                <td>
+                    ".$texto."
+                </td>
+                <td>
+                    ".$value->fecha."
+                </td>
     </tr>"; 
         endforeach;
         $salida.="</tbody></table>";
         }
         }
-
 
         echo $salida;
     }

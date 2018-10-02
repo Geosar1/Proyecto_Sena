@@ -71,21 +71,6 @@ function mostrar() {
     }
 }
 
-function recuperar() {
-    if ($('#recuperar').val() != "") {
-        $('#contenido').html("");
-        $('#contenido').load(uri + '/Usuario/index', function () {
-            buscar_usuario();
-            id=$('#recuperar').val();
-            $('.modal-content').slideToggle();
-            $('#simpleModalPass').show(function () {
-                $('.modal-content').slideDown();
-                $('#volverpass').hide();
-            });
-        });
-    }
-}
-
 $(document).on('click', '#usuarios', function () {
     $('#contenido').html("");
     $('#contenido').load(uri + '/Usuario/index', function () {
@@ -158,6 +143,7 @@ $(document).on('click', '#movimientos', function () {
     $('#contenido').html("");
     $('#contenido').load(uri + '/movimientos/index', function () {
         buscar_movimientos();
+        $('#pedido').prop('disabled', true);
     });
 });
 
@@ -167,6 +153,7 @@ $(document).on('click', '#reportes', function () {
         $('#inicio').prop('disabled', true);
         $('#fin').prop('disabled', true);
         $('#select_reportes').prop('disabled', true);
+        $('#producto_report').prop('disabled', true);
     });
 });
 
