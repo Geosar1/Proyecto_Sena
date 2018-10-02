@@ -15,7 +15,11 @@
 <body>
     <div class="pull-alert">
         <div class="alert alert-succes pull-right">
+<<<<<<< HEAD
             <button type="button" class="btn btn-default btn-circle btn-xl-alert btn-lateral btn-float-alert"><i class="far fa-envelope"></i></button>
+=======
+            <button type="button" class="btn btn-default btn-circle btn-xl-alert btn-lateral btn-float-alert"><i class="glyphicon glyphicon-envelope"></i></button>
+>>>>>>> origin/master
             <hr class="hr-alert">
             <strong id="mensaje">¡Lo sentimos! ha ocurrido un error al cargar el archivo</strong>
         </div>

@@ -443,10 +443,45 @@ $(document).on('click', '#reset_mov', function () {
     buscar_movimientos();
 });
 
+<<<<<<< HEAD
 $(document).on('change', '#mov', function () {
     if ($(this).val() == "pedido") {
         $('#pedido').prop('disabled', false);
         $('#pedido').prop('required', true);
+=======
+//Login
+$(document).on('click', '#entrar', function () {
+    var dato = $('#user').val();
+    var dato2 = $('#key').val();
+
+    if (dato != "" && dato2 != "") {
+        consultar_usuario(dato, dato2);
+    } else {
+        mensaje = "debe ingresar todos los datos";
+        ver_fail();
+    }
+    return false;
+});
+
+$(document).on('click', '#ir', function () {
+    $('#login').hide();
+    $('#registro').slideDown();
+});
+
+$(document).on('click', '#quitar', function () {
+    cerrar();
+    return false;
+});
+
+$(document).on('change', '#recordar', function () {
+    if (this.checked) {
+        $('#user').attr("placeholder", "Ingrese cedula");
+        $('#mensaje_recuperacion').show();
+        $('#key').get(0).type = 'date';
+        $('#entrar').hide();
+        $('#recuperar').show();
+        ver_success();
+>>>>>>> origin/master
     } else {
         $('#pedido').prop('disabled', true);
         $('#pedido').prop('required', false);
@@ -790,9 +825,12 @@ $(document).on('click', '#limpiar_reporte', function () {
     $('#select_reportes').prop('disabled', true);
     $('select').val('').trigger('change');
 });
+<<<<<<< HEAD
 
 //Form login
 $(document).on('click', '#quitar', function () {
     cerrar();
     return false;
 });
+=======
+>>>>>>> origin/master
