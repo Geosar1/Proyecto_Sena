@@ -14,6 +14,7 @@ function ver_alerta() {
 function ver_success() {
     $(".alert-success").stop();
     $(".alert-fail").stop();
+    $(".alert-success").html(mensaje);
     window.setTimeout(function () {
         $(".alert-success").slideDown(function () {
             $(".alert-success").fadeTo(4000, 500).slideUp(100, function () {

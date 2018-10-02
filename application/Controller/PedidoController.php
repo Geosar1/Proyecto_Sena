@@ -109,8 +109,37 @@
 
                 header("location: ".URL."Login/menu");
         }
- 
+
+        public function buscar_pedido(){
+             $pedidos = new mdlPedido();
+             $producto = new Producto();
+            $html = "";
+
+            if(isset($_POST['pedido'])){
+            $pedidos->__SET("id_pedido", $_POST['pedido']);
+            $pedido= $pedidos->buscar_pedido();
+            if(empty($pedido)){
+                echo "no";
+            }else {
+                $html.="<option value=''>Seleccione</option>";
+                foreach($pedido as $value){
+                    $html.="<option value='".$value->id_producto."'> ".$value->nombre_producto."</option>";
+            }
+                echo $html;
+        }
+            }else {
+                $producto->__SET("nombre", "");
+                $producto->__SET("id_categoria", "");
+                $productos = $producto->listar_productos();
+                $html.="<option value=''>Seleccione</option>";
+                foreach($productos as $value){
+                    $html.="<option value='".$value->id_producto."'> ".$value->nombre_producto."</option>";
+            }
+                echo $html;
+            }
     }
+
+}
             
               
         

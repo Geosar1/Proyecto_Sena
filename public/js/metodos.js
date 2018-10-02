@@ -460,7 +460,20 @@ function recuperar_usuario(consulta, consulta2) {
                 mensaje = "Los datos ingresados no existen";
                 ver_fail();
             } else {
-                window.location = uri + '/Login/menu';
+                id = respuesta;
+                $('.modal-content').slideToggle();
+                $('#simpleModalPass').show(function () {
+                    $('.modal-content').slideDown();
+                });
+                $('#user').attr("placeholder", "Usuario");
+                $('#key').attr("placeholder", "Contraseña");
+                $('#key').get(0).type = 'password';
+                $('#mensaje_recuperacion').hide();
+                $('#entrar').show();
+                $('#recuperar').hide();
+                $('#user').val("");
+                $('#key').val("");
+                $("#recordar").prop('checked', false);
             }
         })
         .fail(function () {
@@ -648,6 +661,7 @@ function cambiar_contrasena(consulta) {
             if (respuesta == "Si") {
                 mensaje = "Clave cambiada correctamente";
                 ver_alerta();
+                ver_success();
                 $('.modal-content').slideToggle(function () {
                     $('#simpleModalPass').hide();
                 });
@@ -833,7 +847,7 @@ function ConsultarPed() {
                 );
             });
         } else {
-            mensaje ="no hay registros para el rango seleccionado";
+            mensaje = "no hay registros para el rango seleccionado";
             ver_alerta();
         }
     });
@@ -857,6 +871,28 @@ function cambiar_pedido(consulta, consulta2) {
             } else {
                 mensaje = "Error al cambiar estado";
                 ver_alerta();
+            }
+        })
+        .fail(function () {
+            console.log("error");
+        });
+}
+
+function buscar_pedido(consulta) {
+    $.ajax({
+            url: uri + '/pedido/buscar_pedido',
+            type: 'POST',
+            dataType: 'html',
+            data: {
+                pedido: consulta,
+            },
+        })
+        .done(function (respuesta) {
+            if (respuesta == "no") {
+                mensaje = "No se encontro el pedido ingresado";
+                ver_alerta();
+            } else {
+                $('#producto_mov').html(respuesta);
             }
         })
         .fail(function () {
@@ -939,7 +975,7 @@ function listar_proveedor(Code) {
             $("#ddlproveedor").val(Code);
             $("#proveedor").attr("disabled", true);
         } else {
-            mensaje ="La consulta de proveedor no generó resultados.";
+            mensaje = "La consulta de proveedor no generó resultados.";
             ver_alerta();
         }
     });
@@ -971,7 +1007,7 @@ function ConsultarDetalle(id) {
 
             $("#Modal_Compra").modal();
         } else {
-            mensaje ="no tiene compras";
+            mensaje = "no tiene compras";
             ver_alerta();
         }
     });
@@ -1004,15 +1040,14 @@ function ConsultarCompra() {
                 );
             });
         } else {
-            mensaje ="no hay compras para ese rango seleccionado";
+            mensaje = "no hay compras para ese rango seleccionado";
             ver_alerta();
         }
     });
 }
 
-
 //Reportes
-function reportes(consulta, consulta2,consulta3,consulta4) {
+function reportes(consulta, consulta2, consulta3, consulta4,consulta5) {
     $.ajax({
             url: uri + '/reporte/reporte_por_ruta',
             type: 'POST',
@@ -1021,7 +1056,8 @@ function reportes(consulta, consulta2,consulta3,consulta4) {
                 id: consulta,
                 inicio: consulta2,
                 fin: consulta3,
-                reporte: consulta4
+                reporte: consulta4,
+                producto: consulta5,
             },
         })
         .done(function (respuesta) {

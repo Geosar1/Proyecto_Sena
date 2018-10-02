@@ -438,65 +438,29 @@ $(document).on('click', '#volverpass', function () {
 //Form movimientos
 $(document).on('click', '#reset_mov', function () {
     $('select').val('').trigger('change');
+    $('#pedido').prop('disabled', true);
+    $('#pedido').prop('required', false);
     buscar_movimientos();
 });
 
-//Login
-$(document).on('click', '#entrar', function () {
-    var dato = $('#user').val();
-    var dato2 = $('#key').val();
-
-    if (dato != "" && dato2 != "") {
-        consultar_usuario(dato, dato2);
+$(document).on('change', '#mov', function () {
+    if ($(this).val() == "pedido") {
+        $('#pedido').prop('disabled', false);
+        $('#pedido').prop('required', true);
     } else {
-        mensaje = "debe ingresar todos los datos";
-        ver_fail();
-    }
-    return false;
-});
-
-$(document).on('click', '#ir', function () {
-    $('#login').hide();
-    $('#registro').slideDown();
-});
-
-$(document).on('click', '#quitar', function () {
-    cerrar();
-    return false;
-});
-
-$(document).on('change', '#recordar', function () {
-    if (this.checked) {
-        $('#user').attr("placeholder", "Ingrese cedula");
-        $('#mensaje_recuperacion').show();
-        $('#key').get(0).type = 'date';
-        $('#entrar').hide();
-        $('#recuperar').show();
-        ver_success();
-    } else {
-        $('#user').attr("placeholder", "Usuario");
-        $('#key').attr("placeholder", "Contraseña");
-        $('#key').get(0).type = 'password';
-        $('#mensaje_recuperacion').hide();
-        $('#entrar').show();
-        $('#recuperar').hide();
-        $('#user').val("");
-        $('#key').val("");
+        $('#pedido').prop('disabled', true);
+        $('#pedido').prop('required', false);
+        buscar_pedido();
     }
 })
 
-$(document).on('click', '#recuperar', function () {
-    var dato = $('#user').val();
-    var dato2 = $('#key').val();
-
-    if (dato != "" && dato2 != "") {
-        recuperar_usuario(dato, dato2);
+$(document).on('keyup', '#pedido', function () {
+    if ($(this).val() != "") {
+        buscar_pedido($(this).val());
     } else {
-        mensaje = "debe ingresar todos los datos";
-        ver_fail();
+        buscar_pedido();
     }
-    return false;
-});
+})
 
 //Index
 $(document).on('click', '#crear_p', function () {
@@ -625,7 +589,11 @@ function validar() {
 }
 
 function eliminarproducto(elemento) {
-
+    var CodigoProducto = $(elemento).attr("IdProducto");
+    var idx = lista.findIndex(function (elementoLista) {
+        return elementoLista.productocodigo == CodigoProducto
+    });
+    lista.splice(idx, 1);
     var e = $(elemento).parent().parent();
     $(e).remove();
 
@@ -645,6 +613,7 @@ function agregarProducto() {
     }
     var idProducto = $("#ddlproducto").val();
     var idproveedor = $("#proveedor").val();
+
     var item = {
         proveedorId: idproveedor,
         productocodigo: idProducto,
@@ -655,6 +624,16 @@ function agregarProducto() {
 
     };
 
+
+    lista.forEach(element => {
+        if (element.productocodigo == idProducto) {
+            $("#btn" + item.productocodigo).click();
+            item.cantidad = parseInt(item.cantidad) + parseInt(element.cantidad);
+            item.total = item.cantidad * item.precio;
+        }
+
+    });
+
     lista.push(item);
     var Html = "<tr>";
     Html += "<td>" + item.productocodigo + "</td>";
@@ -662,10 +641,10 @@ function agregarProducto() {
     Html += "<td>" + item.precio + "</td>";
     Html += "<td>" + item.cantidad + "</td>";
     Html += "<td>" + item.precio * item.cantidad +
-        " <input type='hidden' id='productos[]' name='productos[]' value=" + item.productocodigo + "/>" /*Creamos un campo oculto para que se guarden todos los items que vayan agregando*/ +
+        " <input type='hidden' id='productos[]' name='productos[]' value=" + item.productocodigo + "/>" +
         " <input type='hidden' id='precios[]' name='precios[]' value=" + item.precio + "/>" +
         " <input type='hidden' id='cantidades[]' name='cantidades[]' value=" + item.cantidad + "/>"
-    Html += "<td><a onClick='eliminarproducto(this)' >Eliminar</a></td>";
+    Html += "<td><a id='btn" + item.productocodigo + "' IdProducto='" + item.productocodigo + "' onClick='eliminarproducto(this)' >Eliminar</a></td>";
     Html += "</tr>";
     $("#detallebody").append(Html);
     $("#txtCantidad").val("");
@@ -723,35 +702,47 @@ $(document).on('change', '#reporte', function () {
             $('#inicio').prop('disabled', false);
             $('#fin').prop('disabled', false);
             $('#select_reportes').prop('disabled', true);
+            $('#producto_report').prop('disabled', true);
             $('#select_reportes').val('').trigger('change');
             $('#datos-reportes').empty();
-            reportes("", $('#inicio').val(), $('#fin').val(), $('#reporte').val());
+            reportes("", $('#inicio').val(), $('#fin').val(), $('#reporte').val(), "");
         } else if ($(this).val() == 2) {
             $('#inicio').prop('disabled', false);
             $('#fin').prop('disabled', false);
             $('#select_reportes').prop('disabled', true);
+            $('#producto_report').prop('disabled', true);
             $('#select_reportes').val('').trigger('change');
             $('#datos-reportes').empty();
-            reportes("", $('#inicio').val(), $('#fin').val(), $('#reporte').val());
+            reportes("", $('#inicio').val(), $('#fin').val(), $('#reporte').val(), "");
         } else if ($(this).val() == 3) {
             $('#inicio').prop('disabled', false);
             $('#fin').prop('disabled', false);
             $('#select_reportes').prop('disabled', true);
+            $('#producto_report').prop('disabled', true);
             $('#select_reportes').val('').trigger('change');
             $('#datos-reportes').empty();
-            reportes("", $('#inicio').val(), $('#fin').val(), $('#reporte').val());
+            reportes("", $('#inicio').val(), $('#fin').val(), $('#reporte').val(), "");
         } else if ($(this).val() == 4) {
             $('#inicio').prop('disabled', true);
             $('#fin').prop('disabled', true);
             $('#select_reportes').prop('disabled', false);
             $('#datos-reportes').empty();
             mensaje = "Seleccione una ruta";
-            ver_success();
+            ver_alerta();
+        } else if ($(this).val() == 5) {
+            $('#inicio').prop('disabled', false);
+            $('#fin').prop('disabled', false);
+            $('#select_reportes').prop('disabled', true);
+            $('#producto_report').prop('disabled', false);
+            $('#select_reportes').val('').trigger('change');
+            $('#datos-reportes').empty();
+            reportes("", $('#inicio').val(), $('#fin').val(), $('#reporte').val(), $('#producto_report').val());
         }
     } else {
         $('#inicio').prop('disabled', true);
         $('#fin').prop('disabled', true);
         $('#select_reportes').prop('disabled', true);
+        $('#producto_report').prop('disabled', true);
         $('#datos-reportes').empty();
     }
 });
@@ -760,22 +751,34 @@ $(document).on('change', '#select_reportes', function () {
     if ($(this).val() != "") {
         $('#inicio').prop('disabled', false);
         $('#fin').prop('disabled', false);
-        reportes($(this).val(), $('#inicio').val(), $('#fin').val(), $('#reporte').val());
+        reportes($(this).val(), $('#inicio').val(), $('#fin').val(), $('#reporte').val(), "");
     } else {
         $('#datos-reportes').empty();
+    }
+});
+
+$(document).on('change', '#producto_report', function () {
+    if ($(this).val() != "") {
+        $('#inicio').prop('disabled', false);
+        $('#fin').prop('disabled', false);
+        reportes("", $('#inicio').val(), $('#fin').val(), $('#reporte').val(), $('#producto_report').val());
+    } else {
+        reportes("", $('#inicio').val(), $('#fin').val(), $('#reporte').val(), $('#producto_report').val());
     }
 });
 
 $(document).on('change', '#inicio,#fin', function () {
     if ($('#inicio').val() != "" || $('#fin').val() != "") {
         if ($('#reporte').val() == 1) {
-            reportes("", $('#inicio').val(), $('#fin').val(), $('#reporte').val());
+            reportes("", $('#inicio').val(), $('#fin').val(), $('#reporte').val(),"");
         } else if ($('#reporte').val() == 2) {
-            reportes("", $('#inicio').val(), $('#fin').val(), $('#reporte').val());
+            reportes("", $('#inicio').val(), $('#fin').val(), $('#reporte').val(),"");
         } else if ($('#reporte').val() == 3) {
-            reportes("", $('#inicio').val(), $('#fin').val(), $('#reporte').val());
+            reportes("", $('#inicio').val(), $('#fin').val(), $('#reporte').val(),"");
         } else if ($('#reporte').val() == 4) {
-            reportes($('#select_reportes').val(), $('#fin').val(), $('#reporte').val(), $('#reporte').val());
+            reportes($('#select_reportes').val(),$('#inicio').val(), $('#fin').val(), $('#reporte').val(),"");
+        }else if ($('#reporte').val() == 5) {
+            reportes("",$('#inicio').val(), $('#fin').val(), $('#reporte').val(),$('#producto_report').val());
         }
     }
 });
@@ -786,4 +789,10 @@ $(document).on('click', '#limpiar_reporte', function () {
     $('#fin').prop('disabled', true);
     $('#select_reportes').prop('disabled', true);
     $('select').val('').trigger('change');
+});
+
+//Form login
+$(document).on('click', '#quitar', function () {
+    cerrar();
+    return false;
 });
