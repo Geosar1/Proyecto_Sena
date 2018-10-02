@@ -7,10 +7,10 @@
                 <label for="exampleFormControlSelect1">Tipo de Reporte</label>
                 <select id="reporte" class="form-control" id="exampleFormControlSelect1">
                     <option value="">Seleccione</option>
-                    <option value="1">Clientes que más compran</option>
-                    <option value="2">Productos más vendidos</option>
-                    <option value="3">Productos más comprados</option>
-                    <option value="4">Ventas por ruta</option>
+                    <option value="1">Clientes que más Compran</option>
+                    <option value="2">Productos más Vendidos</option>
+                    <option value="3">Productos más Comprados</option>
+                    <option value="4">Ventas por Ruta</option>
                     <option value="5">Movimientos</option>
                 </select>
             </div>
