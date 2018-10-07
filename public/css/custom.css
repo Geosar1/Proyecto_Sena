@@ -338,7 +338,6 @@ p {
 }
 
 .navbar-cls-top .navbar-brand:hover {
-
     background: #C90000;
     color: #fff;
 
@@ -346,7 +345,6 @@ p {
 
 .navbar-default {
     border: 0px solid black;
-
 }
 
 .navbar-header {
@@ -398,14 +396,26 @@ p {
 }
 
 .nav li > ul li {
-    padding: 10px;
+    padding: 5px;
+}
+
+.nav li > ul li a{
+    padding: 5px;
+    color: #b4b4b4;
+    text-decoration: none;
+    display: block;
 }
 
 .nav li > ul li:hover{
-    cursor: pointer;
     background-color: #F3F3F3;
     color: black;
     width: 100%;
+}
+
+.nav li > ul li:hover a{
+    cursor: pointer;
+    background-color: #F3F3F3;
+    color: black;
 }
 
 /*==============================================

@@ -52,9 +52,10 @@ class Producto extends Model {
     }
     
     public function listar_productos(){
-        $stm = $this->db->prepare("CALL Listar_productos(?,?)");
+        $stm = $this->db->prepare("CALL Listar_productos(?,?,?)");
         $stm->bindParam(1, $this->nombre);
         $stm->bindParam(2, $this->id_categoria);
+        $stm->bindParam(3, $this->proveedor);
         $stm->execute();
         return $stm->fetchAll();
     }

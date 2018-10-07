@@ -57,7 +57,7 @@ if(isset ($_SESSION['USUARIO'])){ ?>
                     <a id="proveedores" href="#"><i class="fa fa-truck fa-lg" style="color: silver"></i> Proveedores</a>
                 </li>
                 <li>
-                    <a id="productos" href="#"><i class="fa fa-gift fa-lg" style="color: silver"></i> Productos</a>
+                    <a id="productos" href="#"><i class="fa fa-gift fa-lg" style="color: silver"></i> Productos <i id="f-down" class="fas fa-sort-down"></i></a>
                     <ul class="children">
                         <li>
                             <a id="agotados" href="#"><i class="fa fa-exclamation-triangle fa-lg" style="color: silver"></i> Productos agotados</a>
@@ -71,21 +71,18 @@ if(isset ($_SESSION['USUARIO'])){ ?>
                     <a id="carteras" href="#"><i class="fa fa-money fa-lg" style="color: silver"></i> Cartera</a>
                 </li>
                 <li>
-                    <a id="compras" href="#"><i class="fa fa-shopping-cart fa-lg" style="color: silver"></i> Compras</a>
+                    <a id="compras" href="#"><i class="fa fa-shopping-cart fa-lg" style="color: silver"></i> Compras <i id="f-down" class="fas fa-sort-down"></i></a>
                     <ul class="children-c">
                         <li>
-                            <a id="ReporteCompras" href="#"><i class="fa fa-shopping-cart fa-lg" style="color: silver"></i> Reporte Compras</a>
+                            <a id="ReporteCompras" href="#"><i class="fas fa-clipboard-list fa-lg" style="color: silver"></i> Ver Compras</a>
                         </li>
                     </ul>
                 </li>
                 <li>
-                    <a id="pedidos" href="#"><i class="fa fa-book fa-lg" style="color: silver"></i> Pedidos</a>
+                    <a id="crearPedido" href="#"><i class="fa fa-book fa-lg" style="color: silver"></i> Pedidos <i id="f-down" class="fas fa-sort-down"></i></a>
                     <ul class="hijos_pedidos">
                         <li>
-                            <a id="consultaPedido" href="#"><i class="fa fa-exclamation-triangle fa-lg" style="color: silver"></i>Consultar Pedidos</a>
-                        </li>
-                        <li>
-                            <a id="crearPedido" href="#"><i class="fa fa-copy fa-lg" style="color: silver"></i> Crear Pedidos</a>
+                            <a id="consultaPedido" href="#"><i class="fas fa-clipboard-list fa-lg" style="color: silver"></i>Ver Pedidos</a>
                         </li>
                     </ul>
                 </li>

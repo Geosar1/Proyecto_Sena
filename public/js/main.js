@@ -116,19 +116,11 @@ $(document).on('keyup', '#nombres', function () {
 
 //Buscar producto
 $(document).on('keyup', '#nombre_p', function () {
-    if ($('#nombre_p').val() != "" || $("#categorias_p").val() != "") {
-        buscar_producto();
-    } else {
-        buscar_producto();
-    }
+    buscar_producto();
 });
 
-$(document).on('change', '#categorias_p', function () {
-    if ($('#nombre_p').val() != "" || $("#categorias_p").val() != "") {
-        buscar_producto();
-    } else {
-        buscar_producto();
-    }
+$(document).on('change', '#categorias_p,#proveedores_p', function () {
+    buscar_producto();
 });
 
 //Form productos
@@ -802,15 +794,15 @@ $(document).on('change', '#producto_report', function () {
 $(document).on('change', '#inicio,#fin', function () {
     if ($('#inicio').val() != "" || $('#fin').val() != "") {
         if ($('#reporte').val() == 1) {
-            reportes("", $('#inicio').val(), $('#fin').val(), $('#reporte').val(),"");
+            reportes("", $('#inicio').val(), $('#fin').val(), $('#reporte').val(), "");
         } else if ($('#reporte').val() == 2) {
-            reportes("", $('#inicio').val(), $('#fin').val(), $('#reporte').val(),"");
+            reportes("", $('#inicio').val(), $('#fin').val(), $('#reporte').val(), "");
         } else if ($('#reporte').val() == 3) {
-            reportes("", $('#inicio').val(), $('#fin').val(), $('#reporte').val(),"");
+            reportes("", $('#inicio').val(), $('#fin').val(), $('#reporte').val(), "");
         } else if ($('#reporte').val() == 4) {
-            reportes($('#select_reportes').val(),$('#inicio').val(), $('#fin').val(), $('#reporte').val(),"");
-        }else if ($('#reporte').val() == 5) {
-            reportes("",$('#inicio').val(), $('#fin').val(), $('#reporte').val(),$('#producto_report').val());
+            reportes($('#select_reportes').val(), $('#inicio').val(), $('#fin').val(), $('#reporte').val(), "");
+        } else if ($('#reporte').val() == 5) {
+            reportes("", $('#inicio').val(), $('#fin').val(), $('#reporte').val(), $('#producto_report').val());
         }
     }
 });

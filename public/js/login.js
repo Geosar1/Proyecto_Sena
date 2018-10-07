@@ -55,7 +55,7 @@ $(document).on('click', '#ir', function () {
     $('#registro').slideDown();
 });
 
-$(document).on('change', '#recordar', function () {
+$(document).on('change', '#checkbox2', function () {
     if (this.checked) {
         $('#user').attr("placeholder", "Ingrese cedula");
         $('#mensaje_recuperacion').show();
@@ -65,6 +65,7 @@ $(document).on('change', '#recordar', function () {
         mensaje = "Ingresa tus datos de seguridad";
         ver_success();
     } else {
+        $(".alert-success").stop();
         $('#user').attr("placeholder", "Usuario");
         $('#key').attr("placeholder", "Contraseña");
         $('#key').get(0).type = 'password';

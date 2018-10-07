@@ -8,8 +8,6 @@
                 <select class="form-control" id="mov" name="mov" required>
                     <option value="">Seleccione</option>
                     <option value="baja">Dada de Baja</option>
-                    <option value="Reingreso">
-                    Reingreso</option>
                     <option value="pedido">Devolución de Pedido</option>
                 </select>
             </div>

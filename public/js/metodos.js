@@ -30,7 +30,8 @@ function buscar_producto(consulta, consulta2) {
             dataType: 'html',
             data: {
                 producto: $('#nombre_p').val(),
-                categoria: $("#categorias_p").val(),
+                categoria: $('#categorias_p').val(),
+                proveedor: $('#proveedores_p').val(),
             },
         })
         .done(function (respuesta) {
