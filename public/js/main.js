@@ -135,13 +135,17 @@ $(document).on('click', '#guardar_producto', function () {
 });
 
 $(document).on('click', '#cancelar', function () {
+    limpiar_productos();
+});
+
+function limpiar_productos() {
     $('#crear_productos').trigger('reset');
     buscar_producto();
     $('#guardar_producto').show();
     $('#modificar_p').hide();
     $('select').val('').trigger('change');
     $('#proveedores_p').prop('disabled', false);
-});
+}
 
 $(document).on('click', '#agregar', function () {
     var valor = $('#proveedores_a').val();
@@ -257,7 +261,6 @@ $(document).on('click', '#Estado_c', function () {
 $(document).on('click', '#editar_c', function () {
     id = $(this).val();
     editar_categoria(id);
-
     $('#guardar_c').hide();
     $('#modificar_c').show();
     $('#nombre_c').focus();
@@ -432,6 +435,9 @@ $(document).on('click', '#reset_mov', function () {
     $('select').val('').trigger('change');
     $('#pedido').prop('disabled', true);
     $('#pedido').prop('required', false);
+    $('#producto_mov').prop('disabled', true);
+    $('#cantidad_mov').prop('disabled', true);
+    $('#descripcion_mv').prop('disabled', true);
     buscar_movimientos();
 });
 
@@ -439,8 +445,32 @@ $(document).on('change', '#mov', function () {
     if ($(this).val() == "pedido") {
         $('#pedido').prop('disabled', false);
         $('#pedido').prop('required', true);
+        $('#producto_mov').prop('disabled', false);
+        $('#cantidad_mov').prop('disabled', false);
+        $('#descripcion_mv').prop('disabled', false);
+    } else if ($(this).val() == "baja") {
+        $('#pedido').prop('disabled', true);
+        $('#pedido').prop('required', false);
+        $('#producto_mov').prop('disabled', false);
+        $('#cantidad_mov').prop('disabled', false);
+        $('#descripcion_mv').prop('disabled', false);
+        buscar_pedido();
+    } else {
+        buscar_movimientos();
+        $('#pedido').prop('disabled', true);
+        $('#producto_mov').prop('disabled', true);
+        $('#cantidad_mov').prop('disabled', true);
+        $('#descripcion_mv').prop('disabled', true);
     }
 });
+
+$(document).on('keyup', '#pedido', function () {
+    if ($(this).val() != "") {
+        buscar_pedido($(this).val());
+    } else {
+        buscar_pedido();
+    }
+})
 
 //Login
 $(document).on('click', '#entrar', function () {
@@ -477,14 +507,6 @@ $(document).on('change', '#recordar', function () {
     } else {
         $('#pedido').prop('disabled', true);
         $('#pedido').prop('required', false);
-        buscar_pedido();
-    }
-})
-
-$(document).on('keyup', '#pedido', function () {
-    if ($(this).val() != "") {
-        buscar_pedido($(this).val());
-    } else {
         buscar_pedido();
     }
 })

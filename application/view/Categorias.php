@@ -1,6 +1,6 @@
+<h2 id="titulo">Crear Categoría</h2>
+<hr />
 <form id="crear_categoria">
-    <h2 id="titulo">Crear Categoría</h2>
-    <hr />
     <label>Nombre categoría</label>
     <br>
     <input class="form-control" input id="nombre_c" type="text" autocomplete="off" required>

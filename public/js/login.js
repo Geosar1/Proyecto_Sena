@@ -40,7 +40,6 @@ $(document).on('keypress', 'input[type=text],input[type=password]', function (ke
 $(document).on('click', '#entrar', function () {
     var dato = $('#user').val();
     var dato2 = $('#key').val();
-
     if (dato != "" && dato2 != "") {
         consultar_usuario(dato, dato2);
     } else {

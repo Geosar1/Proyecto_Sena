@@ -117,7 +117,6 @@ samp {
 button,
 input,
 optgroup,
-select,
 textarea {
   color: inherit;
   font: inherit;
@@ -126,8 +125,7 @@ textarea {
 button {
   overflow: visible;
 }
-button,
-select {
+button {
   text-transform: none;
 }
 button,

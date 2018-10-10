@@ -14,6 +14,7 @@ class ReporteController {
         $productos = new Producto();
         $productos->__SET("nombre", "");
         $productos->__SET("id_categoria", "");
+        $productos->__SET("proveedor", "");
         $pro = $productos->listar_productos();
         require APP.'view/reportes.php';
     }

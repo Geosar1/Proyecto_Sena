@@ -12,7 +12,7 @@
 
             <div class="col-md-4 form-group">
                 <label>Apellidos*</label>
-                <input type="text" class="form-control" input id="apellidos" name="txtapellidos" maxlength="20" autocomplete="off" required>
+                <input type="text" class="form-control" id="apellidos" name="txtapellidos" maxlength="20" autocomplete="off" required>
             </div>
 
             <div class="col-md-4 form-group">

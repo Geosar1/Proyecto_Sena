@@ -89,7 +89,7 @@
         </div>
         <div class="modal-body">
             <label>Ingrese la nueva Contraseña</label>
-            <input id="cambiopass" class="form-control" name="txtcambiopass" type="text" maxlength="32" autocomplete="off" required> <br>
+            <input id="cambiopass" class="form-control" name="txtcambiopass" type="password" maxlength="32" autocomplete="off" required> <br>
             <input class="succes" id="btcambiarpass" type="button" value="Modificar"><br>
         </div>
         <div id="footer-modal">

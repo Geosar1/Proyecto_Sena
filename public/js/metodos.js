@@ -83,9 +83,9 @@ function guardar_producto() {
                 mensaje = "Error al ejecutar la accion";
                 ver_alerta();
             } else {
+                limpiar_productos();
                 mensaje = "Se creo correctamente";
                 ver_alerta();
-                $('#crear_productos').trigger('reset');
                 buscar_producto();
             }
         })
@@ -166,6 +166,7 @@ function modificar_producto() {
         })
         .done(function (respuesta) {
             if (respuesta == "si") {
+                limpiar_productos();
                 mensaje = "Se modifico correctamente";
                 ver_alerta();
                 $('#guardar_producto').show();
@@ -298,6 +299,7 @@ function guardar_categoria(consulta) {
             } else {
                 mensaje = "Se guardo la categoria correctamente";
                 ver_alerta();
+                $('#nombre_c').val("");
                 buscar_categoria();
             }
         })
@@ -367,12 +369,12 @@ function modificar_categoria(consulta, consulta2) {
         })
         .done(function (respuesta) {
             if (respuesta == "si") {
+                $('#nombre_c').val("");
                 mensaje = "Categoria modificada correctamente";
                 ver_alerta();
-                buscar_categoria($('#nombre_c').val());
+                buscar_categoria();
                 $('#guardar_c').show();
                 $('#modificar_c').hide();
-                id = "";
             } else {
                 mensaje = respuesta;
                 ver_alerta();
@@ -474,7 +476,7 @@ function recuperar_usuario(consulta, consulta2) {
                 $('#recuperar').hide();
                 $('#user').val("");
                 $('#key').val("");
-                $("#recordar").prop('checked', false);
+                $("#checkbox2").prop('checked', false);
             }
         })
         .fail(function () {
@@ -665,6 +667,7 @@ function cambiar_contrasena(consulta) {
                 ver_success();
                 $('.modal-content').slideToggle(function () {
                     $('#simpleModalPass').hide();
+                    $('#cambiopass').val("");
                 });
             } else {
                 mensaje = "Error";
@@ -738,10 +741,10 @@ function cambiar_cliente(consulta, consulta2) {
                 mensaje = "Estado del cliente cambiado correctamente";
                 ver_alerta();
 
-                var buscar = $('#nombres').val();
+                var buscar = $('#nombres_c').val();
 
                 if (buscar != "") {
-                    buscar_cliente(buscar);
+                buscar_cliente($('#nombres_c').val(), $('#select_r').val(), $('#num_doc').val(), $('#apellidos').val());
                 } else {
                     buscar_cliente();
                 }
