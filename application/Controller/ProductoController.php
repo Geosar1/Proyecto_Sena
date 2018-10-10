@@ -35,13 +35,15 @@ class ProductoController {
         $producto = new Producto();
         $salida="";
         
-        if(isset($_POST['producto']) &&isset($_POST['categoria'])){
+        if(isset($_POST['producto']) && isset($_POST['categoria']) && isset($_POST['proveedor'])){
             $producto->__SET("nombre", $_POST["producto"]);
             $producto->__SET("id_categoria", $_POST["categoria"]);
+            $producto->__SET("proveedor", $_POST["proveedor"]);
             $productos = $producto->listar_productos();
         }else {
             $producto->__SET("nombre", "");
             $producto->__SET("id_categoria", "");
+            $producto->__SET("proveedor", "");
             $productos = $producto->listar_productos();
         }
         

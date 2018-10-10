@@ -67,11 +67,14 @@
                                     </div>
                                 </div>
                                 <br> <br> <br>
-                                <div class="col-lg-8 col-lg-offset-4" style="margin:center">
 
-                                    <a id="sele">¿Olvidaste la contraseña?</a>
-                                    <input type="checkbox" id="recordar">
+                                <div class="funkyradio">
+                                    <div class="funkyradio-primary">
+                                        <input type="checkbox" name="checkbox" id="checkbox2">
+                                        <label for="checkbox2">¿Olvidaste tu contraseña?</label>
+                                    </div>
                                 </div>
+
                             </div>
                         </form>
                     </div>

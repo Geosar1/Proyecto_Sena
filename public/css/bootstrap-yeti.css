@@ -239,7 +239,7 @@ th {
     orphans: 3;
     widows: 3;
   }
-  h2,
+  h3,
   h3 {
     page-break-after: avoid;
   }
@@ -995,9 +995,6 @@ th {
 }
 .glyphicon-menu-hamburger:before {
   content: "\e236";
-}
-.glyphicon-modal-window:before {
-  content: "\e237";
 }
 .glyphicon-oil:before {
   content: "\e238";
