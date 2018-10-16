@@ -67,12 +67,9 @@
 
     <br>
 
-    
-           
-
-                <input class="succes" id="guardar_usuario" type="submit" value="Guardar" formaction="<?= URL ?>usuario/guardar">
-                <input class="succes" id="modificar_usuario" type="submit" value="Guardar cambios" formaction="<?= URL ?>usuario/modificar">
-                <input id="cancelar_mod" type="reset" value="Cancelar">
+    <input class="succes" id="guardar_usuario" type="submit" value="Guardar" formaction="<?= URL ?>usuario/guardar">
+    <input class="succes" id="modificar_usuario" type="submit" value="Guardar cambios" formaction="<?= URL ?>usuario/modificar">
+    <input id="cancelar_mod" type="reset" value="Cancelar">
 
 
     <br>

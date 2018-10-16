@@ -140,11 +140,11 @@ $(document).on('click', '#cancelar', function () {
 
 function limpiar_productos() {
     $('#crear_productos').trigger('reset');
-    buscar_producto();
     $('#guardar_producto').show();
     $('#modificar_p').hide();
     $('select').val('').trigger('change');
     $('#proveedores_p').prop('disabled', false);
+    buscar_producto();
 }
 
 $(document).on('click', '#agregar', function () {

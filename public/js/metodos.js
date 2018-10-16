@@ -81,17 +81,17 @@ function guardar_producto() {
         .done(function (respuesta) {
             if (respuesta == "no" || respuesta == "No se guardo") {
                 mensaje = "Error al ejecutar la accion";
-                ver_alerta();
             } else {
-                limpiar_productos();
-                mensaje = "Se creo correctamente";
-                ver_alerta();
+                mensaje = "Producto registrado correctamente";
+                $('#crear_productos').trigger('reset');
+                $('select').val('').trigger('change');
                 buscar_producto();
+                ver_alerta();
             }
         })
         .fail(function () {
             console.log("error");
-        });
+        });  
 }
 
 function cambiar_producto(consulta, consulta2) {
@@ -611,7 +611,7 @@ function editar_usuario(consulta) {
             $('#num_doc').val(contenido.numero_documento);
             $("#tipo_usu").val(contenido.rol_usuario);
             $("#user").val(contenido.usuario);
-            $("#fec_exp").val(contenido.cambio_clave);
+            $("#fec_exp").val(contenido.expedicion_cedula);
             buscar_usuario($('#nombres_us').val());
         })
         .fail(function () {
