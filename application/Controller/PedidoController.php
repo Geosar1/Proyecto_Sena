@@ -130,6 +130,7 @@
             }else {
                 $producto->__SET("nombre", "");
                 $producto->__SET("id_categoria", "");
+                $producto->__SET("proveedor", "");
                 $productos = $producto->listar_productos();
                 $html.="<option value=''>Seleccione</option>";
                 foreach($productos as $value){

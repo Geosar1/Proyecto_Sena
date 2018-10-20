@@ -67,12 +67,9 @@
 
     <br>
 
-    
-           
-
-                <input class="succes" id="guardar_usuario" type="submit" value="Guardar" formaction="<?= URL ?>usuario/guardar">
-                <input class="succes" id="modificar_usuario" type="submit" value="Guardar cambios" formaction="<?= URL ?>usuario/modificar">
-                <input id="cancelar_mod" type="reset" value="Cancelar">
+    <input class="succes" id="guardar_usuario" type="submit" value="Guardar" formaction="<?= URL ?>usuario/guardar">
+    <input class="succes" id="modificar_usuario" type="submit" value="Guardar cambios" formaction="<?= URL ?>usuario/modificar">
+    <input id="cancelar_mod" type="reset" value="Cancelar">
 
 
     <br>
@@ -89,7 +86,7 @@
         </div>
         <div class="modal-body">
             <label>Ingrese la nueva Contraseña</label>
-            <input id="cambiopass" class="form-control" name="txtcambiopass" type="text" maxlength="32" autocomplete="off" required> <br>
+            <input id="cambiopass" class="form-control" name="txtcambiopass" type="password" maxlength="32" autocomplete="off" required> <br>
             <input class="succes" id="btcambiarpass" type="button" value="Modificar"><br>
         </div>
         <div id="footer-modal">

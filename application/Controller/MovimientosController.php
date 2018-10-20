@@ -14,6 +14,7 @@ class MovimientosController {
                 $m = new Movimientos();
                 $productos->__SET("nombre", "");
                 $productos->__SET("id_categoria", "");
+                $productos->__SET("proveedor", "");
                 $pro = $productos->listar_productos();
             }else {
                 header("location: ".URL."Login/menu");

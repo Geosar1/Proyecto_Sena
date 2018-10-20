@@ -144,6 +144,9 @@ $(document).on('click', '#movimientos', function () {
     $('#contenido').load(uri + '/movimientos/index', function () {
         buscar_movimientos();
         $('#pedido').prop('disabled', true);
+        $('#producto_mov').prop('disabled', true);
+        $('#cantidad_mov').prop('disabled', true);
+        $('#descripcion_mv').prop('disabled', true);
     });
 });
 

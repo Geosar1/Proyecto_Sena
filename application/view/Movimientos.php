@@ -1,4 +1,4 @@
-<form method="post" action="<?= URL ?>movimientos/guardar">
+<form id="form-movimientos" method="post" action="<?= URL ?>movimientos/guardar">
     <h2 id="titulo2">Movimientos</h2>
     <hr />
     <div class="container">
@@ -37,7 +37,7 @@
         <div class="row">
             <div class="col-md-4 form-group">
                 <label>Cantidad</label>
-                <input type="number" class="form-control" name="cantidad" name="cantidad" id="cantidad_mov" autocomplete="off" required>
+                <input type="number" class="form-control" name="cantidad" id="cantidad_mov" autocomplete="off" required>
             </div>
 
             <div class="col-md-4 form-group">

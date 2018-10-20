@@ -73,22 +73,16 @@
             <h3>Proveedores</h3>
         </div>
         <div class="modal-body">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-4 form-group">
-                        <select class="form-control" id="proveedores_a">
-                            <option value="">Seleccione</option>
-                            <?php foreach($proveedores as $value): ?>
-                            <option value="<?= $value->id_proveedor ?>">
-                                <?= $value->nombre_empresa ?>
-                            </option>
-                            <?php endforeach ?>
-                        </select>
-                        <input class="succes" id="agregar" type="button" value="Agregar">
-                    </div>
-                </div>
-            </div>
+            <select class="form-control" id="proveedores_a" required>
+                <option value="">Seleccione</option>
+                <?php foreach($proveedores as $value): ?>
+                <option value="<?= $value->id_proveedor ?>">
+                    <?= $value->nombre_empresa ?>
+                </option>
+                <?php endforeach ?>
+            </select>
 
+            <input class="succes" id="agregar" type="button" value="Agregar">
             <h3>Proveedores añadidos:</h3>
 
             <div class="table-responsive">
