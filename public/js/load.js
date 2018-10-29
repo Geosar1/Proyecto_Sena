@@ -47,8 +47,8 @@ function traer() {
 
     } else if ($('#carga').val() == "7") {
         $('#contenido').html("");
-        $('#contenido').load(uri + '/Pedido/consulta_Pedido', function () {
-            ConsultarDetalle();
+        $('#contenido').load(uri + '/Pedido/Crear_pedido', function () {
+            
         });
 
     } else if ($('#carga').val() == "8") {
@@ -144,9 +144,6 @@ $(document).on('click', '#movimientos', function () {
     $('#contenido').load(uri + '/movimientos/index', function () {
         buscar_movimientos();
         $('#pedido').prop('disabled', true);
-        $('#producto_mov').prop('disabled', true);
-        $('#cantidad_mov').prop('disabled', true);
-        $('#descripcion_mv').prop('disabled', true);
     });
 });
 

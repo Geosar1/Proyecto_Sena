@@ -48,9 +48,7 @@
                     <th>Cliente</th>
                     <th>Total</th>
                     <th>Estado</th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
+                    <th>Detalle pedido</th>
                 </tr>
 
             </thead>

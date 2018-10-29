@@ -46,8 +46,10 @@ class mdlConsultaPedido extends Model {
         return $stm->fetchAll();        
  }
  public function ConsultarPorId(){
-    $sql = "SELECT p.*, dpp.* from pedido p INNER JOIN detalle_pedido_producto dpp
-    ON (p.id_pedido = dpp.id_pedido) WHERE p.id_pedido= ?";
+    $sql = "SELECT p.id_pedido as id_pedidom, p.fecha_de_creacion, p.valor_total, p.id_cliente, c.nombres_cliente, c.apellidos_cliente, dpp.*, pr.* from pedido p
+     INNER JOIN detalle_pedido_producto dpp on (p.id_pedido = dpp.id_pedido) 
+     INNER JOIN producto pr on (dpp.id_producto = pr.id_producto) 
+     left JOIN cliente c on (p.id_cliente = c.id_cliente) WHERE p.id_pedido = ?";
     $stm = $this->db->prepare($sql); 
     $stm->bindParam(1, $this->id_pedido); 
     $stm->execute(); 

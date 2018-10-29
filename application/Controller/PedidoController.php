@@ -75,8 +75,7 @@
         
         public function guardar(){
             $pedido = new mdlPedido();
-            $pedido->__SET("id_cliente_pedido", $_POST["ddlCliente"]);
-            $pedido->__SET("estado_de_pedido", $_POST["estadoPedido"]);
+            $pedido->__SET("id_cliente", $_POST["ddlCliente"]);
             $pedido->__SET("tipo_venta", $_POST["tipoVenta"]);
             $pedido->__SET("valor_total", $_POST["totales"]);
             $pedido->__SET("observaciones", $_POST["observaciones"]);
@@ -105,7 +104,7 @@
                     }
                     
                 }
-                $_SESSION["LOCAL"] = "7";
+                $_SESSION["LOCAL"] = "";
 
                 header("location: ".URL."Login/menu");
         }
@@ -130,7 +129,6 @@
             }else {
                 $producto->__SET("nombre", "");
                 $producto->__SET("id_categoria", "");
-                $producto->__SET("proveedor", "");
                 $productos = $producto->listar_productos();
                 $html.="<option value=''>Seleccione</option>";
                 foreach($productos as $value){
