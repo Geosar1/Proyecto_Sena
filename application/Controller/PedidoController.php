@@ -76,6 +76,7 @@
         public function guardar(){
             $pedido = new mdlPedido();
             $pedido->__SET("id_cliente", $_POST["ddlCliente"]);
+            $pedido->__SET("estado_de_pedido", $_POST["estadoPedido"]);
             $pedido->__SET("tipo_venta", $_POST["tipoVenta"]);
             $pedido->__SET("valor_total", $_POST["totales"]);
             $pedido->__SET("observaciones", $_POST["observaciones"]);
@@ -137,15 +138,4 @@
                 echo $html;
             }
     }
-
 }
-            
-              
-        
-
-    
-
-
-
-
-
