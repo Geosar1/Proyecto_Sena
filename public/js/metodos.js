@@ -839,7 +839,7 @@ function ConsultarPed() {
               <td>${e.estado_pedido}</td>
 
               <td>
-           <button class="detalle" id="ver-detalle" value="${e.id_cliente}">Ver detalle</button>
+           <button class="detalle" id="ver-detalle" value="${e.id_pedido}">Ver detalle</button>
               </td>
             <td>
            <button style='background-color:${color}' id="Estado_pedido" value="${e.id_pedido}">${texto}</button>

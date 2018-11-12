@@ -27,13 +27,11 @@ class mdlPedido extends Model {
     }
 
     public function insertarPedido(){
-        $sql = "CALL SP_InsertarPedido(?, ?, ?, ?, ?)";
-        $stm = $this->db->prepare($sql);
+        $stm = $this->db->prepare("CALL SP_InsertarPedido(?, ?, ?, ?)");
         $stm->bindParam(1, $this->id_cliente);
-        $stm->bindParam(2, $this->estado_pedido);
-        $stm->bindParam(3, $this->tipo_venta);
-        $stm->bindParam(4, $this->valor_total);
-        $stm->bindParam(5, $this->observaciones);      
+        $stm->bindParam(2, $this->tipo_venta);
+        $stm->bindParam(3, $this->valor_total);
+        $stm->bindParam(4, $this->observaciones);
         return $stm->execute();
     }
 
