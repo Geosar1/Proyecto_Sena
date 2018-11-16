@@ -25,13 +25,12 @@ class mdlPedido extends Model {
         return $this->$attr;
     }
 
-    public function insertarPedido(){     
+    public function insertarPedido(){
         $stm = $this->db->prepare("CALL SP_InsertarPedido(?, ?, ?, ?)");
         $stm->bindParam(1, $this->id_cliente);
         $stm->bindParam(2, $this->tipo_venta);
         $stm->bindParam(3, $this->valor_total);
         $stm->bindParam(4, $this->observaciones);
-
         return $stm->execute();
     }
 
