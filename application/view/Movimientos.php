@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-4 form-group">
-                <label>Tipo de Movimiento</label>
+                <label>Tipo de Movimiento*</label>
                 <select class="form-control" id="mov" name="mov" required>
                     <option value="">Seleccione</option>
                     <option value="baja">Dada de Baja</option>
@@ -13,12 +13,12 @@
             </div>
 
             <div class="col-md-4 form-group">
-                <label>ID Pedido</label>
+                <label>ID Pedido*</label>
                 <input name="pedido" type="number" class="form-control" id="pedido">
             </div>
 
             <div class="col-md-4 form-group">
-                <label>Producto</label>
+                <label>Producto*</label>
                 <select class="form-control" name="producto" id="producto_mov" required>
                     <option value="">Seleccione</option>
                     <?php foreach($pro as $value): ?>
@@ -36,15 +36,16 @@
     <div class="container">
         <div class="row">
             <div class="col-md-4 form-group">
-                <label>Cantidad</label>
+                <label>Cantidad*</label>
                 <input type="number" class="form-control" name="cantidad" id="cantidad_mov" autocomplete="off" required>
             </div>
 
             <div class="col-md-4 form-group">
-                <label>Descripción</label>
+                <label>Descripción*</label>
                 <input class="form-control" name="descripcion" type="text" id="descripcion_mv" maxlength="50" autocomplete="off" required>
             </div>
         </div>
+        <label>Los campos señalados con (*) son de caracter obligatorio.</label>
     </div>
 
     <input class="succes" type="submit" value="Guardar" id="guardar_mv">

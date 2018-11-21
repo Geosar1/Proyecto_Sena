@@ -16,7 +16,7 @@
             </div>
 
             <div class="col-md-4 form-group">
-                <label>Celular</label>
+                <label>Celular*</label>
                 <input type="number" class="form-control" id="cel" name="txtcel" maxlength="13" autocomplete="off" required>
             </div>
         </div>
@@ -25,7 +25,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-4 form-group">
-                <label>Tipo de documento</label>
+                <label>Tipo de documento*</label>
                 <select class="form-control" id="tipo_doc" name="txttipo_doc" required>
                     <option>Seleccione</option>
                     <option value="Cedula">Cédula Ciudadanía</option>
@@ -48,7 +48,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-4 form-group">
-                <label>Dirección</label>
+                <label>Dirección*</label>
                 <input type="text" class="form-control" id="dc" name="txtdc" maxlength="25" autocomplete="off" required>
             </div>
 
@@ -64,6 +64,7 @@
                 </select>
             </div>
         </div>
+        <label>Los campos señalados con (*) son de caracter obligatorio.</label>
     </div>
 
     <input class="succes" id="guardar_cliente" type="submit" value="Guardar" formaction="<?= URL ?>cliente/guardar">

@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-lg-4 col-md-4 col-sm-6 col-sx-12">
                 <div class="form-group">
-                    <label for="">Proveedor</label>
+                    <label for="">Proveedor*</label>
                     <select id="proveedor" class="form-control" onchange="listar_proveedor(this.value)">
                         <option selected value="">Seleccionar</option>
                         <?php foreach($proveedores as $valor): ?>
@@ -51,7 +51,7 @@
         <div class="row">
             <div class="col-lg-4 col-md-4 col-sm-6 col-sx-12">
                 <div class="form-group">
-                    <label for="">Producto</label>
+                    <label for="">Producto*</label>
                     <select name="ddlproducto" id="ddlproducto" class="form-control">
                         <option value="">Seleccionar</option>
                     </select>
@@ -66,7 +66,7 @@
 
             <div class="col-lg-4 col-md-4 col-sm-6 col-sx-12">
                 <div class="form-group">
-                    <label for="">Precio Unitario</label>
+                    <label for="">Precio Unitario*</label>
                     <input type="number" class="form-control" name="txtPrecio" id="txtPrecio" pattern="[0-9]{1,20}" title="Solo se permiten números ">
 
                 </div>
@@ -76,8 +76,9 @@
         <div class="row">
             <div class="col-lg-4 col-md-4 col-sm-6 col-sx-12">
                 <div class="form-group">
-                    <label for="">Cantidad</label>
+                    <label for="">Cantidad*</label>
                     <input type="number" class="form-control" name="txtCantidad" id="txtCantidad">
+                    <label>Los campos señalados con (*) son de caracter obligatorio.</label>
                 </div>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-6 col-sx-6">

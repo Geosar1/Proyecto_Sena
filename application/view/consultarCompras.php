@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-lg-3 col-md-3 col-sm-4 col-sx-12">
             <div class="form-group">
-                <label for="">Proveedor</label>
+                <label for="">Proveedor*</label>
                 <select id="proveedor" class="form-control" onchange="ConsultarCompra(this.value)">
                     <option selected value="">Seleccionar</option>
                     <?php foreach($proveedores as $valor): ?>
@@ -17,7 +17,7 @@
         </div>
         <div class="col-lg-3 col-md-3 col-sm-4 col-sx-12">
             <div class="form-group">
-                <label for="">Fecha Inicio</label>
+                <label for="">Fecha Inicio*</label>
                 <input type="date" id="txtfechaInicio" class="form-control" name="txtfechaInicio" onchange="ConsultarCompra(this.value)">
             </div>
         </div>
@@ -34,6 +34,7 @@
                 </button>
             </div>
         </div>
+        <label>Los campos señalados con (*) son de caracter obligatorio.</label>
     </div>
 
     <table>

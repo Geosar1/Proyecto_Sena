@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-4 form-group">
-                <label for="exampleFormControlSelect1">Tipo de Reporte</label>
+                <label for="exampleFormControlSelect1">Tipo de Reporte*</label>
                 <select id="reporte" class="form-control" id="exampleFormControlSelect1">
                     <option value="">Seleccione</option>
                     <option value="1">Clientes que más Compran</option>
@@ -15,7 +15,7 @@
                 </select>
             </div>
             <div class="col-md-4 form-group">
-                <label for="">Fecha de Inicio</label>
+                <label for="">Fecha de Inicio*</label>
                 <input id="inicio" type="date" class="form-control">
             </div>
             <div class="col-md-4 form-group">
@@ -50,6 +50,7 @@
                 </select>
             </div>
         </div>
+        <label>Los campos señalados con (*) son de caracter obligatorio.</label>
     </div>
     <input id="limpiar_reporte" type="reset" value="Limpiar">
 </form>

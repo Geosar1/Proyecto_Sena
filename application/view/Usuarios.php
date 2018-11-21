@@ -6,12 +6,12 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-4 form-group">
-                <label>Nombres</label>
+                <label>Nombres*</label>
                 <input id="nombres" class="form-control" name="txtnombres" type="text" maxlength="45" autocomplete="off" required>
             </div>
 
             <div class="col-md-4 form-group">
-                <label>Apellidos</label>
+                <label>Apellidos*</label>
                 <input id="apellidos" class="form-control" name="txtapellidos" type="text" maxlength="45" autocomplete="off" required>
             </div>
         </div>
@@ -20,7 +20,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-4 form-group">
-                <label>Tipo de documento</label>
+                <label>Tipo de documento*</label>
                 <select id="tipo_doc" class="form-control" name="txttipo_doc" required>
                     <option value="">Seleccione</option>
                     <option value="Cedula">Cédula Ciudadanía</option>
@@ -29,11 +29,11 @@
                 </select>
             </div>
             <div class="col-md-4 form-group">
-                <label>Número de documento</label>
+                <label>Número de documento*</label>
                 <input name="txtnumero_doc" class="form-control" id="num_doc" type="text" maxlength="30" autocomplete="off" required>
             </div>
             <div class="col-md-4 form-group">
-                <label>Fecha de Expedición</label>
+                <label>Fecha de Expedición*</label>
                 <input name="txtfec_exp" class="form-control" id="fec_exp" type="date" required>
             </div>
         </div>
@@ -42,7 +42,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-4 form-group">
-                <label>Tipo de Usuario</label>
+                <label>Tipo de Usuario*</label>
                 <select id="tipo_usu" class="form-control" name="txttipo_usu" required>
                     <option value="ADMINISTRADOR">Administrador</option>
                     <option value="VENTAS">Ventas</option>
@@ -50,15 +50,16 @@
                 </select>
             </div>
             <div class="col-md-4 form-group">
-                <label>Usuario</label>
+                <label>Usuario*</label>
                 <input id="user" class="form-control" name="txtuser" type="text" maxlength="30" autocomplete="off" required>
             </div>
             <div class="col-md-4 form-group">
-                <label>Contraseña</label>
+                <label>Contraseña*</label>
                 <input id="clave" class="form-control" name="txtclave" type="text" maxlength="32" autocomplete="off" required>
             </div>
         </div>
     </div>
+    <label>Los campos señalados con (*) son de caracter obligatorio.</label>
     <div class="container-fluid">
         <div class="row">
 

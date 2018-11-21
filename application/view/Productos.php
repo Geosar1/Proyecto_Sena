@@ -9,12 +9,12 @@
             </div>
 
             <div class="col-md-4 form-group">
-                <label>Cantidad</label>
+                <label>Cantidad*</label>
                 <input class="form-control" id="cantidad_p" type="number" name="cantidad" required>
             </div>
 
             <div class="col-md-4 form-group">
-                <label>Precio Venta</label>
+                <label>Precio Venta*</label>
                 <input class="form-control" id="precio_p" type="number" name="precio" required>
             </div>
         </div>
@@ -23,7 +23,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-4 form-group">
-                <label>Stock Mínimo</label>
+                <label>Stock Mínimo*</label>
                 <input class="form-control" id="stock_p" type="number" name="stock" required>
             </div>
 
@@ -40,7 +40,7 @@
             </div>
 
             <div class="col-md-4 form-group">
-                <label>Proveedores</label> <br>
+                <label>Proveedores*</label> <br>
                 <select class="form-control" id="proveedores_p" required>
                     <option value="">Seleccione</option>
                     <?php foreach($proveedores as $value): ?>
@@ -51,6 +51,7 @@
                 </select>
             </div>
         </div>
+        <label>Los campos señalados con (*) son de caracter obligatorio.</label>
     </div>
 
     <div class="container">
