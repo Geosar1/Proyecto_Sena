@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-lg-3 col-md-3 col-sm-4 col-sx-12">
             <div class="form-group">
-                <label for="">Cliente</label>
+                <label for="">Cliente*</label>
                 <select class="form-control" id="idcliente" required="true" name="ddlCliente" onchange="ConsultarPed(this.value)">
 
                     <option value=""> </option>
@@ -20,7 +20,7 @@
         </div>
         <div class="col-lg-3 col-md-3 col-sm-4 col-sx-12">
             <div class="form-group">
-                <label for="">Fecha Inicio</label>
+                <label for="">Fecha Inicio*</label>
                 <input type="date" id="txtfechaInicio" class="form-control" name="txtfechaInicio" onchange="ConsultarPed(this.value)">
             </div>
         </div>
@@ -39,6 +39,7 @@
 
             </div>
         </div>
+        <label>Los campos señalados con (*) son de caracter obligatorio.</label>
     </div>
     <div class="table-responsive">
         <table>
