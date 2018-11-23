@@ -131,5 +131,20 @@ public function crear($id = -1){
                 $_SESSION["alerta"] = "alert('Ocurrió un error al cambiar el estado,por favor intente de nuevo.')";                    
             }
         }
+
+        function perdida()
+        {
+        
+            $producto = new Producto();
+            $precio = $_POST["precio"];
+            $producto-> __SET("id",$_POST["id"]);
+            $resultado = $producto->consultar();
+
+            if($resultado->precio_venta < $precio)
+            {                
+               echo "revisar el producto ya que el valor de venta es menor al valor de compra";
+            }           
+       
+        }
    }
 

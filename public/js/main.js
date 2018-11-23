@@ -661,6 +661,8 @@ function agregarProducto() {
     var idProducto = $("#ddlproducto").val();
     var idproveedor = $("#proveedor").val();
 
+    perdida(idProducto, $("#txtPrecio").val());
+
     var item = {
         proveedorId: idproveedor,
         productocodigo: idProducto,

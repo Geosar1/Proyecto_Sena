@@ -1,13 +1,11 @@
-<div class="container-fluid">
+<div class="container">
     <form action=" <?= URL ?>compras/guardar" method="POST" id="idcrear">
-    <h2>Crear Compras</h2>
-    <hr />
         <div class="row">
             <div class="col-lg-4 col-md-4 col-sm-6 col-sx-12">
                 <div class="form-group">
-                    <label for="">Proveedor*</label>
-                    <select id="proveedor" class="form-control" onchange="listar_proveedor(this.value)">
-                        <option selected value="">Seleccionar</option>
+                    <label for="">proveedor</label>
+                    <select  id="proveedor" class="form-control" onchange="listar_proveedor(this.value)">
+                        <option selected value="">seleccionar</option>
                         <?php foreach($proveedores as $valor): ?>
                         <option value="<?= $valor->id_proveedor?>">
                             <?= $valor->nombre_empresa?>
@@ -18,9 +16,9 @@
             </div>
             <div class="col-lg-4 col-md-4 col-sm-6 col-sx-12">
                 <div class="form-group">
-                    <label for="">Contacto</label>
+                    <label for="">contacto</label>
                     <input type="text" id="txtContacto" class="form-control" name="txtContacto" disabled="true">
-                    <input type="hidden" id="ddlproveedor" class="form-control" name="ddlproveedor">
+                    <input type="hidden" id="ddlproveedor" class="form-control" name="ddlproveedor" >
                 </div>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-6 col-sx-12">
@@ -43,7 +41,7 @@
             </div>
             <div class="col-lg-4 col-md-4 col-sm-6 col-sx-12">
                 <div class="form-group">
-                    <label for="">Dirección</label>
+                    <label for="">Direccion</label>
                     <input type="text" id="txtDireccion" class="form-control" name="txtDireccion" disabled="true">
                 </div>
             </div>
@@ -51,9 +49,9 @@
         <div class="row">
             <div class="col-lg-4 col-md-4 col-sm-6 col-sx-12">
                 <div class="form-group">
-                    <label for="">Producto*</label>
+                    <label for="">producto</label>
                     <select name="ddlproducto" id="ddlproducto" class="form-control">
-                        <option value="">Seleccionar</option>
+                        <option value="">seleccionar</option>
                     </select>
                 </div>
             </div>
@@ -66,7 +64,7 @@
 
             <div class="col-lg-4 col-md-4 col-sm-6 col-sx-12">
                 <div class="form-group">
-                    <label for="">Precio Unitario*</label>
+                    <label for="">Precio Unitario</label>
                     <input type="number" class="form-control" name="txtPrecio" id="txtPrecio" pattern="[0-9]{1,20}" title="Solo se permiten números ">
 
                 </div>
@@ -76,9 +74,8 @@
         <div class="row">
             <div class="col-lg-4 col-md-4 col-sm-6 col-sx-12">
                 <div class="form-group">
-                    <label for="">Cantidad*</label>
+                    <label for="">Cantidad</label>
                     <input type="number" class="form-control" name="txtCantidad" id="txtCantidad">
-                    <label>Los campos señalados con (*) son de caracter obligatorio.</label>
                 </div>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-6 col-sx-6">
@@ -91,18 +88,18 @@
             <div class="col-lg-1 col-md-1 col-sm-2 col-sx-2">
                 <div class="form-group">
                     <label for=""> </label>
-                    <br />
-                    <button onclick="agregarProducto()" type="button" class="succes">Agregar</button>
+                    <br/>
+                    <button onclick="agregarProducto()" type="button" class="btn btn primary">Agregar</button>
                 </div>
             </div>
             <div class="col-lg-1 col-md-1 col-sm-2 col-sx-2">
                 <div class="form-group">
-                    <br />
-                    <button onclick="LimpiarForm()" class="btn btn" type="reset" name="btnLimpiar" id="btnLimpiar">Cancelar
+                    <br/>
+                    <button onclick="LimpiarForm()" type="reset" class="btn btn primary " name="btnLimpiar" id="btnLimpiar">Cancelar
                     </button>
                 </div>
             </div>
-
+           
 
         </div>
         <table class="table" id="detalle">
@@ -125,11 +122,14 @@
         <div class="row">
             <div class="col-lg-4 col-md-4 col-sm-6 col-sx-12">
                 <div class="form-group">
-                    <button type="submit" class="succes" name="guardarCompra" onClick="return validar();">Guardar
+                    <button type="submit" class="btn btn primary" name="guardarCompra" onClick="return validar();">Guardar
                     </button>
 
                 </div>
             </div>
         </div>
-    </form>
+    </div>
+
 </div>
+
+</form>
